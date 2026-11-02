@@ -1,0 +1,25 @@
+[
+  {
+    "id": "VTC-20261031-SL39",
+    "receivedAt": "2026-10-31T01:58:58.595Z",
+    "clientIp": "127.0.0.1",
+    "userAgent": "curl/7.88.1",
+    "name": "David Miller",
+    "email": "dmiller@roasters-direct.com",
+    "company": "Miller Roasting Group",
+    "products": [
+      "green-coffee",
+      "sugar"
+    ],
+    "country": "Canada",
+    "phone": null,
+    "message": null,
+    "technicalDetails": null,
+    "status": "recorded",
+    "notificationQueue": {
+      "recipient": "rafael@verotrading.ca",
+      "status": "queued_commercial_review",
+      "dispatchedAt": "2026-10-31T01:58:58.596Z"
+    }
+  }
+]

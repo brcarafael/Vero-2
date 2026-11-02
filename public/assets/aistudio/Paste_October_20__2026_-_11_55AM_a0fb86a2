@@ -1,0 +1,956 @@
+# COMPLETE WEBSITE TRANSFORMATION: 2026 DESIGN, UX, SALES & TECHNICAL MODERNIZATION
+
+## YOUR ROLE AND MISSION
+
+Act as an elite multidisciplinary team consisting of:
+
+- Senior Creative Director and Brand Strategist
+- Principal UI/UX Designer
+- Senior Frontend and Full-Stack Engineer
+- Conversion Rate Optimization (CRO) Specialist
+- B2B Sales and Customer Journey Strategist
+- Behavioral Psychology and Consumer Decision-Making Specialist
+- Senior SEO and Technical Performance Specialist
+- Professional Copywriter and Content Strategist
+- Quality Assurance and Accessibility Engineer
+
+Your mission is to **comprehensively audit, modernize, redesign, and improve my EXISTING website**, using the latest mature capabilities available in Google AI Studio and modern web development practices as of October 2026.
+
+This is not a minor facelift.
+
+I want a significant, carefully considered transformation of the website's visual quality, communication, commercial effectiveness, usability, functionality, responsiveness, and overall professionalism.
+
+**The ultimate objective is to transform the existing website into a premium, cohesive, highly intuitive, conversion-focused digital experience that clearly communicates what we offer, why customers need it, how it works, and why they should choose us.**
+
+You are working inside an EXISTING project. Treat the current website, codebase, assets, business information, and implemented functionality as your primary sources of truth.
+
+Do not start from scratch without first understanding what already exists.
+
+Do not simply describe improvements. I expect you to IMPLEMENT them.
+
+---
+
+## PHASE 1: FULL WEBSITE AUDIT AND BUSINESS DISCOVERY
+
+Before making changes, thoroughly inspect the entire existing project.
+
+Review:
+
+- All pages, routes, sections, and components.
+- All existing content and commercial messaging.
+- The products or services being offered.
+- Our target customers, industries, and geographic markets.
+- Our existing branding, colours, typography, logos, and visual assets.
+- Pricing structures, subscriptions, contracts, and business terms.
+- All interactive elements, calculators, configurators, forms, and integrations.
+- Existing navigation and the overall customer journey.
+- Desktop, tablet, and mobile layouts.
+- Code architecture, dependencies, accessibility, performance, and SEO implementation.
+
+Identify the website's actual business model and primary conversion goal.
+
+Determine whether customers are expected to request a quote, configure a service, schedule a consultation, subscribe, purchase, or contact sales.
+
+Do not assume a generic business model.
+
+Identify what is already working and should be preserved, what needs improvement, and what should be redesigned.
+
+Evaluate the current website from three perspectives:
+
+**Perspective A: A first-time visitor**
+
+Can someone understand within approximately five seconds what we do, who it is for, and why it matters?
+
+**Perspective B: A qualified potential customer**
+
+Can they understand the benefits, evaluate the offering, assess costs, resolve objections, and confidently move toward becoming a customer?
+
+**Perspective C: An experienced professional designer and developer**
+
+Does the site demonstrate sophisticated visual design, consistent components, logical architecture, high-quality execution, and a polished user experience?
+
+Use your findings to guide the complete transformation.
+
+Maintain a concise internal inventory of existing functionality and business rules before editing so nothing important is accidentally lost.
+
+---
+
+## PHASE 2: REDESIGN THE COMPLETE VISUAL EXPERIENCE
+
+Modernize the website using contemporary, sophisticated, premium digital design principles.
+
+The result should feel like a carefully art-directed website created by a professional digital product agency, not a generic AI-generated template.
+
+### Visual direction
+
+Prioritize:
+
+- Strong, intentional typography.
+- Sophisticated visual hierarchy.
+- Balanced layouts and intelligent use of whitespace.
+- Consistent spacing, padding, and alignment.
+- Harmonious colours and clear contrast.
+- Premium, visually engaging content presentation.
+- Well-composed cards and sections.
+- Thoughtful visual storytelling.
+- Refined micro-interactions and transitions.
+- Clear distinctions between primary and secondary actions.
+- Clean navigation and intuitive interactions.
+
+The visual language must be consistent throughout the entire website.
+
+Preserve recognizable brand characteristics wherever appropriate, but refine or extend the existing design system when needed.
+
+Do not randomly replace established branding with unrelated colours or generic modern design trends.
+
+### Create a comprehensive design system
+
+Establish and apply consistent design tokens for:
+
+- Brand and supporting colours.
+- Background and surface colours.
+- Typography families, sizes, weights, and line heights.
+- Responsive typography scales.
+- Spacing and layout grids.
+- Buttons and interactive states.
+- Border radii and border treatments.
+- Card styles and elevations.
+- Icons and visual elements.
+- Form controls.
+- Section widths and container sizes.
+- Responsive breakpoints.
+- Animation timing and motion behavior.
+
+Use reusable components wherever possible.
+
+**Every page must feel like part of the same professionally designed website.**
+
+### Avoid generic design patterns
+
+Avoid:
+
+- Excessive gradients without a clear design purpose.
+- Unnecessary glassmorphism.
+- Repetitive cards everywhere.
+- Oversized headings with little supporting content.
+- Decorative elements that communicate nothing.
+- Generic AI-looking illustrations.
+- Excessive glow effects.
+- Inconsistent icon styles.
+- Too many competing colours.
+- Overdesigned interfaces that reduce readability.
+- Animations that distract from the purchasing journey.
+
+Use modern visual techniques selectively and intentionally.
+
+The website should feel distinctive, credible, confident, and memorable without becoming complicated.
+
+---
+
+## PHASE 3: REBUILD THE INFORMATION ARCHITECTURE AND USER EXPERIENCE
+
+Analyze the entire website's information architecture.
+
+Identify unnecessary complexity, confusing navigation, redundant content, unclear terminology, and friction points.
+
+Redesign the navigation and content hierarchy based on how actual customers think and make purchasing decisions.
+
+### UX objectives
+
+A visitor should always understand:
+
+1. Where they are.
+2. What the current section is communicating.
+3. Why the information matters.
+4. What they can do next.
+5. What happens after taking action.
+
+Use progressive disclosure when appropriate.
+
+Show the most essential information first, while allowing visitors to explore details when they need them.
+
+Make complex services or technical information understandable to nontechnical customers.
+
+Reduce cognitive load and unnecessary decision-making.
+
+### Navigation
+
+Improve the header, menus, navigation structure, footer, and mobile navigation.
+
+Consider sticky navigation when helpful, but avoid intrusive elements.
+
+Make the primary call to action clearly identifiable.
+
+Ensure internal links lead visitors through a coherent journey rather than leaving them at dead ends.
+
+Eliminate confusing or redundant navigation items.
+
+### Responsiveness
+
+Design and test the entire experience for:
+
+- Small mobile devices.
+- Standard smartphones.
+- Large smartphones.
+- Tablets.
+- Laptops.
+- Large desktop screens.
+
+Do not simply shrink desktop layouts.
+
+Intentionally redesign complex sections for mobile usability.
+
+Avoid horizontal overflow, overlapping elements, tiny buttons, excessive vertical spacing, awkward line breaks, and difficult-to-use interactive controls.
+
+The mobile experience should feel as carefully designed as the desktop version.
+
+---
+
+## PHASE 4: TRANSFORM THE WEBSITE INTO A STRONGER SALES EXPERIENCE
+
+This is one of the most important parts of the project.
+
+The website must do more than look attractive.
+
+It must actively help potential customers understand the value of our offering and make confident purchasing decisions.
+
+Use established principles of conversion rate optimization, customer psychology, value-based selling, and persuasive but ethical communication.
+
+### Understand the customer
+
+Based on the actual business and services found in the project, identify:
+
+- Our primary customer segments.
+- Their biggest frustrations and operational challenges.
+- Their goals and desired outcomes.
+- The problems that motivate them to search for a solution.
+- Their objections before buying.
+- Their concerns about price, reliability, implementation, or commitment.
+- The information they need to make a confident decision.
+
+Build the website experience around those needs.
+
+### Communicate outcomes, not just features
+
+Translate every important feature into an understandable customer benefit.
+
+For example, rather than simply listing a technical feature, explain what that feature allows the customer to accomplish and why that matters to their business.
+
+Use this communication structure when appropriate:
+
+**Customer problem → Practical solution → Customer benefit → Supporting explanation or evidence → Relevant next action**
+
+Lead with benefits and outcomes.
+
+Use technical specifications as supporting evidence rather than forcing the visitor to understand technical details before they can appreciate the value.
+
+### Strengthen the value proposition
+
+Rewrite unclear or generic messaging.
+
+The primary headline and supporting text should explain:
+
+- What the service is.
+- Who it helps.
+- The main problem it solves.
+- Why the solution is worth considering.
+
+Avoid vague marketing phrases and exaggerated claims.
+
+Use natural, clear, confident, intelligent writing.
+
+The website should sound like a knowledgeable human business, not a generic automated sales pitch.
+
+### Create a coherent sales narrative
+
+Guide customers through the following psychological journey:
+
+**Awareness → Problem recognition → Solution understanding → Value evaluation → Trust → Objection resolution → Conversion**
+
+Visitors should not feel pressured to buy.
+
+Instead, they should progressively understand why the offering may be relevant and valuable to them.
+
+Use concise educational content, relevant demonstrations, examples, transparent information, and well-positioned actions.
+
+---
+
+## PHASE 5: REDESIGN THE HOMEPAGE AS A CONVERSION EXPERIENCE
+
+Reconsider the entire homepage structure.
+
+Do not blindly preserve its current layout if a better structure would communicate the business more effectively.
+
+Develop a homepage experience that presents information in an intentional sequence.
+
+Use the following structure as a strategic starting point, adapting it to the actual business.
+
+### 1. Premium hero section
+
+Create a visually compelling, immediately understandable hero.
+
+It should include:
+
+- A strong, benefit-driven headline.
+- A concise supporting explanation.
+- One clear primary CTA.
+- An appropriate secondary action for visitors who need more information.
+- A relevant, high-quality image or interactive visual showing the actual product, service, or customer context.
+
+Avoid generic imagery unrelated to the offering.
+
+A visitor should quickly understand what we provide and why they should continue exploring.
+
+### 2. Customer problem and opportunity
+
+Communicate the relevant customer problem in a relatable, professional way.
+
+Show that we understand the customer's situation.
+
+Avoid fear-based exaggeration.
+
+### 3. Our solution
+
+Explain how our service addresses that problem.
+
+Use a visually engaging presentation that makes the concept easy to understand.
+
+### 4. How it works
+
+Create a clear, visually appealing explanation of the customer experience.
+
+Use sequential steps, diagrams, appropriate illustrations, or simple interactive elements.
+
+The entire process should feel straightforward and manageable.
+
+### 5. Benefits and business value
+
+Present the most important practical outcomes.
+
+Prioritize information based on what customers actually care about.
+
+Use concrete explanations instead of generic promises.
+
+### 6. Product or service experience
+
+Show the actual service, relevant components, or realistic usage context.
+
+Help visitors visualize how the solution would fit into their business.
+
+### 7. Pricing, value, or investment information
+
+If the business publicly displays prices, make them easy to understand.
+
+Explain what customers receive and what affects their final cost.
+
+If the website includes pricing calculators, configurators, or estimators, improve their presentation without changing verified pricing rules or calculations.
+
+When pricing cannot be public, provide a transparent explanation of how quotations work.
+
+### 8. Trust and objection handling
+
+Address common purchase objections through useful explanations, FAQs, genuine evidence, and clear service terms.
+
+Use testimonials, customer logos, certifications, case studies, or metrics only when verified information already exists.
+
+Never invent social proof.
+
+### 9. Final conversion opportunity
+
+End with a compelling but natural invitation to take the next step.
+
+Explain what will happen after a visitor clicks or submits their information.
+
+Do not create a homepage that repeats the same content excessively.
+
+Use varied visual layouts and intentional pacing.
+
+---
+
+## PHASE 6: IMPROVE EVERY OTHER PAGE
+
+Apply the same design, UX, and conversion standards across the entire website.
+
+Do not focus only on the homepage.
+
+Depending on the existing project, this may include:
+
+- Service or product pages.
+- Solutions or industry pages.
+- Pricing pages.
+- Configurators.
+- Calculators.
+- About pages.
+- Contact pages.
+- FAQ sections.
+- Educational content.
+- Legal and policy pages.
+- Landing pages.
+- Supporting conversion flows.
+
+Every page must have:
+
+- A clear purpose.
+- A strong information hierarchy.
+- Consistent branding.
+- Logical content structure.
+- Appropriate visual elements.
+- Easy navigation.
+- Relevant internal links.
+- An obvious next step where appropriate.
+
+Remove unnecessary repetition, but preserve meaningful information.
+
+If certain pages would benefit from restructuring, implement those improvements.
+
+Only create additional pages when they serve a real customer or business purpose.
+
+Do not create pages just to make the website larger.
+
+---
+
+## PHASE 7: PROFESSIONAL IMAGERY AND VISUAL STORYTELLING
+
+Audit every image and visual asset currently used on the website.
+
+Identify:
+
+- Missing images.
+- Broken images.
+- Low-resolution assets.
+- Inconsistent photography styles.
+- Poorly cropped visuals.
+- Generic or irrelevant images.
+- Sections that would benefit from product demonstrations or contextual photography.
+- Places where complex information could be communicated more effectively with visual explanations.
+
+### Generate and integrate missing images
+
+Use the latest image generation capabilities available within Google AI Studio, including Nano Banana when appropriate, to create suitable visual assets.
+
+**Actually generate and integrate the images into the website. Do not merely suggest where images should go.**
+
+Prefer sophisticated, natural, professional visuals that reinforce the brand and accurately communicate the service.
+
+Where appropriate, create:
+
+- Relevant hero imagery.
+- Professional lifestyle photography showing real service environments.
+- Product or equipment visualizations based on existing authentic references.
+- Supporting images explaining service benefits.
+- Industry-specific contextual visuals.
+- Informative diagrams and illustrations.
+- Visually consistent backgrounds or decorative assets.
+
+### Important image rules
+
+Preserve any authentic product imagery, brand marks, equipment designs, and existing visual identity that must remain accurate.
+
+Do not generate inaccurate representations of real products or hardware.
+
+If a product image is required and authentic references are unavailable, do not invent product specifications or present fictional hardware as real.
+
+Avoid obvious AI visual artifacts, unrealistic hands, distorted objects, artificial-looking people, and generic corporate stock-photo aesthetics.
+
+Use authentic existing assets as the first choice whenever appropriate.
+
+All new images should follow a coherent photographic and artistic direction.
+
+Choose intentional aspect ratios, crops, lighting, and compositions.
+
+Ensure images are properly integrated, optimized, responsive, and accompanied by meaningful alternative text where appropriate.
+
+Do not rely on broken external links or temporary placeholder image services.
+
+Images must support the user experience rather than merely decorate the page.
+
+---
+
+## PHASE 8: SMART SALES FLOWS AND INTERACTIVE FEATURES
+
+Assess opportunities to help visitors move naturally from interest to action.
+
+Introduce intelligent, useful interactions where they can materially improve the customer experience.
+
+Do not add unnecessary complexity or use AI simply because it is available.
+
+### Guided customer journeys
+
+Consider implementing a guided recommendation or service discovery experience.
+
+For example:
+
+1. Ask a visitor a small number of relevant questions.
+2. Understand their business situation or requirements.
+3. Identify the most relevant existing solution or service option.
+4. Explain why that option may be suitable.
+5. Present the next logical action.
+
+Keep the experience simple, professional, and optional.
+
+Never force every visitor into a questionnaire.
+
+### Interactive value communication
+
+Where relevant to the existing business, consider:
+
+- Interactive service explanations.
+- Pricing estimators.
+- Service configurators.
+- Business-impact calculators.
+- Visual demonstrations.
+- Side-by-side comparisons.
+- Guided selection tools.
+- Contextual answers to common customer questions.
+
+Prioritize features that help users understand our service, assess suitability, or make decisions.
+
+If these tools already exist, improve their interface and ease of use while preserving the verified underlying calculations and business rules.
+
+### Intelligent contextual CTAs
+
+Use calls to action that match each visitor's stage of consideration.
+
+For example, an early-stage visitor may need to understand the service, while a high-intent visitor may want pricing, a configuration, or direct contact.
+
+Avoid presenting every visitor with the same repetitive sales message.
+
+### Conversion without pressure
+
+Use ethical persuasion techniques:
+
+- Clear value propositions.
+- Appropriate social proof when genuine.
+- Reduced perceived complexity.
+- Transparent pricing and terms.
+- Answers to important objections.
+- Clear next steps.
+- Relevant recommendations.
+- Helpful microcopy.
+- Reduced unnecessary friction.
+
+Do not introduce manipulative urgency, artificial scarcity, fake activity notifications, intrusive pop-ups, or misleading claims.
+
+---
+
+## PHASE 9: IMPROVE THE ENTIRE LEAD GENERATION EXPERIENCE
+
+Review all existing calls to action, contact forms, booking flows, quote requests, and other conversion mechanisms.
+
+Optimize them for clarity, usability, and lead quality.
+
+### Form design
+
+Apply modern form UX principles:
+
+- Request only necessary information.
+- Use clear, descriptive labels.
+- Provide useful examples when needed.
+- Use appropriate field types and autocomplete.
+- Minimize confusing or redundant fields.
+- Use immediate, accessible validation.
+- Display clear loading, success, and error states.
+- Ensure comfortable usability on smartphones.
+
+Use progressive disclosure only when it genuinely reduces complexity.
+
+### Conversion flow
+
+Clearly communicate what will happen after submission.
+
+For example, explain whether the customer will receive a quotation, be contacted by the team, or proceed to another step.
+
+Preserve the actual existing business process.
+
+Do not promise response times, instant quotes, or automatic approvals unless those capabilities really exist.
+
+### Lead information and integrations
+
+Preserve all existing working lead collection methods and integrations.
+
+If a visitor has already entered useful information into a configurator or calculator, carry that information into subsequent steps when technically feasible and appropriate.
+
+Avoid making customers re-enter information.
+
+Do not silently replace existing integrations with new external services.
+
+If a new backend, paid service, email integration, database, or API is required, clearly identify it before enabling anything that introduces cost or operational dependencies.
+
+---
+
+## PHASE 10: CONTENT, COPYWRITING AND COMMERCIAL COMMUNICATION
+
+Professionally review and improve the text throughout the website.
+
+The new copy must be:
+
+- Natural and human.
+- Professional and confident.
+- Easy to understand.
+- Relevant to our specific industry.
+- Focused on customer benefits.
+- Persuasive without exaggeration.
+- Concise where appropriate, but detailed when customers need information.
+- Consistent in tone across all pages.
+
+Remove generic claims that could describe virtually any company.
+
+Make our actual differentiators clear.
+
+Use appropriate examples to explain complex ideas.
+
+Improve headings, descriptions, card copy, button labels, form instructions, tooltips, and FAQs.
+
+### Strict factual accuracy
+
+Do not invent:
+
+- Customer testimonials.
+- Revenue improvements.
+- Sales performance statistics.
+- Customer counts.
+- Partnerships.
+- Certifications.
+- Awards.
+- Guarantees.
+- Product capabilities.
+- Contract terms.
+- Pricing or discounts.
+- Case studies.
+- Business performance claims.
+
+Use existing verified information as the source of truth.
+
+Where the current information is insufficient, either write accurate, general explanations or identify the specific detail that requires confirmation.
+
+Do not present hypothetical financial estimates as guaranteed customer outcomes.
+
+Keep all important business, pricing, and contractual information accurate.
+
+---
+
+## PHASE 11: SEO, SEARCH VISIBILITY AND CONTENT STRUCTURE
+
+Modernize the site's technical and on-page SEO without compromising readability.
+
+Review and improve:
+
+- Page titles.
+- Meta descriptions.
+- Heading hierarchy.
+- Semantic HTML.
+- Page-specific keyword relevance.
+- Internal linking.
+- Canonical URLs.
+- XML sitemap and robots directives where applicable.
+- Descriptive image alt text.
+- Open Graph and social sharing metadata.
+- Appropriate structured data.
+- Indexability and crawlability.
+- URL consistency.
+- Duplicate content.
+- Redirects for any changed URLs.
+
+Use structured data only when it correctly represents real, visible content.
+
+Ensure important page content and links are discoverable by search engines.
+
+For JavaScript-heavy pages, assess whether server rendering or prerendering would materially improve discoverability. Do not introduce a framework migration without a clear benefit.
+
+Use helpful, accurate, people-first content.
+
+Keep existing indexed URLs wherever possible.
+
+Do not sacrifice existing search visibility just to achieve a visual redesign.
+
+---
+
+## PHASE 12: TECHNICAL MODERNIZATION AND PERFORMANCE
+
+Review the current codebase and make meaningful improvements using modern, stable web development practices.
+
+Preserve the existing technical foundation when appropriate.
+
+Do not introduce unnecessary framework migrations or dependencies simply to appear more modern.
+
+### Code quality
+
+Improve:
+
+- Component architecture.
+- Reusability.
+- State management.
+- Responsive styling.
+- Maintainability.
+- Type safety where applicable.
+- Error handling.
+- Loading states.
+- Accessibility.
+- Asset organization.
+- Unnecessary or duplicated code.
+
+Remove obsolete or unused code only after verifying it is no longer required.
+
+### Performance
+
+Optimize:
+
+- Initial loading experience.
+- JavaScript bundle size.
+- Image formats and dimensions.
+- Responsive image delivery.
+- Font loading.
+- Caching.
+- Rendering performance.
+- Animation efficiency.
+- Layout stability.
+
+Aim for Google's recommended Core Web Vitals thresholds on real-world mobile and desktop visits:
+
+- LCP: 2.5 seconds or less.
+- INP: 200 milliseconds or less.
+- CLS: 0.1 or less.
+
+Treat these as performance goals, not results that can be claimed without measurement.
+
+Do not lazy-load critical above-the-fold imagery when doing so harms initial rendering.
+
+### Accessibility
+
+Target WCAG 2.2 Level AA practices wherever applicable.
+
+Ensure:
+
+- Keyboard-accessible navigation.
+- Visible focus indicators.
+- Sufficient contrast.
+- Appropriate focus management.
+- Accessible forms.
+- Semantic HTML.
+- Proper labels.
+- Understandable validation errors.
+- Support for reduced motion.
+- Readable typography.
+- Suitable interactive target sizes.
+
+### Security and reliability
+
+Preserve security-sensitive integrations.
+
+Never expose API keys or private credentials in frontend code.
+
+Do not change payment processing, authentication, email delivery, customer information handling, or backend data models without understanding the existing implementation.
+
+Do not introduce a database or authentication requirement unless the business genuinely needs one.
+
+Avoid unnecessary infrastructure, complexity, and ongoing costs.
+
+---
+
+## PHASE 13: PRESERVE ALL EXISTING BUSINESS LOGIC
+
+This is a critical non-negotiable requirement.
+
+The redesign must NOT accidentally change verified business rules.
+
+Preserve, where applicable:
+
+- Product and service pricing.
+- Subscription calculations.
+- Minimum or maximum quantities.
+- Contract commitments.
+- Discounts and billing rules.
+- Calculator formulas.
+- Configurator restrictions.
+- Form submission destinations.
+- Contact information.
+- Booking links.
+- Payment links.
+- Functional integrations.
+- Geographic availability.
+- Service limitations.
+- Existing customer-facing legal terms.
+
+If the website includes a multi-step configurator, pricing engine, or business-impact calculator, maintain the underlying logic while substantially improving the interface and user experience.
+
+Do not invent a new pricing model.
+
+Do not remove important existing capabilities merely to simplify the visual design.
+
+Modernization should improve the experience without compromising operational accuracy.
+
+---
+
+## PHASE 14: TEST THE COMPLETE CUSTOMER JOURNEY
+
+After implementing the improvements, perform a comprehensive quality review.
+
+Do not stop after generating attractive pages.
+
+### Visual testing
+
+Review every important page and component at multiple viewport sizes.
+
+Inspect:
+
+- Alignment.
+- Typography.
+- Image quality.
+- Content density.
+- Card consistency.
+- Section transitions.
+- Colour consistency.
+- Responsive behavior.
+- Button placement.
+- Navigation usability.
+- Overflow and clipping.
+- Form layouts.
+
+### Functional testing
+
+Verify all major customer interactions, including:
+
+- Navigation links.
+- Buttons.
+- Forms.
+- Validation.
+- Mobile menus.
+- Configurators.
+- Calculators.
+- Interactive components.
+- External links.
+- Contact methods.
+- Pricing outputs.
+- Conversion flows.
+
+Test important edge cases, including invalid inputs and minimum or maximum values.
+
+Confirm that business rules remain unchanged.
+
+### Commercial UX testing
+
+Simulate these realistic visitor scenarios:
+
+**Scenario A: The skeptical first-time visitor**
+
+Can they quickly understand the offering and find clear reasons to trust the business?
+
+**Scenario B: The interested but price-sensitive visitor**
+
+Can they evaluate what they receive, understand costs, and determine whether the service may be worthwhile?
+
+**Scenario C: The ready-to-buy visitor**
+
+Can they reach the appropriate conversion action quickly, without unnecessary steps?
+
+**Scenario D: The mobile visitor**
+
+Can they comfortably complete the important journey using a smartphone?
+
+Identify and resolve meaningful friction in all four scenarios.
+
+### Final implementation validation
+
+Run the available build, type checks, linting, and automated tests where supported.
+
+Fix introduced errors.
+
+Do not claim that a test passed if it was not actually executed.
+
+Do not leave broken routes, nonfunctional controls, temporary placeholder images, or unfinished dummy interactions in the final experience.
+
+---
+
+## PHASE 15: MEASUREMENT AND CONTINUOUS IMPROVEMENT
+
+Structure the website so we can evaluate its commercial effectiveness over time.
+
+Where appropriate, define meaningful conversion events such as:
+
+- Primary CTA clicks.
+- Configurator starts.
+- Configurator completions.
+- Pricing or calculator interactions.
+- Contact form starts.
+- Successful lead submissions.
+- Booking link clicks.
+
+Preserve existing analytics implementations.
+
+Do not silently install additional tracking services or collect unnecessary personal information.
+
+Where analytics and consent management already exist, integrate appropriately.
+
+Create an implementation that makes future A/B testing and iterative improvements manageable without unnecessary complexity.
+
+Do not fabricate performance results or conversion improvements.
+
+---
+
+## PHASE 16: EXECUTION INSTRUCTIONS
+
+I want you to take ownership of the full redesign and modernization process.
+
+Follow this execution order:
+
+**Step 1: Understand.**
+Inspect the existing codebase, content, assets, business model, pages, and functionality.
+
+**Step 2: Diagnose.**
+Identify the most important weaknesses in design, usability, messaging, conversion, performance, and consistency.
+
+**Step 3: Define the direction.**
+Establish a coherent design system, customer journey, information architecture, and conversion strategy.
+
+**Step 4: Implement.**
+Apply the redesign across all relevant pages and components. Rewrite weak content, improve layouts, incorporate appropriate imagery, and refine interactions.
+
+**Step 5: Preserve.**
+Ensure all important business logic, pricing, integrations, and existing functionality remain correct.
+
+**Step 6: Validate.**
+Test the resulting website and fix identifiable issues.
+
+**Step 7: Report.**
+Provide a concise summary of the implemented improvements, any verified test results, remaining limitations, and any actions that genuinely require my input.
+
+### Important working rules
+
+- Do not stop after the audit or provide only a list of recommendations.
+- Implement the improvements directly in the existing project.
+- Use professional judgment to make appropriate design and UX decisions.
+- Do not ask for approval on every minor design decision.
+- Preserve an appropriate rollback point or backup before substantial changes.
+- Do not delete existing important functionality.
+- Do not deploy to production or make destructive external changes without explicit approval.
+- Avoid unnecessary new subscriptions, paid APIs, or services.
+- Avoid introducing generic placeholder content.
+- Do not sacrifice clarity for visual complexity.
+- Do not sacrifice functionality for aesthetics.
+- Do not sacrifice brand identity just to follow trends.
+- Do not invent facts, metrics, customer endorsements, or business rules.
+- Keep improvements consistent throughout the entire website.
+
+If the project is too large to complete in one pass, work through it systematically, prioritizing shared architecture and core user journeys before secondary pages, while maintaining a coherent overall design.
+
+## FINAL QUALITY STANDARD
+
+The completed website should feel like a cohesive, custom-designed premium digital product, rather than a collection of independently generated pages.
+
+A first-time visitor should immediately understand the business.
+
+A potential customer should clearly understand the offering's relevance, benefits, costs, and next steps.
+
+An experienced designer should recognize deliberate visual hierarchy, consistent components, high-quality typography, refined details, and thoughtful design decisions.
+
+An experienced developer should recognize clean architecture, appropriate technologies, maintainable code, and reliable functionality.
+
+A conversion specialist should recognize an intentional customer journey, clear calls to action, reduced friction, and credible persuasion.
+
+**The final result must be significantly better than the current website in clarity, visual execution, consistency, usability, and sales effectiveness.**
+
+Do not settle for a superficial visual refresh.
+
+Use the existing website as the foundation, modernize it intelligently, and deliver the strongest complete experience you can build with the capabilities available in Google AI Studio today.
+
+**Now inspect the existing project and begin implementing the transformation.**

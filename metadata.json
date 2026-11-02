@@ -1,0 +1,8 @@
+{
+  "name": "Vero Trade Co.",
+  "description": "Vero Trade Co. is a Canadian-based commercial representation office connecting qualified international B2B buyers with IBF Export & Import's Brazilian export opportunities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
