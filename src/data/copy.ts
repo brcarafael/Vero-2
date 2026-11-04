@@ -2,1104 +2,471 @@ import { COMMERCIAL_EMAIL } from '../constants/contact';
 
 export type Language = 'en' | 'pt' | 'es';
 
-export interface ProductDetail {
-  id: string;
-  title: string;
-  shortDesc: string;
-  category: string;
-  isOriginationOnInquiry?: boolean;
-  grades: string[];
-  packaging: string[];
-  commercialUse: string[];
-  origin: string;
-  inspection: string;
-  image: string;
-  verifiedNotes: string;
+export interface CopyTranslations {
+  nav: {
+    products: string;
+    howItWorks: string;
+    about: string;
+    contact: string;
+    cta: string;
+    productsMenuTitle: string;
+    coreCategoryLabel: string;
+    additionalCategoryLabel: string;
+  };
+  hero: {
+    tag: string;
+    headline: string;
+    supporting: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+  };
+  products: {
+    tag: string;
+    headline: string;
+    subheadline: string;
+    viewDetails: string;
+    addToInquiry: string;
+    addedToInquiry: string;
+    additionalHeading: string;
+    additionalSub: string;
+  };
+  howVeroHelps: {
+    tag: string;
+    headline: string;
+    subheadline: string;
+    points: Array<{
+      num: string;
+      title: string;
+      desc: string;
+    }>;
+  };
+  process: {
+    tag: string;
+    headline: string;
+    subheadline: string;
+    steps: Array<{
+      num: string;
+      title: string;
+      desc: string;
+    }>;
+    notice: string;
+  };
+  partnership: {
+    tag: string;
+    headline: string;
+    intro: string;
+    veroTitle: string;
+    veroDesc: string;
+    brasensaTitle: string;
+    brasensaDesc: string;
+    disclosureTitle: string;
+    approachSteps: Array<{
+      title: string;
+      desc: string;
+    }>;
+  };
+  footer: {
+    brandDesc: string;
+    quickLinksTitle: string;
+    productsTitle: string;
+    contactTitle: string;
+    contactNotice: string;
+    privacyNotice: string;
+    allRightsReserved: string;
+  };
 }
 
-export const coreProducts: ProductDetail[] = [
-  {
-    id: 'green-coffee',
-    title: 'Café Verde Brasileiro (Arabica & Conilon)',
-    shortDesc: 'Origens selecionadas de café verde arábica e conilon para torrefadores, importadores e distribuidores industriais.',
-    category: 'Café Verde',
-    grades: [
-      'Arábica Strictly Soft (Fine Cup / Good Cup, Peneiras 17/18 e 15/16)',
-      'Arábica Natural e Cereja Descascado (Comercial e Especial)',
-      'Conilon / Robusta (Tipo 2/3, Tipo 4 e blends comerciais)',
-      'Lotes especiais diferenciados sob consulta'
-    ],
-    packaging: [
-      'Sacas tradicionais de juta 60 kg com liner hermético GrainPro',
-      'Big Bags de 1.000 kg para instalações industriais de torra',
-      'Container bulk liner sob solicitação operacional'
-    ],
-    commercialUse: [
-      'Torrefação comercial e cafés especiais',
-      'Indústria de solúvel e extração de concentrados',
-      'Bebidas prontas (RTD) e cold brew'
-    ],
-    origin: 'Brasil (Minas Gerais, São Paulo, Espírito Santo, Cerrado Mineiro)',
-    inspection: 'Laudo físico de classificação, pontuação de xícara e emissão de certificado fitossanitário de origem',
-    image: 'https://www.image2url.com/r2/default/images/1778709796884-2268d4e2-2de9-47a6-a2f5-b6e811fc7e60.jpg',
-    verifiedNotes: 'Embarques em contêineres de 20 pés (aprox. 320 a 350 sacas de 60kg). Safra vigente e especificações alinhadas conforme perfil de torra do comprador.',
-  },
-  {
-    id: 'sugar',
-    title: 'Açúcar Brasileiro (ICUMSA 45 & VHP)',
-    shortDesc: 'Fornecimento de açúcar branco refinado e açúcar bruto a granel direto das principais usinas do centro-sul brasileiro.',
-    category: 'Açúcar',
-    grades: [
-      'Açúcar Branco Refinado de Cana (ICUMSA 45)',
-      'Açúcar Bruto Centrifugado (VHP - Very High Polarization)',
-      'Açúcar Cristal Branco (ICUMSA 150)'
-    ],
-    packaging: [
-      'Sacas de 50 kg em polipropileno tecido com liner interno de polietileno',
-      'Big Bags de 1.000 kg / 1.200 kg para plantas industriais',
-      'Embarques a granel (vessel breakbulk) para açúcar bruto VHP'
-    ],
-    commercialUse: [
-      'Indústria de alimentos e bebidas',
-      'Confeitaria e processamento industrial',
-      'Alimentação de refinarias no destino (VHP)'
-    ],
-    origin: 'Brasil (São Paulo, Paraná, polo sucroalcooleiro do Centro-Sul)',
-    inspection: 'Inspeção independente de pré-embarque (SGS, Bureau Veritas ou equivalente) no porto de carregamento brasileiro',
-    image: 'https://www.image2url.com/r2/default/images/1778710261966-ba77159b-9e16-4c4e-aa1c-af48002668a1.jpg',
-    verifiedNotes: 'Contratos em contêineres FCL ou embarques de navio para grandes volumes. Especificações técnicas formais detalhadas após recepção da demanda.',
-  },
-  {
-    id: 'beans-pulses',
-    title: 'Feijões e Pulses Secos Brasileiros',
-    shortDesc: 'Variedades de feijões comestíveis e leguminosas selecionadas para empacotadores, distribuidores atacadistas e enlatadoras.',
-    category: 'Feijões & Pulses',
-    grades: [
-      'Feijão Carioca e Feijão Preto (seleção para consumo humano)',
-      'Feijões de Cores (Rajado, Vermelho, Cranberry, Manteiga)',
-      'Feijão Caupi / Fradinho (Black-eyed peas)',
-      'Mungo Preto (Black Matpe) e Mungo Verde (Green Mung)'
-    ],
-    packaging: [
-      'Sacas de 25 kg e 50 kg em polipropileno trançado com padronização de exportação',
-      'Big Bags de 1.000 kg para reempacotamento e enlatamento',
-      'Contêineres de 20ft estufados (FCL)'
-    ],
-    commercialUse: [
-      'Empacotamento para redes varejistas e atacadistas',
-      'Indústria de conservas e processamento de leguminosas',
-      'Canais institucionais de alimentação básica'
-    ],
-    origin: 'Brasil (Paraná, Goiás, Mato Grosso, Minas Gerais, Bahia)',
-    inspection: 'Classificação oficial de grãos e emissão de certificados fitossanitários pelo MAPA no Brasil',
-    image: 'https://www.image2url.com/r2/default/images/1778709805678-4956f68a-1bae-4263-9991-51c0b3a34c3a.jpg',
-    verifiedNotes: 'Atendimento estruturado em FCL (cerca de 24 a 26 toneladas por contêiner de 20ft). Lotes calibrados por peneira e parâmetros de umidade/impurezas sob consulta.',
-  },
-  {
-    id: 'fresh-fruits',
-    title: 'Frutas Frescas Brasileiras',
-    shortDesc: 'Seleção de frutas frescas com logística refrigerada, organizadas conforme variedade, janela de safra e exigências do país de destino.',
-    category: 'Frutas Frescas',
-    grades: [
-      'Frutas selecionadas conforme safra e protocolo fitossanitário do destino',
-      'Calibres e maturação ajustados para tempo de trânsito marítimo ou aéreo',
-      'Atendimento aos padrões de resíduos e controle de qualidade para exportação'
-    ],
-    packaging: [
-      'Caixas telescópicas de papelão ondulado de alta resistência (4 kg, 5 kg ou peso padronizado por fruta)',
-      'Paletização com cantoneiras de proteção e flechamento para segurança no mar',
-      'Contêineres refrigerados (Reefer 40ft High Cube) com atmosfera controlada quando aplicável'
-    ],
-    commercialUse: [
-      'Redes de supermercados e distribuição hortifrúti internacional',
-      'Atacados de produtos frescos e importadores especializados',
-      'Catering e serviços de alimentação'
-    ],
-    origin: 'Brasil (Vale do São Francisco, Rio Grande do Norte, São Paulo)',
-    inspection: 'Controle de cadeia de frio, monitoramento de temperatura (termógrafos) e atestado fitossanitário oficial',
-    image: 'https://www.image2url.com/r2/default/images/1778709809437-0e330058-a92c-4777-8af1-56f42bc8a03d.jpg',
-    verifiedNotes: 'Disponibilidade sujeita ao calendário de safra das regiões produtoras e à aprovação fitossanitária bilateral para o porto de destino informado.',
-  },
-  {
-    id: 'grain-sorghum',
-    title: 'Sorgo Granífero Brasileiro',
-    shortDesc: 'Grão forrageiro e industrial com alta eficiência energética, originado dos polos de grãos do centro-oeste e sul do Brasil.',
-    category: 'Grãos Forrageiros',
-    grades: [
-      'Sorgo Granífero Tipo Exportação (Padrão comercial)',
-      'Baixo teor de tanino / Tanino controlado para nutrição animal',
-      'Especificações de umidade e pureza para ração e etanol'
-    ],
-    packaging: [
-      'Contêineres com liner granel (Bulk Container Liner)',
-      'Big Bags de 1.000 kg para transporte multimodal',
-      'Sacas de 50 kg em polipropileno'
-    ],
-    commercialUse: [
-      'Indústria de rações balanceadas (avicultura, suinocultura, bovinocultura)',
-      'Usinas de biocombustíveis e produção de etanol de grãos',
-      'Aplicações industriais de amido e fermentação'
-    ],
-    origin: 'Brasil (Mato Grosso, Goiás, Minas Gerais, Rio Grande do Sul)',
-    inspection: 'Laudo de classificação de grãos, certificado de pureza e inspeção fitossanitária de exportação',
-    image: 'https://www.image2url.com/r2/default/images/1778710248002-e217b9b5-9590-4650-aae2-fd5b2234f13d.jpg',
-    verifiedNotes: 'Comercializado em volumes de escala contêiner ou lotes dedicados. Viabilidade de embarque avaliada conforme o porto de destino e período de colheita.',
-  },
-];
-
-export const originationOnInquiryProducts: ProductDetail[] = [
-  {
-    id: 'soybeans',
-    title: 'Soja Brasileira (Grão & Não-OGM)',
-    shortDesc: 'Originação de soja para alimentação animal e humana sob consulta técnica de lote e especificações.',
-    category: 'Originação sob Consulta',
-    isOriginationOnInquiry: true,
-    grades: ['Soja Comercial Exportação (Padrão ANEC 41)', 'Soja Não-OGM / IP (Identity Preserved) para alimentação humana'],
-    packaging: ['Granel em contêiner com liner', 'Big Bags de 1.000 kg'],
-    commercialUse: ['Esmagamento e farelo', 'Alimentação humana e derivados', 'Nutrição animal'],
-    origin: 'Brasil (Centro-Oeste e Sul)',
-    inspection: 'Certificado de análise de grãos e atestado de não-transgenia quando aplicável',
-    image: 'https://www.image2url.com/r2/default/images/1778709805678-4956f68a-1bae-4263-9991-51c0b3a34c3a.jpg',
-    verifiedNotes: 'Originação coordenada sob consulta conforme volume e exigências do país comprador.',
-  },
-  {
-    id: 'corn',
-    title: 'Milho Amarelo Brasileiro',
-    shortDesc: 'Milho em grão tipo exportação para indústria de ração e processamento com originação dedicada.',
-    category: 'Originação sob Consulta',
-    isOriginationOnInquiry: true,
-    grades: ['Milho Amarelo Exportação (Grau 2 / Padrão ANEC 43)', 'Milho para ração com parâmetros controlados'],
-    packaging: ['Bulk Container Liners (FCL)', 'Big Bags de 1.000 kg'],
-    commercialUse: ['Fabricação de rações', 'Processamento de amido e etanol', 'Moagem industrial'],
-    origin: 'Brasil (Mato Grosso, Paraná, Goiás)',
-    inspection: 'Laudo de classificação e umidade de origem',
-    image: 'https://www.image2url.com/r2/default/images/1778710248002-e217b9b5-9590-4650-aae2-fd5b2234f13d.jpg',
-    verifiedNotes: 'Disponibilidade alinhada com as janelas da safra e safrinha brasileira.',
-  },
-  {
-    id: 'acai',
-    title: 'Açaí e Polpas Congeladas (IQF)',
-    shortDesc: 'Polpa de açaí puro pasteurizado congelado e derivados tropicais organizados sob demanda industrial.',
-    category: 'Originação sob Consulta',
-    isOriginationOnInquiry: true,
-    grades: ['Açaí Médio e Especial (sólidos totais controlados)', 'Açaí Orgânico e Convencional sem aditivos'],
-    packaging: ['Tambores de aço de 180 kg a 200 kg com liners assépticos', 'Bag-in-box congelado de 10 kg a 20 kg'],
-    commercialUse: ['Bebidas, smoothies e sorvetes', 'Foodservice e bowls', 'Indústria láctea'],
-    origin: 'Brasil (Pará e Região Amazônica)',
-    inspection: 'Laudo microbiológico de pasteurização e conformidade de cadeia de frio (-18°C)',
-    image: 'https://www.image2url.com/r2/default/images/1778709809437-0e330058-a92c-4777-8af1-56f42bc8a03d.jpg',
-    verifiedNotes: 'Embarques em contêineres refrigerados (Reefer). Especificação e laudo fornecidos na consulta.',
-  },
-];
-
-export const allProducts: ProductDetail[] = [...coreProducts, ...originationOnInquiryProducts];
-
-export const verifiedProducts = coreProducts;
-
-export const content = {
-  pt: {
-    nav: {
-      products: 'Produtos',
-      howItWorks: 'Como a VERO Ajuda',
-      process: 'Processo Comercial',
-      partnership: 'Origem & Brasensa',
-      contact: 'Conversa Comercial',
-      cta: 'Conversar sobre Minha Demanda',
-    },
-    hero: {
-      tag: 'Desk Comercial no Canadá · Acesso Direto a Commodities Brasileiras',
-      headline: 'Acesso direto a commodities do Brasil para compradores B2B internacionais.',
-      subheadline: 'A VERO conecta demandas comerciais a fornecedores brasileiros estruturados e apoia todo o alinhamento a partir do Canadá.',
-      supporting: 'Comunicação ágil em inglês, espanhol e português no mesmo fuso horário comercial das Américas, com acompanhamento cuidadoso desde o entendimento das especificações até a viabilização do fornecimento.',
-      ctaPrimary: 'Conversar sobre minha demanda',
-      ctaSecondary: 'Explorar produtos',
-      credibility: 'Desk no Canadá · Originação Brasileira com a Brasensa · Atendimento B2B Especializado',
-      features: [
-        { label: 'Desk Comercial Canadá', desc: 'Atendimento ágil em inglês, espanhol e português' },
-        { label: 'Originação com a Brasensa', desc: 'Conexão direta com a estrutura de exportação no Brasil' },
-        { label: 'Escala em Contêineres e Granel', desc: 'Parâmetros técnicos e comerciais alinhados à sua operação' },
-      ],
-    },
-    products: {
-      tag: 'Portfólio de Commodities',
-      headline: 'Categorias centrais do fornecimento brasileiro.',
-      subheadline: 'Conheça os 5 grupos de produtos confirmados e os itens adicionais originados sob consulta para importadores e indústrias.',
-      coreHeading: '5 Grupos Centrais Confirmados',
-      coreSub: 'Produtos com canais de fornecimento consolidados e especificações comerciais usuais prontas para avaliação.',
-      inquiryHeading: 'Originação Adicional sob Consulta',
-      inquirySub: 'Demande lotes específicos de soja, milho ou açaí com alinhamento prévio de especificações e volume.',
-      inquiryBadge: 'Originação sob Consulta',
-      viewSpecs: 'Ver Parâmetros Técnicos',
-      inquireProduct: 'Iniciar Consulta deste Produto',
-      typicalApps: 'Aplicações Típicas',
-      exportGrades: 'Especificações Usuais',
-      shippingFormats: 'Formatos de Embarque',
-    },
-    howItWorks: {
-      tag: 'Apoio Concreto',
-      headline: 'Como a VERO facilita o entendimento e encaminhamento da sua demanda.',
-      subheadline: 'Operamos a partir do Canadá como um ponto de contato comercial presente, técnico e confiável entre a sua equipe de compras e a origem brasileira.',
-      pillars: [
-        {
-          num: '01',
-          title: 'Ponto de Contato Acessível',
-          desc: 'Interlocução imediata no fuso horário das Américas, sem barreiras de idioma e com agilidade para responder dúvidas sobre o mercado brasileiro.',
-        },
-        {
-          num: '02',
-          title: 'Clareza nos Parâmetros da Demanda',
-          desc: 'Ajudamos você a estruturar especificações técnicas, volumes realistas, embalagens adequadas, porto de destino e cronograma de recebimento.',
-        },
-        {
-          num: '03',
-          title: 'Coordenação com a Brasensa no Brasil',
-          desc: 'Encaminhamos sua necessidade diretamente à estrutura comercial e operacional da Brasensa no Brasil, eliminando ruídos e intermediários desnecessários.',
-        },
-        {
-          num: '04',
-          title: 'Checagem de Viabilidade e Dados Técnicos',
-          desc: 'Levantamos laudos de origem, disponibilidade real por safra e condições logísticas preliminares para que você tome decisões seguras.',
-        },
-      ],
-    },
-    commercialProcess: {
-      tag: 'Fluxo Transparente',
-      headline: 'Um caminho comercial direto em 4 etapas.',
-      subheadline: 'Sem promessas irreais de entrega imediata: um processo estruturado que respeita as exigências do comércio exterior B2B.',
-      steps: [
-        {
-          step: 'Passo 1',
-          title: 'Compartilhe sua demanda',
-          desc: 'Apresente sua necessidade com especificações básicas ou detalhadas pelo formulário ou contato direto.',
-          highlight: 'Entrada flexível',
-        },
-        {
-          step: 'Passo 2',
-          title: 'Avaliamos com a origem',
-          desc: 'Alinhamos prontamente com a Brasensa a viabilidade técnica, disponibilidade em safra e capacidade de atendimento.',
-          highlight: 'Validação na origem',
-        },
-        {
-          step: 'Passo 3',
-          title: 'Alinhamos especificações e condições',
-          desc: 'Discutimos parâmetros de qualidade, embalagem, termos de entrega (FOB/CIF) e logística preliminar.',
-          highlight: 'Adequação comercial',
-        },
-        {
-          step: 'Passo 4',
-          title: 'Definimos os próximos passos',
-          desc: 'Apresentação formal das condições pela origem, cronograma operacional e sequência formal das tratativas.',
-          highlight: 'Sequência formal',
-        },
-      ],
-      notice: 'Importante: Não prometemos prazos fechados nem envio antecipado de amostras sem a qualificação prévia da demanda comercial e do perfil do comprador.',
-    },
-    partnership: {
-      tag: 'Origem & Relação com a Brasensa',
-      headline: 'VERO no Canadá, originação sólida no Brasil com a Brasensa.',
-      subheadline: 'Uma conexão transparente e profissional projetada para oferecer previsibilidade a compradores internacionais.',
-      copy1: 'A VERO é a marca pública e o desk comercial sediado no Canadá. Nossa função é construir a ponte com o mercado internacional, compreendendo as exigências rigorosas de importadores, atacadistas e indústrias em diferentes mercados.',
-      copy2: 'No Brasil, mantemos relação B2B com a Brasensa — estrutura brasileira voltada à originação e exportação, informada como parte do grupo IBF Export & Import. Essa conexão operacional nos permite conectar demandas qualificadas diretamente a produtores e usinas estruturados.',
-      benefitTitle: 'O que isso significa na prática para a sua empresa:',
-      benefits: [
-        {
-          title: 'Interlocução Clara e Fuso Horário Alinhado',
-          desc: 'Você conversa diretamente com um desk comercial no Canadá que entende suas prioridades de prazo, governança e clareza de comunicação.',
-        },
-        {
-          title: 'Acesso Direto à Estrutura Operacional Brasileira',
-          desc: 'Sua demanda é avaliada por quem está presente nos principais polos produtores e portos do Brasil, com dados reais de safra e embarque.',
-        },
-        {
-          title: 'Sem Cadeia Opaca de Corretores',
-          desc: 'Você não lida com listas repassadas infinitamente ou promessas sem lastro. Trabalhamos exclusivamente sobre demandas concretas.',
-        },
-      ],
-      disclaimer: 'A VERO atua na facilitação e coordenação comercial a partir do Canadá e não atua como exportadora ou importadora de registro, nem detém estoque próprio. Todas as propostas finais, documentações de embarque e contratos comerciais são formalizados conforme os termos acertados com a estrutura de origem no Brasil.',
-    },
-    commercialConversation: {
-      tag: 'Conversa Comercial',
-      headline: 'Inicie uma conversa sobre sua demanda de fornecimento.',
-      subheadline: 'Seja para tirar dúvidas preliminares ou enviar uma solicitação com parâmetros técnicos completos, nosso desk no Canadá está pronto para atendê-lo.',
-      fastTrackTitle: 'Ainda definindo os parâmetros?',
-      fastTrackDesc: 'Se você quer avaliar se o Brasil pode atender sua empresa, entre em contato direto pelo e-mail ou mande uma mensagem rápida com seu objetivo de compra.',
-      structuredTitle: 'Já possui especificações definidas?',
-      structuredDesc: 'Preencha os campos abaixo com os dados da sua empresa, produto de interesse, volume estimado e destino para prepararmos uma resposta estruturada.',
-    },
-    rfqBuilder: {
-      tag: 'Configurador de Parâmetros',
-      headline: 'Estruture sua solicitação de compra comercial.',
-      subheadline: 'Defina o produto, especificação desejada, formato e destino para transferir esses dados diretamente ao formulário de contato.',
-      step1: '1. Selecione a Categoria',
-      step2: '2. Especificação e Qualidade',
-      step3: '3. Volume e Escopo de Pedido',
-      step4: '4. Destino e Termos Comerciais',
-      summaryTitle: 'Resumo dos Parâmetros Configurados',
-      applyToForm: 'Transferir Parâmetros para o Formulário de Contato',
-      resetBtn: 'Limpar Seleções',
-      commercialDisclaimer: 'Esta ferramenta auxilia na organização técnica da sua consulta. As condições formais de fornecimento são confirmadas após avaliação de disponibilidade.',
-      labels: {
-        product: 'Produto Selecionado',
-        grade: 'Especificação / Grau de Qualidade',
-        customGrade: 'Ou indique requisitos técnicos específicos:',
-        volume: 'Estimativa de Volume / Escopo',
-        frequency: 'Frequência de Compra Prevista',
-        incoterm: 'Termo de Entrega Preferido (Opcional)',
-        destination: 'Porto ou País de Destino',
-      },
-      frequencies: [
-        'Lote Inicial de Teste (1 FCL / Contêiner)',
-        'Pedido Comercial Padrão (2 a 5 FCLs)',
-        'Contrato Recorrente Mensal',
-        'Contrato Anual de Fornecimento em Escala',
-        'Avaliação de Especificação / Amostra Inicial',
-      ],
-      incoterms: [
-        'FOB (Free on Board - Porto Brasileiro, ex: Santos / Paranaguá)',
-        'CIF (Cost, Insurance & Freight - Porto de Destino)',
-        'CFR (Cost & Freight - Porto de Destino)',
-        'A definir / Necessita orientação',
-      ]
-    },
-    leadForm: {
-      tag: 'Desk Comercial Canadá',
-      headline: 'Envie sua consulta ou solicite informações técnicas.',
-      subheadline: 'Preencha os dados abaixo. Nossa equipe no Canadá revisa a solicitação e coordena o entendimento com a Brasensa no Brasil.',
-      rfqBannerTitle: 'Parâmetros Configurados Incluídos',
-      rfqBannerDesc: 'Os parâmetros definidos no configurador acima serão organizados no resumo da sua consulta.',
-      manualSelectionNotice: 'Seleção manual ativa: parâmetros de outro produto configurado anteriormente foram descartados para manter a coerência da consulta.',
-      statusManual: 'Seleção Manual',
-      statusConfigured: 'Parâmetros do Configurador',
-      selectAllButton: 'Selecionar tudo',
-      labels: {
-        fullName: 'Nome Completo',
-        companyName: 'Nome da Empresa',
-        website: 'Website da Empresa (Opcional)',
-        country: 'País / Sede da Empresa',
-        email: 'E-mail Corporativo',
-        phone: 'Telefone / WhatsApp (com código do país)',
-        buyerType: 'Tipo de Organização',
-        product: 'Produto de Interesse',
-        volume: 'Escopo Estimado de Volume',
-        destinationMarket: 'Porto ou País de Destino',
-        message: 'Requisitos Técnicos, Dúvidas ou Observações',
-        businessCheck: 'Confirmo que esta é uma consulta comercial B2B para volumes de exportação.',
-        submit: 'Revisar e Preparar Envio por E-mail',
-      },
-      errors: {
-        fullName: 'Por favor, informe seu nome completo.',
-        companyName: 'Por favor, informe o nome da empresa.',
-        email: 'Por favor, informe um e-mail corporativo válido.',
-        phone: 'Por favor, informe um telefone ou WhatsApp com código de país.',
-        country: 'Por favor, informe seu país ou local de sede.',
-        buyerType: 'Por favor, selecione o tipo de organização.',
-        product: 'Por favor, selecione o produto de interesse.',
-        volume: 'Por favor, selecione o volume estimado.',
-        destinationMarket: 'Por favor, indique o porto ou país de destino.',
-        businessCheck: 'Por favor, confirme que se trata de uma consulta comercial B2B.',
-      },
-      placeholders: {
-        buyerType: 'Selecione o perfil da sua empresa...',
-        product: 'Selecione o produto principal...',
-        volume: 'Selecione a faixa de volume...',
-      },
-      productsById: {
-        'green-coffee': 'Café Verde Brasileiro (Arabica & Conilon)',
-        'sugar': 'Açúcar Brasileiro (ICUMSA 45 & VHP)',
-        'beans-pulses': 'Feijões e Pulses Secos (Carioca, Preto, Mungo, Caupi)',
-        'fresh-fruits': 'Frutas Frescas Brasileiras',
-        'grain-sorghum': 'Sorgo Granífero Brasileiro',
-        'soybeans': 'Soja (Originação sob Consulta)',
-        'corn': 'Milho Amarelo (Originação sob Consulta)',
-        'acai': 'Açaí e Polpas Congeladas (Originação sob Consulta)',
-        'custom': 'Múltiplos Produtos / Outra Demanda',
-      } as Record<string, string>,
-      buyerTypesById: {
-        'importer': 'Importador Direto / Comercial Exportadora',
-        'manufacturer': 'Indústria de Alimentos e Bebidas / Processador',
-        'distributor': 'Distribuidor Atacadista / Empacotador',
-        'foodservice': 'Foodservice / Fornecedor Institucional',
-        'corporate_purchasing': 'Departamento de Compras Corporativas',
-        'other': 'Outra Entidade Comercial',
-      } as Record<string, string>,
-      volumeTypesById: {
-        '1_fcl': '1 FCL (Lote Piloto / Avaliação Inicial)',
-        '2_5_fcl': '2 a 5 FCLs (Volume Comercial Regular)',
-        '10_plus_fcl': '10+ FCLs (Operação de Escala)',
-        'monthly_contract': 'Contrato Recorrente Mensal',
-        'breakbulk': 'Navio / Breakbulk (Granel para Açúcar ou Grãos)',
-        'sample_first': 'Avaliação de Especificação / Amostra Inicial',
-      } as Record<string, string>,
-      readyStep: {
-        tag: 'Consulta Pronta para Envio',
-        title: 'Revise sua Consulta Comercial',
-        description: `Esta ferramenta prepara sua consulta em formato estruturado. O envio deve ser concluído no seu aplicativo de e-mail — este site não envia e-mails automaticamente e não fornece confirmação de entrega. Caso seu aplicativo de e-mail não abra ou a mensagem fique incompleta, copie o resumo integral abaixo e cole em uma mensagem para ${COMMERCIAL_EMAIL}.`,
-        emailInstruction: `Clique no botão abaixo para abrir seu programa de e-mail (Gmail, Outlook, Apple Mail, etc.). É necessário clicar em "Enviar" dentro do seu aplicativo para concluir a transmissão para ${COMMERCIAL_EMAIL}.`,
-        recipientLabel: 'E-mail do Desk Comercial:',
-        openEmailButton: 'Abrir no meu Aplicativo de E-mail',
-        copyButton: 'Copiar Resumo da Consulta',
-        copiedSuccess: 'Consulta copiada para a área de transferência!',
-        copyFallbackError: 'Não foi possível copiar automaticamente. Selecione todo o texto no quadro abaixo e copie manualmente (Ctrl+C / Cmd+C).',
-        copyFallbackInstruction: `Se o seu aplicativo de e-mail não abrir ou a mensagem estiver truncada, copie todo o conteúdo abaixo e envie para ${COMMERCIAL_EMAIL}.`,
-        editButton: 'Voltar e Editar Dados',
-        summaryHeading: 'Resumo Estruturado da Consulta',
-        summaryNotice: 'Todos os campos preenchidos, parâmetros de RFQ e observações constam na íntegra abaixo, sem truncamento silencioso.',
-        retentionNote: 'Dados mantidos enquanto esta página estiver aberta',
-      },
-      summary: {
-        title: 'CONSULTA COMERCIAL DE FORNECIMENTO',
-        organization: 'VERO — Canadá',
-        recipientPrefix: 'Contato Desk Comercial:',
-        section1Heading: '1. PERFIL DO COMPRADOR E DA EMPRESA',
-        fullName: 'Nome Completo',
-        companyName: 'Empresa',
-        email: 'E-mail Corporativo',
-        phone: 'Telefone / WhatsApp',
-        website: 'Website',
-        country: 'País / Localização',
-        buyerType: 'Tipo de Organização',
-        notProvided: 'Não informado',
-        section2Heading: '2. PARÂMETROS DA DEMANDA DE COMMODITIES',
-        primaryCommodity: 'Produto de Interesse',
-        volumeScope: 'Escopo de Volume',
-        destination: 'Porto / País de Destino',
-        rfqHeader: '[Parâmetros Configurados no Site]',
-        rfqProduct: 'Produto Configurado',
-        rfqGrade: 'Especificação / Grau',
-        rfqCustomGrade: 'Observação Técnica de Especificação',
-        rfqVolume: 'Volume / Quantidade Informada',
-        rfqFrequency: 'Frequência Prevista',
-        rfqIncoterm: 'Termo de Entrega Preferido',
-        rfqDestination: 'Porto de Destino Configurado',
-        section3Heading: '3. ESPECIFICAÇÕES DETALHADAS E OBSERVAÇÕES',
-        noNotes: 'Nenhuma observação adicional informada.',
-        section4Heading: '4. CONFIRMAÇÃO COMERCIAL',
-        scopeText: 'Escopo Comercial: Consulta B2B de exportação confirmada.',
-        deskText: 'Desk Comercial: VERO (Canadá)',
-        contactText: `Contato Direto: ${COMMERCIAL_EMAIL}`,
-        emailSubject: (company: string, product: string) => `Consulta Comercial — ${company || 'Comprador'} — ${product}`,
-      },
-      privacyNote: `As consultas são formatadas localmente no seu navegador e enviadas diretamente pelo seu aplicativo de e-mail para ${COMMERCIAL_EMAIL}. Não há envio automático ou armazenamento em banco de dados neste site.`,
-    },
-    contactInfo: {
-      headline: 'Desk Comercial VERO',
-      address: 'Canadá',
-      role: 'Interlocução comercial para commodities brasileiras',
-      email: COMMERCIAL_EMAIL,
-      note: 'Atendimento a importadores e indústrias nas Américas, Europa, Ásia e Oriente Médio.',
-      deskNote: `Correspondência comercial direta com Rafael · ${COMMERCIAL_EMAIL}`,
-    },
-    footer: {
-      brandTag: 'Desk Comercial no Canadá para Commodities Brasileiras.',
-      aboutShort: 'A VERO conecta compradores B2B internacionais a oportunidades de fornecimento agrícola no Brasil e coordena o entendimento das demandas com a Brasensa.',
-      linksHeading: 'Navegação Rápida',
-      legalHeading: 'Nota Comercial e Institucional',
-      legalText: 'A VERO é uma iniciativa de representação e facilitação comercial sediada no Canadá. A VERO não atua como exportadora de registro, importadora de registro ou transportadora marítima. Todas as cotações formais, especificações de lote, prazos de entrega e contratos de venda são formalizados conforme acordado com os parceiros de fornecimento no Brasil.',
-      rights: '© 2026 VERO. Todos os direitos reservados. Domínio oficial: verotrading.ca',
-    }
-  },
-
+export const translations: Record<Language, CopyTranslations> = {
   en: {
     nav: {
       products: 'Products',
-      howItWorks: 'How VERO Helps',
-      process: 'Commercial Process',
-      partnership: 'Origin & Brasensa',
-      contact: 'Commercial Conversation',
-      cta: 'Discuss My Demand',
+      howItWorks: 'How it works',
+      about: 'About VERO',
+      contact: 'Contact',
+      cta: 'Talk to VERO',
+      productsMenuTitle: 'Brazilian Commodities',
+      coreCategoryLabel: '5 Core Product Categories',
+      additionalCategoryLabel: 'Additional Sourcing on Demand',
     },
     hero: {
-      tag: 'Commercial Desk in Canada · Direct Access to Brazilian Commodities',
-      headline: 'Direct access to Brazilian commodities for international B2B buyers.',
-      subheadline: 'VERO connects commercial demand with structured Brazilian suppliers and coordinates the entire alignment from Canada.',
-      supporting: 'Responsive communication in English, Spanish, and Portuguese in aligned Western hemisphere time zones, providing dedicated support from technical scoping to commercial execution.',
-      ctaPrimary: 'Discuss my demand',
-      ctaSecondary: 'Explore products',
-      credibility: 'Canada Commercial Desk · Brazilian Origination with Brasensa · Specialized B2B Service',
-      features: [
-        { label: 'Canada Commercial Desk', desc: 'Responsive communication in English, Spanish, and Portuguese' },
-        { label: 'Origination with Brasensa', desc: 'Direct connection to export infrastructure in Brazil' },
-        { label: 'Container & Bulk Scale', desc: 'Technical and commercial parameters tailored to your operation' },
-      ],
+      tag: 'Canadian Commercial Desk · Brazilian Origin',
+      headline: 'Brazilian agricultural products. A direct conversation from Canada.',
+      supporting:
+        'Explore coffee, sugar, beans and pulses, fresh fruit and sorghum. Tell us what interests you—we’ll coordinate the next steps with Brasensa in Brazil.',
+      ctaPrimary: 'Explore products',
+      ctaSecondary: 'Talk to VERO',
     },
     products: {
       tag: 'Commodity Portfolio',
-      headline: 'Core categories of Brazilian agricultural supply.',
-      subheadline: 'Explore our 5 confirmed product groups and additional items originated on inquiry for importers and industrial processors.',
-      coreHeading: '5 Core Confirmed Groups',
-      coreSub: 'Commodities with established supply channels and standard commercial specifications ready for review.',
-      inquiryHeading: 'Additional Origination on Inquiry',
-      inquirySub: 'Request specific supply lots of soybeans, corn, or açaí with prior alignment on specifications and volume.',
-      inquiryBadge: 'Origination on Inquiry',
-      viewSpecs: 'View Technical Parameters',
-      inquireProduct: 'Inquire on This Product',
-      typicalApps: 'Typical Applications',
-      exportGrades: 'Standard Specifications',
-      shippingFormats: 'Shipping Formats',
+      headline: 'Explore our Brazilian products.',
+      subheadline:
+        'Five core agricultural categories with structured Brazilian origination, plus additional commodities evaluated according to buyer requirements.',
+      viewDetails: 'View details',
+      addToInquiry: 'Add to inquiry',
+      addedToInquiry: 'In your inquiry',
+      additionalHeading: 'Additional Sourcing on Demand',
+      additionalSub:
+        'Soybeans, yellow corn, and açaí can be discussed for sourcing according to buyer requirements.',
     },
-    howItWorks: {
-      tag: 'Concrete Assistance',
-      headline: 'How VERO facilitates the understanding and coordination of your demand.',
-      subheadline: 'We operate from Canada as an accessible, technical, and dependable commercial point of contact between your purchasing team and Brazilian origin.',
-      pillars: [
+    howVeroHelps: {
+      tag: 'Practical Assistance',
+      headline: 'How VERO assists B2B buyers.',
+      subheadline:
+        'We provide direct, knowledgeable commercial coordination from Canada, working hand-in-hand with Brasensa in Brazil.',
+      points: [
         {
           num: '01',
-          title: 'Accessible Point of Contact',
-          desc: 'Immediate dialogue in American time zones, with zero language friction and deep familiarity with the Brazilian agricultural landscape.',
+          title: 'Commercial contact based in Canada',
+          desc: 'Direct communication in your time zone across English, Spanish, and Portuguese, without bureaucratic communication barriers.',
         },
         {
           num: '02',
-          title: 'Clarity on Demand Parameters',
-          desc: 'We help you clearly define technical specifications, realistic volumes, export packaging, destination port, and delivery timelines.',
+          title: 'Help clarifying buyer requirements',
+          desc: 'We assist in reviewing product specifications, volume feasibility, packaging preferences, and target destination ports.',
         },
         {
           num: '03',
           title: 'Coordination with Brasensa in Brazil',
-          desc: 'We channel your requirements directly to Brasensa’s commercial and operational structure in Brazil, eliminating unnecessary broker layers.',
+          desc: 'Your demand is coordinated directly with Brasensa’s export and origination desk in Brazil, eliminating opaque intermediary layers.',
         },
         {
           num: '04',
-          title: 'Feasibility Checking & Technical Data',
-          desc: 'We gather origin analysis certificates, real crop availability, and preliminary freight conditions to enable sound decision-making.',
+          title: 'Discussion of product information and potential availability',
+          desc: 'We clarify seasonal crop timing, origin parameters, and logistics considerations before formal commitments.',
+        },
+        {
+          num: '05',
+          title: 'Clear follow-up and next steps',
+          desc: 'Transparent progress updates and aligned operational next steps as your commercial discussion moves forward.',
         },
       ],
     },
-    commercialProcess: {
-      tag: 'Transparent Workflow',
-      headline: 'A straightforward 4-step commercial pathway.',
-      subheadline: 'No unrealistic promises of immediate dispatch: a structured process that honors the standards of international B2B trade.',
+    process: {
+      tag: 'Commercial Flow',
+      headline: 'A straightforward 3-step process.',
+      subheadline:
+        'Transparent commercial steps designed for international B2B agricultural trade.',
       steps: [
         {
-          step: 'Step 1',
-          title: 'Share your demand',
-          desc: 'Present your sourcing requirements with basic or detailed specifications via our form or direct email.',
-          highlight: 'Flexible intake',
+          num: '1',
+          title: 'Tell us what interests you.',
+          desc: 'Select the Brazilian products that match your commercial demand and share your basic contact details and requirements.',
         },
         {
-          step: 'Step 2',
-          title: 'We evaluate with origin',
-          desc: 'We review your request promptly with Brasensa to verify technical feasibility, seasonal availability, and supply capacity.',
-          highlight: 'Origin validation',
+          num: '2',
+          title: 'We discuss your requirements and evaluate options with origin.',
+          desc: 'We clarify your specifications and review seasonal crop availability, logistics feasibility, and operational parameters with Brasensa in Brazil.',
         },
         {
-          step: 'Step 3',
-          title: 'Align specifications & terms',
-          desc: 'We discuss quality parameters, export packaging, delivery terms (FOB/CIF), and preliminary logistics.',
-          highlight: 'Commercial alignment',
-        },
-        {
-          step: 'Step 4',
-          title: 'Define next steps',
-          desc: 'Formal presentation of supply terms from origin, operational roadmap, and official contracting progression.',
-          highlight: 'Formal progression',
+          num: '3',
+          title: 'We align the next commercial steps.',
+          desc: 'Following initial qualification, formal commercial terms, inspection requirements, and contract sequence are coordinated with origin.',
         },
       ],
-      notice: 'Please note: We do not promise fixed turnaround deadlines or advance sample dispatch prior to qualifying the commercial scope and buyer profile.',
+      notice:
+        'Notice: VERO does not promise guaranteed quotes, samples, response times, or shipment schedules without prior requirement review.',
     },
     partnership: {
-      tag: 'Origin & Partnership with Brasensa',
-      headline: 'VERO in Canada, solid origination in Brazil with Brasensa.',
-      subheadline: 'A transparent, professional connection designed to bring predictability to international buyers.',
-      copy1: 'VERO is the public brand and commercial desk based in Canada. Our mission is to build an effective bridge to the international market, addressing the rigorous standards of importers, wholesalers, and industrial processors globally.',
-      copy2: 'In Brazil, we maintain a B2B commercial relationship with Brasensa — a Brazilian structure focused on origination and export, reported as part of the IBF Export & Import group. This operational link enables us to connect qualified demand directly to established producers and processing mills.',
-      benefitTitle: 'What this means in practice for your business:',
-      benefits: [
+      tag: 'Commercial Roles',
+      headline: 'Your contact in Canada. Connected to Brazilian origin.',
+      intro:
+        'VERO is your point of contact for exploring Brazilian product opportunities. We coordinate your requirements with Brasensa in Brazil and help clarify the next commercial steps.',
+      veroTitle: 'VERO — Canada',
+      veroDesc:
+        'Commercial contact, understanding requirements and coordinating follow-up directly with international buyers.',
+      brasensaTitle: 'Brasensa — Brazil',
+      brasensaDesc:
+        'The Brazilian business focused on origination and export, with whom VERO coordinates sourcing discussions.',
+      disclosureTitle: 'Learn about our approach',
+      approachSteps: [
         {
-          title: 'Clear Communication in Aligned Time Zones',
-          desc: 'You speak directly with a Canadian commercial desk that understands your priorities regarding governance, schedules, and transparency.',
+          title: 'How requirements are discussed',
+          desc: 'We review target commodities, volumes, target ports and packaging formats directly in your language and time zone.',
         },
         {
-          title: 'Direct Link to Brazilian Export Operations',
-          desc: 'Your demand is evaluated by professionals on the ground across major Brazilian agricultural belts and ports, with real-time crop data.',
+          title: 'How availability and specifications are checked',
+          desc: 'We verify seasonal crop timelines, volume readiness and origin inspection parameters with Brasensa in Brazil.',
         },
         {
-          title: 'Free of Opaque Broker Chains',
-          desc: 'You avoid endless forwarded broker lists and unfounded promises. We focus strictly on genuine, executable commercial demands.',
+          title: 'How next steps are coordinated',
+          desc: 'Following initial qualification, formal commercial proposals and operational terms are aligned with Brazilian origin.',
         },
       ],
-      disclaimer: 'VERO operates in commercial facilitation and coordination from Canada and does not act as the exporter of record, importer of record, or holder of proprietary inventory. All formal offers, export documents, and sales contracts are finalized according to agreements established with Brazilian origin partners.',
-    },
-    commercialConversation: {
-      tag: 'Commercial Conversation',
-      headline: 'Start a conversation about your sourcing demand.',
-      subheadline: 'Whether you want to explore supply viability or submit full technical requirements, our Canadian desk is ready to assist you.',
-      fastTrackTitle: 'Still defining your parameters?',
-      fastTrackDesc: 'If you want to evaluate whether Brazilian origin fits your company, reach out directly by email or send a brief message with your purchasing goals.',
-      structuredTitle: 'Already have defined specifications?',
-      structuredDesc: 'Fill in the fields below with your corporate details, target commodity, estimated volume, and destination to receive an organized response.',
-    },
-    rfqBuilder: {
-      tag: 'Parameter Configurator',
-      headline: 'Structure your commercial sourcing request.',
-      subheadline: 'Define your product, target specification, packaging format, and destination to transfer parameters directly into the inquiry form.',
-      step1: '1. Select Category',
-      step2: '2. Specification & Quality Grade',
-      step3: '3. Volume & Purchasing Scope',
-      step4: '4. Destination & Commercial Terms',
-      summaryTitle: 'Configured Parameter Summary',
-      applyToForm: 'Transfer Parameters into Inquiry Form',
-      resetBtn: 'Clear Selections',
-      commercialDisclaimer: 'This tool assists in structuring your inquiry technically. Formal supply terms and pricing are provided following origin feasibility review.',
-      labels: {
-        product: 'Selected Commodity',
-        grade: 'Preferred Specification / Grade',
-        customGrade: 'Or specify custom technical requirements:',
-        volume: 'Estimated Quantity / Volume',
-        frequency: 'Purchasing Schedule',
-        incoterm: 'Preferred Incoterm (Optional)',
-        destination: 'Destination Port or Country',
-      },
-      frequencies: [
-        'Initial Trial Lot (1 FCL / Container)',
-        'Standard Commercial Order (2 to 5 FCLs)',
-        'Scheduled Monthly Recurring Contract',
-        'Annual Volume Supply Agreement',
-        'Specification Review / Sample First',
-      ],
-      incoterms: [
-        'FOB (Free on Board - Brazilian Port, e.g. Santos / Paranaguá)',
-        'CIF (Cost, Insurance & Freight - Destination Port)',
-        'CFR (Cost & Freight - Destination Port)',
-        'To be decided / Need guidance',
-      ]
-    },
-    leadForm: {
-      tag: 'Canada Commercial Desk',
-      headline: 'Submit your inquiry or request technical details.',
-      subheadline: 'Fill in your details below. Our Canadian team evaluates your request and coordinates technical alignment with Brasensa in Brazil.',
-      rfqBannerTitle: 'Configured Parameters Included',
-      rfqBannerDesc: 'Parameters defined in the configurator above will be included in your inquiry summary.',
-      manualSelectionNotice: 'Manual product selection active: parameters from a previously configured item were cleared to keep inquiry data consistent.',
-      statusManual: 'Manual Selection',
-      statusConfigured: 'Configured Parameters',
-      selectAllButton: 'Select all',
-      labels: {
-        fullName: 'Full Name',
-        companyName: 'Company Name',
-        website: 'Company Website (Optional)',
-        country: 'Country / Corporate Headquarters',
-        email: 'Corporate Email',
-        phone: 'Phone / WhatsApp (with country code)',
-        buyerType: 'Organization Type',
-        product: 'Target Commodity',
-        volume: 'Estimated Volume Scope',
-        destinationMarket: 'Target Destination Port & Country',
-        message: 'Detailed Specifications, Notes or Questions',
-        businessCheck: 'I confirm that this is a commercial B2B inquiry for export-scale volume.',
-        submit: 'Review & Prepare Email Inquiry',
-      },
-      errors: {
-        fullName: 'Please enter your full name.',
-        companyName: 'Please enter your company name.',
-        email: 'Please provide a valid corporate email address.',
-        phone: 'Please provide a phone number or WhatsApp with country code.',
-        country: 'Please specify your country or headquarters.',
-        buyerType: 'Please select your organization type.',
-        product: 'Please select the commodity of interest.',
-        volume: 'Please select an estimated volume scope.',
-        destinationMarket: 'Please specify the target destination port or market.',
-        businessCheck: 'Please confirm that this is a commercial B2B inquiry.',
-      },
-      placeholders: {
-        buyerType: 'Select organization type...',
-        product: 'Select primary commodity...',
-        volume: 'Select volume scope...',
-      },
-      productsById: {
-        'green-coffee': 'Brazilian Green Coffee (Arabica & Conilon)',
-        'sugar': 'Brazilian Sugar (ICUMSA 45 & VHP)',
-        'beans-pulses': 'Dry Beans & Pulses (Carioca, Black, Mung, Cowpea)',
-        'fresh-fruits': 'Brazilian Fresh Fruits',
-        'grain-sorghum': 'Brazilian Grain Sorghum',
-        'soybeans': 'Soybeans (Origination on Inquiry)',
-        'corn': 'Yellow Corn (Origination on Inquiry)',
-        'acai': 'Açaí & Frozen Purees (Origination on Inquiry)',
-        'custom': 'Multiple Products / Custom Sourcing',
-      } as Record<string, string>,
-      buyerTypesById: {
-        'importer': 'Direct Importer / Commodity House',
-        'manufacturer': 'Food & Beverage Manufacturer / Processor',
-        'distributor': 'Wholesale Distributor / Re-Packer',
-        'foodservice': 'Foodservice / Institutional Supplier',
-        'corporate_purchasing': 'Corporate Purchasing Department',
-        'other': 'Other Commercial Entity',
-      } as Record<string, string>,
-      volumeTypesById: {
-        '1_fcl': '1 FCL (Initial Trial / Evaluation Order)',
-        '2_5_fcl': '2 – 5 FCLs (Standard Commercial Order)',
-        '10_plus_fcl': '10+ FCLs (Volume Spot Order)',
-        'monthly_contract': 'Scheduled Monthly Recurring Contract',
-        'breakbulk': 'Vessel Breakbulk (Bulk Sugar or Grains)',
-        'sample_first': 'Specification Review / Sample First',
-      } as Record<string, string>,
-      readyStep: {
-        tag: 'Inquiry Ready to Send',
-        title: 'Review Your Commercial Inquiry',
-        description: `This tool prepares your inquiry in a structured format. Transmission must be completed in your email application — this website does not send emails automatically and does not provide delivery confirmation. If your email application does not open or the message is incomplete, copy the full summary below and paste it into an email to ${COMMERCIAL_EMAIL}.`,
-        emailInstruction: `Click the button below to open your email client (Gmail, Outlook, Apple Mail, etc.). You must click "Send" inside your email client to complete transmission to ${COMMERCIAL_EMAIL}.`,
-        recipientLabel: 'Commercial Desk Email:',
-        openEmailButton: 'Open in My Email Application',
-        copyButton: 'Copy Inquiry Summary',
-        copiedSuccess: 'Inquiry copied to clipboard!',
-        copyFallbackError: 'Could not copy automatically. Please select all text in the box below and copy manually (Ctrl+C / Cmd+C).',
-        copyFallbackInstruction: `If your email client does not open or the message is truncated, copy the full summary below and paste it into an email to ${COMMERCIAL_EMAIL}.`,
-        editButton: 'Back to Edit Details',
-        summaryHeading: 'Structured Inquiry Summary',
-        summaryNotice: 'All filled inputs, RFQ parameters, and notes are formatted below without silent truncation.',
-        retentionNote: 'Data retained while this page remains open',
-      },
-      summary: {
-        title: 'COMMERCIAL SOURCING INQUIRY',
-        organization: 'VERO — Canada',
-        recipientPrefix: 'Commercial Desk Contact:',
-        section1Heading: '1. BUYER & COMPANY PROFILE',
-        fullName: 'Full Name',
-        companyName: 'Company Name',
-        email: 'Corporate Email',
-        phone: 'Phone / WhatsApp',
-        website: 'Company Website',
-        country: 'Country / Location',
-        buyerType: 'Organization Type',
-        notProvided: 'Not provided',
-        section2Heading: '2. COMMODITY SOURCING PARAMETERS',
-        primaryCommodity: 'Target Commodity',
-        volumeScope: 'Volume Scope',
-        destination: 'Destination Port / Country',
-        rfqHeader: '[Configured Parameters from Website]',
-        rfqProduct: 'Configured Commodity',
-        rfqGrade: 'Specification / Grade',
-        rfqCustomGrade: 'Custom Technical Note',
-        rfqVolume: 'Configured Volume',
-        rfqFrequency: 'Purchasing Schedule',
-        rfqIncoterm: 'Preferred Incoterm',
-        rfqDestination: 'Configured Destination Port',
-        section3Heading: '3. DETAILED SPECIFICATIONS & NOTES',
-        noNotes: 'No additional notes provided.',
-        section4Heading: '4. COMMERCIAL CONFIRMATION',
-        scopeText: 'Commercial Scope: Confirmed B2B commercial export inquiry.',
-        deskText: 'Commercial Desk: VERO (Canada)',
-        contactText: `Direct Contact: ${COMMERCIAL_EMAIL}`,
-        emailSubject: (company: string, product: string) => `Commercial Sourcing Inquiry — ${company || 'Direct Buyer'} — ${product}`,
-      },
-      privacyNote: `Inquiries are prepared client-side in your browser and sent from your own email application directly to ${COMMERCIAL_EMAIL}. No automated delivery confirmation is simulated by this website.`,
-    },
-    contactInfo: {
-      headline: 'VERO Commercial Desk',
-      address: 'Canada',
-      role: 'Commercial facilitation for Brazilian commodities',
-      email: COMMERCIAL_EMAIL,
-      note: 'Serving importers and food processors across North America, Europe, Asia, and the Middle East.',
-      deskNote: `Direct commercial correspondence with Rafael · ${COMMERCIAL_EMAIL}`,
     },
     footer: {
-      brandTag: 'Commercial Desk in Canada for Brazilian Commodities.',
-      aboutShort: 'VERO connects international B2B buyers to agricultural supply opportunities in Brazil and coordinates demand understanding with Brasensa.',
-      linksHeading: 'Quick Navigation',
-      legalHeading: 'Commercial & Institutional Notice',
-      legalText: 'VERO is a commercial representation and facilitation desk based in Canada. VERO does not act as exporter of record, importer of record, or ocean carrier. All formal quotes, specifications, delivery schedules, and commercial contracts are executed as agreed with origin partners in Brazil.',
-      rights: '© 2026 VERO. All rights reserved. Official domain: verotrading.ca',
-    }
+      brandDesc:
+        'VERO connects B2B buyers with Brazilian agricultural sourcing opportunities and coordinates requirements with Brasensa in Brazil.',
+      quickLinksTitle: 'Navigation',
+      productsTitle: 'Core Products',
+      contactTitle: 'Commercial Desk',
+      contactNotice:
+        'All inquiries are processed by the VERO trade desk in Canada and coordinated with origin.',
+      privacyNotice:
+        'Information submitted is used solely to evaluate your B2B sourcing demand and coordinate commercial follow-up.',
+      allRightsReserved: 'VERO Trading Co. All rights reserved.',
+    },
+  },
+
+  pt: {
+    nav: {
+      products: 'Produtos',
+      howItWorks: 'Como a VERO ajuda',
+      about: 'Sobre a VERO',
+      contact: 'Contato',
+      cta: 'Falar com a VERO',
+      productsMenuTitle: 'Commodities Brasileiras',
+      coreCategoryLabel: '5 Categorias Centrais',
+      additionalCategoryLabel: 'Originação Adicional sob Consulta',
+    },
+    hero: {
+      tag: 'Desk Comercial no Canadá · Origem Brasileira',
+      headline: 'Produtos agrícolas brasileiros. Uma conversa direta a partir do Canadá.',
+      supporting:
+        'Explore café, açúcar, feijões e leguminosas, frutas frescas e sorgo. Conte-nos o que interessa à sua empresa—nós coordenamos os próximos passos com a Brasensa no Brasil.',
+      ctaPrimary: 'Explorar produtos',
+      ctaSecondary: 'Falar com a VERO',
+    },
+    products: {
+      tag: 'Portfólio de Produtos',
+      headline: 'Explore nossos produtos brasileiros.',
+      subheadline:
+        'Cinco categorias agrícolas centrais com originação estruturada no Brasil, além de commodities adicionais avaliadas conforme a demanda do comprador.',
+      viewDetails: 'Ver detalhes',
+      addToInquiry: 'Adicionar à consulta',
+      addedToInquiry: 'Na sua consulta',
+      additionalHeading: 'Originação Adicional sob Consulta',
+      additionalSub:
+        'Soja, milho amarelo e açaí podem ser discutidos para fornecimento conforme as exigências do comprador.',
+    },
+    howVeroHelps: {
+      tag: 'Apoio Prático',
+      headline: 'Como a VERO ajuda compradores B2B.',
+      subheadline:
+        'Oferecemos coordenação comercial direta e fundamentada a partir do Canadá, trabalhando em conjunto com a Brasensa no Brasil.',
+      points: [
+        {
+          num: '01',
+          title: 'Contato comercial sediado no Canadá',
+          desc: 'Comunicação direta no seu fuso horário em português, inglês e espanhol, sem barreiras de interlocução.',
+        },
+        {
+          num: '02',
+          title: 'Apoio no esclarecimento de requisitos',
+          desc: 'Auxiliamos na estruturação de especificações técnicas, volumes viáveis, opções de embalagem e porto de destino.',
+        },
+        {
+          num: '03',
+          title: 'Coordenação com a Brasensa no Brasil',
+          desc: 'Sua demanda é tratada diretamente com o desk de originação e exportação da Brasensa no Brasil, sem camadas opacas.',
+        },
+        {
+          num: '04',
+          title: 'Discussão de informações e disponibilidade potencial',
+          desc: 'Esclarecemos janelas de safra, parâmetros de origem e condições logísticas antes de compromissos formais.',
+        },
+        {
+          num: '05',
+          title: 'Acompanhamento claro e próximos passos',
+          desc: 'Acompanhamento transparente e sequência formal alinhada à medida que as tratativas comerciais avançam.',
+        },
+      ],
+    },
+    process: {
+      tag: 'Fluxo Comercial',
+      headline: 'Um processo simples em três etapas.',
+      subheadline:
+        'Etapas comerciais transparentes e alinhadas às práticas do comércio agrícola internacional.',
+      steps: [
+        {
+          num: '1',
+          title: 'Conte-nos o que interessa à sua empresa.',
+          desc: 'Selecione os produtos brasileiros relevantes para sua operação e compartilhe seus dados de contato e necessidades preliminares.',
+        },
+        {
+          num: '2',
+          title: 'Conversamos sobre seus requisitos e avaliamos opções com a origem.',
+          desc: 'Esclarecemos suas especificações e checamos disponibilidade de safra, viabilidade logística e parâmetros com a Brasensa no Brasil.',
+        },
+        {
+          num: '3',
+          title: 'Alinhamos os próximos passos comerciais.',
+          desc: 'Após a qualificação inicial, termos comerciais formais, laudos e sequência contratual são alinhados junto à origem.',
+        },
+      ],
+      notice:
+        'Nota: A VERO não promete cotações imediatas, envio prévio de amostras ou prazos de embarque sem avaliação prévia dos requisitos.',
+    },
+    partnership: {
+      tag: 'Papéis Comerciais',
+      headline: 'Seu contato no Canadá. Conectado à origem brasileira.',
+      intro:
+        'A VERO é o seu ponto de contato para explorar oportunidades de produtos brasileiros. Coordenamos seus requisitos com a Brasensa no Brasil e ajudamos a esclarecer os próximos passos comerciais.',
+      veroTitle: 'VERO — Canadá',
+      veroDesc:
+        'Contato comercial, entendimento de requisitos e coordenação de acompanhamento junto a compradores internacionais.',
+      brasensaTitle: 'Brasensa — Brasil',
+      brasensaDesc:
+        'A empresa brasileira focada em originação e exportação, com quem a VERO coordena as discussões de fornecimento.',
+      disclosureTitle: 'Conheça nossa abordagem',
+      approachSteps: [
+        {
+          title: 'Como os requisitos são conversados',
+          desc: 'Avaliamos commodities de interesse, volumes previstos, porto de destino e formatos de embalagem no seu fuso horário.',
+        },
+        {
+          title: 'Como disponibilidade e especificações são checadas',
+          desc: 'Conferimos janelas de safra vigentes, viabilidade de lote e parâmetros de inspeção na origem com a Brasensa no Brasil.',
+        },
+        {
+          title: 'Como os próximos passos são coordenados',
+          desc: 'Após a qualificação inicial da demanda, alinhamos as tratativas comerciais formais e termos operacionais junto à origem.',
+        },
+      ],
+    },
+    footer: {
+      brandDesc:
+        'A VERO conecta compradores B2B a oportunidades de fornecimento agrícola brasileiro e coordena requisitos com a Brasensa no Brasil.',
+      quickLinksTitle: 'Navegação',
+      productsTitle: 'Produtos Principais',
+      contactTitle: 'Desk Comercial',
+      contactNotice:
+        'Todas as consultas são recebidas pelo desk comercial da VERO no Canadá e coordenadas com a origem.',
+      privacyNotice:
+        'Os dados informados são utilizados exclusivamente para avaliar sua demanda de fornecimento B2B e coordenar o contato comercial.',
+      allRightsReserved: 'VERO Trading Co. Todos os direitos reservados.',
+    },
   },
 
   es: {
     nav: {
       products: 'Productos',
-      howItWorks: 'Cómo Ayuda VERO',
-      process: 'Proceso Comercial',
-      partnership: 'Origen y Brasensa',
-      contact: 'Conversación Comercial',
-      cta: 'Conversar sobre Mi Demanda',
+      howItWorks: 'Cómo funciona',
+      about: 'Acerca de VERO',
+      contact: 'Contacto',
+      cta: 'Hablar con VERO',
+      productsMenuTitle: 'Commodities Brasileñas',
+      coreCategoryLabel: '5 Categorías Principales',
+      additionalCategoryLabel: 'Originación Adicional bajo Consulta',
     },
     hero: {
-      tag: 'Mesa Comercial en Canadá · Acceso Directo a Commodities Brasileñas',
-      headline: 'Acceso directo a commodities de Brasil para compradores B2B internacionales.',
-      subheadline: 'VERO conecta demandas comerciales con proveedores brasileños estructurados y coordina todo el alineamiento desde Canadá.',
-      supporting: 'Comunicación fluida en inglés, español y portugués en zonas horarias alineadas con las Américas, con seguimiento riguroso desde las especificaciones técnicas hasta la entrega.',
-      ctaPrimary: 'Conversar sobre mi demanda',
-      ctaSecondary: 'Explorar productos',
-      credibility: 'Mesa en Canadá · Originación Brasileña con Brasensa · Atención B2B Especializada',
-      features: [
-        { label: 'Mesa Comercial Canadá', desc: 'Atención ágil en inglés, español y portugués' },
-        { label: 'Originación con Brasensa', desc: 'Conexión directa con la estructura de exportación en Brasil' },
-        { label: 'Escala en Contenedores y Granel', desc: 'Parámetros técnicos y comerciales a la medida de su operación' },
-      ],
+      tag: 'Desk Comercial en Canadá · Origen Brasileño',
+      headline: 'Productos agrícolas brasileños. Una conversación directa desde Canadá.',
+      supporting:
+        'Explore café, azúcar, legumbres, fruta fresca y sorgo. Cuéntenos su interés y coordinaremos los siguientes pasos con Brasensa en Brasil.',
+      ctaPrimary: 'Explorar productos',
+      ctaSecondary: 'Hablar con VERO',
     },
     products: {
-      tag: 'Portafolio de Commodities',
-      headline: 'Categorías centrales del suministro agrícola brasileño.',
-      subheadline: 'Conozca nuestros 5 grupos de productos confirmados y los rubros adicionales originados bajo consulta para importadores e industrias.',
-      coreHeading: '5 Grupos Centrales Confirmados',
-      coreSub: 'Productos con canales de abastecimiento consolidados y especificaciones comerciales habituales listas para evaluación.',
-      inquiryHeading: 'Originación Adicional bajo Consulta',
-      inquirySub: 'Demande lotes específicos de soja, maíz o açaí con acuerdo previo de especificaciones y volumen.',
-      inquiryBadge: 'Originación bajo Consulta',
-      viewSpecs: 'Ver Parámetros Técnicos',
-      inquireProduct: 'Iniciar Consulta de este Producto',
-      typicalApps: 'Aplicaciones Típicas',
-      exportGrades: 'Especificaciones Habituales',
-      shippingFormats: 'Formatos de Embarque',
+      tag: 'Portafolio de Productos',
+      headline: 'Explore nuestros productos brasileños.',
+      subheadline:
+        'Cinco categorías agrícolas principales con originación estructurada en Brasil, además de commodities adicionales evaluadas según requerimientos.',
+      viewDetails: 'Ver detalles',
+      addToInquiry: 'Añadir a consulta',
+      addedToInquiry: 'En su consulta',
+      additionalHeading: 'Originación Adicional bajo Consulta',
+      additionalSub:
+        'Soja, maíz amarillo y açaí pueden evaluarse para suministro según las necesidades del comprador.',
     },
-    howItWorks: {
-      tag: 'Apoyo Concreto',
-      headline: 'Cómo VERO facilita el entendimiento y encauzamiento de su demanda.',
-      subheadline: 'Operamos desde Canadá como un punto de contacto comercial accesible, técnico y confiable entre su equipo de compras y el origen en Brasil.',
-      pillars: [
+    howVeroHelps: {
+      tag: 'Asistencia Práctica',
+      headline: 'Cómo VERO asiste a compradores B2B.',
+      subheadline:
+        'Brindamos coordinación comercial directa y técnica desde Canadá, colaborando estrechamente con Brasensa en Brasil.',
+      points: [
         {
           num: '01',
-          title: 'Punto de Contacto Accesible',
-          desc: 'Interlocución inmediata en horario de las Américas, sin barreras de idioma y con agilidad para responder sobre el mercado brasileño.',
+          title: 'Contacto comercial basado en Canadá',
+          desc: 'Comunicación directa en su huso horario en español, inglés y portugués, sin intermediarios innecesarios.',
         },
         {
           num: '02',
-          title: 'Claridad en Parámetros de Demanda',
-          desc: 'Le ayudamos a estructurar especificaciones técnicas, volúmenes realistas, embalaje adecuado, puerto de destino y cronograma.',
+          title: 'Clarificación de requisitos de compra',
+          desc: 'Ayudamos a definir especificaciones técnicas, volúmenes realistas, empaques adecuados y puerto de destino.',
         },
         {
           num: '03',
           title: 'Coordinación con Brasensa en Brasil',
-          desc: 'Canalizamos su requerimiento directamente a la estructura comercial y operativa de Brasensa en Brasil, sin capas intermedias.',
+          desc: 'Su demanda se gestiona directamente con la estructura de exportación y origen de Brasensa en Brasil.',
         },
         {
           num: '04',
-          title: 'Verificación de Viabilidad y Datos Técnicos',
-          desc: 'Recabamos certificados de origen, disponibilidad real por cosecha y condiciones de flete para decisiones comerciales seguras.',
+          title: 'Evaluación de disponibilidad e información técnica',
+          desc: 'Revisamos temporadas de cosecha, parámetros de origen y logística preliminar antes de compromisos formales.',
+        },
+        {
+          num: '05',
+          title: 'Seguimiento transparente y próximos pasos',
+          desc: 'Acompañamiento claro y formalización ordenada a medida que avanza la conversación comercial.',
         },
       ],
     },
-    commercialProcess: {
-      tag: 'Flujo Transparente',
-      headline: 'Un camino comercial directo en 4 etapas.',
-      subheadline: 'Sin promesas irreales de despacho inmediato: un proceso estructurado que respeta los estándares del comercio exterior B2B.',
+    process: {
+      tag: 'Flujo Comercial',
+      headline: 'Un proceso directo en tres pasos.',
+      subheadline:
+        'Pasos comerciales claros y adaptados a las exigencias del comercio exterior agrícola B2B.',
       steps: [
         {
-          step: 'Paso 1',
-          title: 'Comparta su demanda',
-          desc: 'Presente su necesidad con especificaciones básicas o detalladas mediante nuestro formulario o por correo directo.',
-          highlight: 'Entrada flexible',
+          num: '1',
+          title: 'Cuéntenos lo que le interesa.',
+          desc: 'Seleccione los productos brasileños relevantes y comparta sus datos de contacto y necesidades preliminares.',
         },
         {
-          step: 'Paso 2',
-          title: 'Evaluamos con el origen',
-          desc: 'Alineamos rápidamente con Brasensa la viabilidad técnica, disponibilidad de cosecha y capacidad de atención.',
-          highlight: 'Validación en origen',
+          num: '2',
+          title: 'Conversamos sobre sus requisitos y evaluamos opciones con origen.',
+          desc: 'Analizamos sus especificaciones y revisamos disponibilidad de zafra, factibilidad logística y parámetros con Brasensa en Brasil.',
         },
         {
-          step: 'Paso 3',
-          title: 'Alineamos especificaciones y condiciones',
-          desc: 'Analizamos parámetros de calidad, empaque, términos de entrega (FOB/CIF) y logística preliminar.',
-          highlight: 'Alineación comercial',
-        },
-        {
-          step: 'Paso 4',
-          title: 'Definimos los próximos pasos',
-          desc: 'Presentación formal de las condiciones por el origen, cronograma de operación y secuencia de contratación.',
-          highlight: 'Secuencia formal',
+          num: '3',
+          title: 'Alineamos los próximos pasos comerciales.',
+          desc: 'Tras la calificación inicial, las condiciones comerciales formales, inspecciones y secuencia contractual se definen con origen.',
         },
       ],
-      notice: 'Importante: No prometemos plazos fijos ni envío anticipado de muestras antes de calificar la demanda comercial y el perfil del comprador.',
+      notice:
+        'Aviso: VERO no promete cotizaciones inmediatas, muestras previas ni plazos de despacho sin evaluación previa de requisitos.',
     },
     partnership: {
-      tag: 'Origen y Relación con Brasensa',
-      headline: 'VERO en Canadá, sólida originación en Brasil con Brasensa.',
-      subheadline: 'Una conexión transparente y profesional diseñada para brindar previsibilidad a compradores internacionales.',
-      copy1: 'VERO es la marca pública y la mesa comercial con sede en Canadá. Nuestra función es construir el puente con el mercado internacional, comprendiendo las rigurosas exigencias de importadores, distribuidores e industrias.',
-      copy2: 'En Brasil, mantenemos una relación B2B con Brasensa — estructura brasileña orientada a la originación y exportación, informada como parte del grupo IBF Export & Import. Este enlace operativo nos permite conectar demandas calificadas con productores y molinos estructurados.',
-      benefitTitle: 'Lo que esto significa en la práctica para su empresa:',
-      benefits: [
+      tag: 'Roles Comerciales',
+      headline: 'Su contacto en Canadá. Conectado al origen brasileño.',
+      intro:
+        'VERO es su punto de contacto para explorar oportunidades de productos brasileños. Coordinamos sus requisitos con Brasensa en Brasil y ayudamos a clarificar los próximos pasos comerciales.',
+      veroTitle: 'VERO — Canadá',
+      veroDesc:
+        'Contacto comercial, comprensión de requisitos y coordinación de seguimiento directo con compradores internacionales.',
+      brasensaTitle: 'Brasensa — Brasil',
+      brasensaDesc:
+        'La empresa brasileña enfocada en originación y exportación, con quien VERO coordina las conversaciones de suministro.',
+      disclosureTitle: 'Conozca nuestro enfoque',
+      approachSteps: [
         {
-          title: 'Interlocución Clara en Horario Comercial Compartido',
-          desc: 'Conversa directamente con una mesa comercial en Canadá que comprende sus prioridades de gobernanza y claridad de comunicación.',
+          title: 'Cómo se conversan los requisitos',
+          desc: 'Evaluamos commodities de interés, volumen estimado, puerto de destino y empaques en su zona horaria e idioma.',
         },
         {
-          title: 'Acceso Directo a la Estructura Operativa en Brasil',
-          desc: 'Su demanda es evaluada por profesionales presentes en los principales polos productivos y puertos brasileños, con datos de cosecha reales.',
+          title: 'Cómo se verifican disponibilidad y especificaciones',
+          desc: 'Revisamos calendarios de cosecha, disponibilidad de lote y parámetros de inspección con Brasensa en Brasil.',
         },
         {
-          title: 'Sin Cadenas Opacas de Intermediarios',
-          desc: 'Evite listas reenviadas indefinidamente y promesas sin fundamento. Trabajamos exclusivamente sobre demandas concretas y ejecutables.',
+          title: 'Cómo se coordinan los próximos pasos',
+          desc: 'Tras la calificación inicial, formalizamos las condiciones comerciales y operativas en conjunto con el origen.',
         },
       ],
-      disclaimer: 'VERO actúa en la facilitación y coordinación comercial desde Canadá y no actúa como exportador o importador de registro, ni posee inventario propio. Todas las cotizaciones formales, documentos de embarque y contratos se formalizan conforme a los acuerdos establecidos con los socios de origen en Brasil.',
-    },
-    commercialConversation: {
-      tag: 'Conversación Comercial',
-      headline: 'Inicie una conversación sobre su demanda de suministro.',
-      subheadline: 'Tanto si desea evaluar viabilidad como si cuenta con especificaciones completas, nuestra mesa en Canadá está lista para asistirle.',
-      fastTrackTitle: '¿Aún definiendo parámetros?',
-      fastTrackDesc: 'Si desea evaluar si el origen brasileño se adapta a su empresa, contáctenos directamente por correo o envíe un mensaje breve con su requerimiento.',
-      structuredTitle: '¿Ya cuenta con especificaciones definidas?',
-      structuredDesc: 'Complete los campos a continuación con los datos de su empresa, producto de interés, volumen estimado y destino para una respuesta estructurada.',
-    },
-    rfqBuilder: {
-      tag: 'Configurador de Parámetros',
-      headline: 'Estructure su solicitud de compra comercial.',
-      subheadline: 'Defina el producto, especificación deseada, formato y destino para transferir los datos directamente al formulario de consulta.',
-      step1: '1. Seleccione la Categoría',
-      step2: '2. Especificación y Calidad',
-      step3: '3. Volumen y Alcance de Pedido',
-      step4: '4. Destino y Términos Comerciales',
-      summaryTitle: 'Resumen de Parámetros Configurados',
-      applyToForm: 'Transferir Parámetros al Formulario de Contacto',
-      resetBtn: 'Limpiar Selecciones',
-      commercialDisclaimer: 'Esta herramienta ayuda a organizar técnicamente su consulta. Las condiciones formales de suministro se confirman tras la evaluación de disponibilidad en origen.',
-      labels: {
-        product: 'Producto Seleccionado',
-        grade: 'Especificación / Grado de Calidad',
-        customGrade: 'O indique requerimientos técnicos específicos:',
-        volume: 'Estimación de Volumen / Alcance',
-        frequency: 'Frecuencia de Compra Prevista',
-        incoterm: 'Término de Entrega Preferido (Opcional)',
-        destination: 'Puerto o País de Destino',
-      },
-      frequencies: [
-        'Lote Piloto Inicial (1 FCL / Contenedor)',
-        'Pedido Comercial Habitual (2 a 5 FCLs)',
-        'Contrato Recurrente Mensual',
-        'Acuerdo Anual de Suministro por Volumen',
-        'Evaluación de Especificación / Muestra Inicial',
-      ],
-      incoterms: [
-        'FOB (Free on Board - Puerto Brasileño, ej: Santos / Paranaguá)',
-        'CIF (Cost, Insurance & Freight - Puerto de Destino)',
-        'CFR (Cost & Freight - Puerto de Destino)',
-        'Por definir / Requiere orientación',
-      ]
-    },
-    leadForm: {
-      tag: 'Mesa Comercial Canadá',
-      headline: 'Envíe su consulta o solicite información técnica.',
-      subheadline: 'Complete los datos a continuación. Nuestro equipo en Canadá revisa la solicitud y coordina el entendimiento con Brasensa en Brasil.',
-      rfqBannerTitle: 'Parámetros Configurados Incluidos',
-      rfqBannerDesc: 'Los parámetros definidos en el configurador anterior serán incluidos en el resumen de su consulta.',
-      manualSelectionNotice: 'Selección manual activa: los parámetros de un producto configurado previamente fueron descartados para mantener la coherencia.',
-      statusManual: 'Selección Manual',
-      statusConfigured: 'Parámetros del Configurador',
-      selectAllButton: 'Seleccionar todo',
-      labels: {
-        fullName: 'Nombre Completo',
-        companyName: 'Nombre de la Empresa',
-        website: 'Sitio Web de la Empresa (Opcional)',
-        country: 'País / Sede Central',
-        email: 'Correo Corporativo',
-        phone: 'Teléfono / WhatsApp (con código de país)',
-        buyerType: 'Tipo de Organización',
-        product: 'Producto de Interés',
-        volume: 'Alcance Estimado de Volumen',
-        destinationMarket: 'Puerto o País de Destino',
-        message: 'Requisitos Técnicos, Consultas u Observaciones',
-        businessCheck: 'Confirmo que esta es una consulta comercial B2B para volúmenes de exportación.',
-        submit: 'Revisar y Preparar Envío por Correo',
-      },
-      errors: {
-        fullName: 'Por favor, ingrese su nombre completo.',
-        companyName: 'Por favor, ingrese el nombre de su empresa.',
-        email: 'Por favor, proporcione un correo corporativo válido.',
-        phone: 'Por favor, proporcione un teléfono o WhatsApp con código de país.',
-        country: 'Por favor, indique su país o sede central.',
-        buyerType: 'Por favor, seleccione el tipo de organización.',
-        product: 'Por favor, seleccione el producto de interés.',
-        volume: 'Por favor, seleccione el volumen estimado.',
-        destinationMarket: 'Por favor, indique el puerto o país de destino.',
-        businessCheck: 'Por favor, confirme que se trata de una consulta comercial B2B.',
-      },
-      placeholders: {
-        buyerType: 'Seleccione el perfil de su empresa...',
-        product: 'Seleccione el producto principal...',
-        volume: 'Seleccione el rango de volumen...',
-      },
-      productsById: {
-        'green-coffee': 'Café Verde Brasileño (Arabica y Conilon)',
-        'sugar': 'Açúcar Brasileño (ICUMSA 45 y VHP)',
-        'beans-pulses': 'Frijoles y Legumbres Secas (Carioca, Negro, Mungo, Caupí)',
-        'fresh-fruits': 'Frutas Frescas Brasileñas',
-        'grain-sorghum': 'Sorgo Granífero Brasileño',
-        'soybeans': 'Soja (Originación bajo Consulta)',
-        'corn': 'Maíz Amarillo (Originación bajo Consulta)',
-        'acai': 'Açaí y Pulpas Congeladas (Originación bajo Consulta)',
-        'custom': 'Múltiples Productos / Otra Demanda',
-      } as Record<string, string>,
-      buyerTypesById: {
-        'importer': 'Importador Directo / Casa Comercializadora',
-        'manufacturer': 'Industria de Alimentos y Bebidas / Procesador',
-        'distributor': 'Distribuidor Mayorista / Empacador',
-        'foodservice': 'Foodservice / Proveedor Institucional',
-        'corporate_purchasing': 'Departamento de Compras Corporativas',
-        'other': 'Otra Entidad Comercial',
-      } as Record<string, string>,
-      volumeTypesById: {
-        '1_fcl': '1 FCL (Lote Piloto / Evaluación Inicial)',
-        '2_5_fcl': '2 a 5 FCLs (Volumen Comercial Regular)',
-        '10_plus_fcl': '10+ FCLs (Operación de Escala)',
-        'monthly_contract': 'Contrato Recurrente Mensual',
-        'breakbulk': 'Buque / Granel (Azúcar o Granos)',
-        'sample_first': 'Evaluación de Especificación / Muestra Inicial',
-      } as Record<string, string>,
-      readyStep: {
-        tag: 'Consulta Lista para Envío',
-        title: 'Revise su Consulta Comercial',
-        description: `Esta herramienta prepara su consulta en formato estructurado. La transmisión debe completarse en su aplicación de correo electrónico — este sitio no envía correos automáticamente ni ofrece confirmación de entrega. Si su aplicación de correo no abre o el mensaje resulta incompleto, copie el resumen integral a continuación y péguelo en un mensaje a ${COMMERCIAL_EMAIL}.`,
-        emailInstruction: `Haga clic en el botón a continuación para abrir su aplicación de correo (Gmail, Outlook, Apple Mail, etc.). Debe hacer clic en "Enviar" dentro de su cliente para completar la transmisión a ${COMMERCIAL_EMAIL}.`,
-        recipientLabel: 'Correo de la Mesa Comercial:',
-        openEmailButton: 'Abrir en mi Aplicación de Correo',
-        copyButton: 'Copiar Resumen de la Consulta',
-        copiedSuccess: '¡Consulta copiada al portapapeles!',
-        copyFallbackError: 'No se pudo copiar automáticamente. Por favor seleccione todo el texto en el recuadro y copie manualmente (Ctrl+C / Cmd+C).',
-        copyFallbackInstruction: `Si su aplicación de correo no abre o el mensaje está incompleto, copie todo el contenido siguiente y envíelo a ${COMMERCIAL_EMAIL}.`,
-        editButton: 'Volver y Editar Datos',
-        summaryHeading: 'Resumen Estructurado de la Consulta',
-        summaryNotice: 'Todos los campos completados, parámetros de RFQ y observaciones constan íntegramente a continuación, sin recortes silenciosos.',
-        retentionNote: 'Datos conservados mientras esta página permanezca abierta',
-      },
-      summary: {
-        title: 'CONSULTA COMERCIAL DE SUMINISTRO',
-        organization: 'VERO — Canadá',
-        recipientPrefix: 'Contacto Mesa Comercial:',
-        section1Heading: '1. PERFIL DEL COMPRADOR Y DE LA EMPRESA',
-        fullName: 'Nombre Completo',
-        companyName: 'Empresa',
-        email: 'Correo Corporativo',
-        phone: 'Teléfono / WhatsApp',
-        website: 'Sitio Web',
-        country: 'País / Ubicación',
-        buyerType: 'Tipo de Organización',
-        notProvided: 'No informado',
-        section2Heading: '2. PARÁMETROS DE LA DEMANDA DE COMMODITIES',
-        primaryCommodity: 'Producto de Interés',
-        volumeScope: 'Alcance de Volumen',
-        destination: 'Puerto / País de Destino',
-        rfqHeader: '[Parámetros Configurados en el Sitio]',
-        rfqProduct: 'Producto Configurado',
-        rfqGrade: 'Especificación / Grado',
-        rfqCustomGrade: 'Nota Técnica de Especificación',
-        rfqVolume: 'Volumen Configurado',
-        rfqFrequency: 'Frecuencia Prevista',
-        rfqIncoterm: 'Término de Entrega Preferido',
-        rfqDestination: 'Puerto de Destino Configurado',
-        section3Heading: '3. ESPECIFICACIONES DETALLADAS Y OBSERVACIONES',
-        noNotes: 'Ninguna observación adicional informada.',
-        section4Heading: '4. CONFIRMACIÓN COMERCIAL',
-        scopeText: 'Alcance Comercial: Consulta B2B de exportación confirmada.',
-        deskText: 'Mesa Comercial: VERO (Canadá)',
-        contactText: `Contacto Directo: ${COMMERCIAL_EMAIL}`,
-        emailSubject: (company: string, product: string) => `Consulta Comercial — ${company || 'Comprador Directo'} — ${product}`,
-      },
-      privacyNote: `Las consultas se formatean localmente en su navegador y se envían desde su propia aplicación de correo directamente a ${COMMERCIAL_EMAIL}. No hay envío automático ni almacenamiento en base de datos en este sitio.`,
-    },
-    contactInfo: {
-      headline: 'Mesa Comercial VERO',
-      address: 'Canadá',
-      role: 'Facilitación comercial para commodities brasileñas',
-      email: COMMERCIAL_EMAIL,
-      note: 'Atención a importadores e industrias en América, Europa, Asia y Medio Oriente.',
-      deskNote: `Correspondencia comercial directa con Rafael · ${COMMERCIAL_EMAIL}`,
     },
     footer: {
-      brandTag: 'Mesa Comercial en Canadá para Commodities Brasileñas.',
-      aboutShort: 'VERO conecta compradores B2B internacionales con oportunidades de suministro agrícola en Brasil y coordina el entendimiento de demandas con Brasensa.',
-      linksHeading: 'Navegación Rápida',
-      legalHeading: 'Nota Comercial e Institucional',
-      legalText: 'VERO es una mesa de representación y facilitación comercial con sede en Canadá. VERO no actúa como exportador de registro, importador de registro ni transportista marítimo. Todas las cotizaciones formales, especificaciones de lote y contratos de venta se formalizan conforme a los acuerdos con los socios de origen en Brasil.',
-      rights: '© 2026 VERO. Todos los derechos reservados. Dominio oficial: verotrading.ca',
-    }
-  }
+      brandDesc:
+        'VERO conecta compradores B2B con oportunidades de suministro agrícola brasileño y coordina requisitos con Brasensa en Brasil.',
+      quickLinksTitle: 'Navegación',
+      productsTitle: 'Productos Principales',
+      contactTitle: 'Desk Comercial',
+      contactNotice:
+        'Todas las consultas son recibidas por el desk comercial de VERO en Canadá y coordinadas con origen.',
+      privacyNotice:
+        'La información provista se utiliza exclusivamente para evaluar su demanda de suministro B2B y coordinar el contacto comercial.',
+      allRightsReserved: 'VERO Trading Co. Todos los derechos reservados.',
+    },
+  },
 };
+
+export const content = translations;
+

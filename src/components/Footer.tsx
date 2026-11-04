@@ -1,12 +1,13 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useRouter } from '../context/RouterContext';
-import { ShieldCheck, Mail, MapPin } from 'lucide-react';
+import { CORE_PRODUCTS } from '../data/products';
 import { COMMERCIAL_EMAIL } from '../constants/contact';
+import { Mail, Globe } from 'lucide-react';
 
 export default function Footer() {
   const { t, language, setLanguage } = useLanguage();
-  const { route, navigateToHome } = useRouter();
+  const { route, navigateToHome, navigateToProduct } = useRouter();
 
   const handleFooterLink = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (route.view !== 'home') {
@@ -16,14 +17,14 @@ export default function Footer() {
         const id = href.replace('#', '');
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+      }, 80);
     }
   };
 
   return (
-    <footer className="bg-[#061F18] text-[#FAF7EF] py-14 lg:py-18 border-t border-[#0B3D2E]">
+    <footer className="bg-[#072C21] text-[#FAF7EF] py-14 lg:py-18 border-t border-[#0B3D2E]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Grid */}
+        {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 mb-12">
           {/* Brand Info (5 Cols) */}
           <div className="lg:col-span-5 space-y-4">
@@ -31,24 +32,24 @@ export default function Footer() {
               <span className="font-heading font-bold text-2xl tracking-tight text-white">
                 VERO
               </span>
-              <span className="text-xs font-semibold text-[#C9A24A] tracking-wider uppercase">
+              <span className="text-xs font-semibold text-[#A3C4B6] tracking-wider uppercase border-l border-white/20 pl-2">
                 Trading Co.
               </span>
             </div>
-            <p className="text-xs text-[#C9A24A] font-bold uppercase tracking-wider">
-              {t.footer.brandTag}
+            <p className="text-xs sm:text-sm text-[#D4DED9] font-normal leading-relaxed max-w-sm">
+              {t.footer.brandDesc}
             </p>
-            <p className="text-xs sm:text-sm text-[#F5EFE3]/75 font-normal leading-relaxed max-w-sm">
-              {t.footer.aboutShort}
-            </p>
+            <div className="pt-2 text-xs text-[#A3C4B6]">
+              Canada · Commercial Coordination
+            </div>
           </div>
 
-          {/* Quick Links (3 Cols) */}
-          <div className="lg:col-span-3">
-            <h4 className="text-xs font-bold text-[#C9A24A] uppercase tracking-wider mb-4">
-              {t.footer.linksHeading}
+          {/* Quick Links (2 Cols) */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-xs font-bold text-[#A3C4B6] uppercase tracking-wider">
+              {t.footer.quickLinksTitle}
             </h4>
-            <ul className="space-y-2.5 text-xs text-[#F5EFE3]/80">
+            <ul className="space-y-2 text-xs text-[#D4DED9]">
               <li>
                 <a
                   href="#products"
@@ -69,20 +70,11 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#process"
-                  onClick={(e) => handleFooterLink(e, '#process')}
+                  href="#about-vero"
+                  onClick={(e) => handleFooterLink(e, '#about-vero')}
                   className="hover:text-white transition-colors"
                 >
-                  {t.nav.process}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#partnership"
-                  onClick={(e) => handleFooterLink(e, '#partnership')}
-                  className="hover:text-white transition-colors"
-                >
-                  {t.nav.partnership}
+                  {t.nav.about}
                 </a>
               </li>
               <li>
@@ -97,80 +89,96 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Languages & Commercial Office (4 Cols) */}
-          <div className="lg:col-span-4 space-y-5">
-            <div>
-              <h4 className="text-xs font-bold text-[#C9A24A] uppercase tracking-wider mb-3">
-                Language / Idioma
-              </h4>
-              <div className="flex items-center gap-2 text-xs">
-                <button
-                  type="button"
-                  onClick={() => setLanguage('en')}
-                  className={`px-3 py-1.5 rounded-lg border transition-colors ${
-                    language === 'en'
-                      ? 'bg-[#064E3B] text-white border-[#064E3B] font-bold'
-                      : 'border-white/20 text-[#F5EFE3]/70 hover:text-white'
-                  }`}
-                >
-                  English
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setLanguage('pt')}
-                  className={`px-3 py-1.5 rounded-lg border transition-colors ${
-                    language === 'pt'
-                      ? 'bg-[#064E3B] text-white border-[#064E3B] font-bold'
-                      : 'border-white/20 text-[#F5EFE3]/70 hover:text-white'
-                  }`}
-                >
-                  Português
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setLanguage('es')}
-                  className={`px-3 py-1.5 rounded-lg border transition-colors ${
-                    language === 'es'
-                      ? 'bg-[#064E3B] text-white border-[#064E3B] font-bold'
-                      : 'border-white/20 text-[#F5EFE3]/70 hover:text-white'
-                  }`}
-                >
-                  Español
-                </button>
-              </div>
-            </div>
+          {/* Core Products (2 Cols) */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-xs font-bold text-[#A3C4B6] uppercase tracking-wider">
+              {t.footer.productsTitle}
+            </h4>
+            <ul className="space-y-2 text-xs text-[#D4DED9]">
+              {CORE_PRODUCTS.map((prod) => (
+                <li key={prod.id}>
+                  <button
+                    type="button"
+                    onClick={() => navigateToProduct(prod.id)}
+                    className="hover:text-white transition-colors text-left"
+                  >
+                    {prod.shortTitle[language] || prod.shortTitle.en}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div className="pt-2 text-xs text-[#F5EFE3]/70">
-              <span className="block font-semibold text-white mb-0.5">
-                Canada Commercial Desk:
-              </span>
+          {/* Commercial Contact & Languages (3 Cols) */}
+          <div className="lg:col-span-3 space-y-4">
+            <div>
+              <h4 className="text-xs font-bold text-[#A3C4B6] uppercase tracking-wider mb-2">
+                {t.footer.contactTitle}
+              </h4>
               <a
                 href={`mailto:${COMMERCIAL_EMAIL}`}
-                className="text-[#C9A24A] hover:underline font-mono font-bold flex items-center gap-1.5 mt-1"
+                className="text-white hover:text-[#A3C4B6] font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors"
               >
                 <Mail className="w-3.5 h-3.5" />
                 <span>{COMMERCIAL_EMAIL}</span>
               </a>
+              <p className="text-[11px] text-[#D4DED9] mt-2 leading-relaxed">
+                {t.footer.contactNotice}
+              </p>
+            </div>
+
+            {/* Language Selection */}
+            <div className="pt-2">
+              <span className="text-[11px] font-bold text-[#A3C4B6] uppercase tracking-wider block mb-2">
+                Language / Idioma
+              </span>
+              <div className="flex items-center gap-1 text-xs">
+                <button
+                  type="button"
+                  onClick={() => setLanguage('en')}
+                  className={`px-2.5 py-1 rounded transition-colors ${
+                    language === 'en'
+                      ? 'bg-[#0B3D2E] text-white font-bold'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  EN
+                </button>
+                <span className="text-gray-600">·</span>
+                <button
+                  type="button"
+                  onClick={() => setLanguage('pt')}
+                  className={`px-2.5 py-1 rounded transition-colors ${
+                    language === 'pt'
+                      ? 'bg-[#0B3D2E] text-white font-bold'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  PT
+                </button>
+                <span className="text-gray-600">·</span>
+                <button
+                  type="button"
+                  onClick={() => setLanguage('es')}
+                  className={`px-2.5 py-1 rounded transition-colors ${
+                    language === 'es'
+                      ? 'bg-[#0B3D2E] text-white font-bold'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  ES
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Regulatory & Commercial Disclaimer */}
-        <div className="pt-8 border-t border-white/10 space-y-4">
-          <div className="flex items-start gap-2.5 text-xs text-[#F5EFE3]/60 leading-relaxed max-w-5xl">
-            <ShieldCheck className="w-4 h-4 text-[#C9A24A] shrink-0 mt-0.5" />
-            <div>
-              <span className="font-bold text-white/90 block mb-1">
-                {t.footer.legalHeading}
-              </span>
-              <p className="font-normal">{t.footer.legalText}</p>
-            </div>
-          </div>
-
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#F5EFE3]/40">
-            <p>{t.footer.rights}</p>
-            <p>Canada Commercial Desk · Brazilian Origination with Brasensa</p>
-          </div>
+        {/* Accurate Privacy & Compliance Notice */}
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#D4DED9]">
+          <p className="max-w-xl text-center sm:text-left leading-relaxed">
+            {t.footer.privacyNotice}
+          </p>
+          <p className="shrink-0">{t.footer.allRightsReserved}</p>
         </div>
       </div>
     </footer>

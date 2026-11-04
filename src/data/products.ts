@@ -32,6 +32,12 @@ export interface LocalizedStringList {
   es: string[];
 }
 
+export interface ProductFact {
+  icon: 'map-pin' | 'calendar' | 'package' | 'layers' | 'ship' | 'sliders';
+  label: LocalizedString;
+  value: LocalizedString;
+}
+
 export interface ProductItem {
   id: ProductId;
   slug: string;
@@ -51,6 +57,9 @@ export interface ProductItem {
   shippingTerms: LocalizedString;
   inspection: LocalizedString;
   complianceNotes: LocalizedString;
+  cardVarieties?: LocalizedString;
+  cardSummary?: LocalizedString;
+  atAGlance?: ProductFact[];
 }
 
 export const PRODUCTS: ProductItem[] = [
@@ -74,6 +83,45 @@ export const PRODUCTS: ProductItem[] = [
       pt: 'Café Verde',
       es: 'Café Verde',
     },
+    cardVarieties: {
+      en: 'Arabica · Conilon',
+      pt: 'Arábica · Conilon',
+      es: 'Arábica · Conilón',
+    },
+    cardSummary: {
+      en: 'Brazilian green coffee for roasters and importers, with commercial and specialty profiles selected according to buyer requirements.',
+      pt: 'Café verde brasileiro para torrefadores e importadores, com perfis comerciais e especiais selecionados conforme os requisitos do comprador.',
+      es: 'Café verde brasileño para tostadores e importadores, con perfiles comerciales y de especialidad seleccionados según los requerimientos del comprador.',
+    },
+    atAGlance: [
+      {
+        icon: 'map-pin',
+        label: { en: 'Origins', pt: 'Origens', es: 'Orígenes' },
+        value: {
+          en: 'Minas Gerais, São Paulo, Espírito Santo & Rondônia',
+          pt: 'Minas Gerais, São Paulo, Espírito Santo e Rondônia',
+          es: 'Minas Gerais, São Paulo, Espírito Santo y Rondônia',
+        },
+      },
+      {
+        icon: 'calendar',
+        label: { en: 'Harvest', pt: 'Safra', es: 'Cosecha' },
+        value: {
+          en: 'April–September*',
+          pt: 'Abril–Setembro*',
+          es: 'Abril–Septiembre*',
+        },
+      },
+      {
+        icon: 'package',
+        label: { en: 'Packaging', pt: 'Embalagem', es: 'Empaque' },
+        value: {
+          en: '60 kg bags or big bags, by agreement',
+          pt: 'Sacas de 60 kg ou big bags, sob acordo',
+          es: 'Sacos de 60 kg o big bags, bajo acuerdo',
+        },
+      },
+    ],
     shortDesc: {
       en: 'Export-grade raw unroasted Arabica and Conilon (Robusta) beans for commercial roasters, specialty importers, and extractors.',
       pt: 'Origens selecionadas de café verde arábica e conilon cru para torrefadores, importadores e processadores industriais.',
@@ -190,6 +238,45 @@ export const PRODUCTS: ProductItem[] = [
       pt: 'Açúcar de Cana',
       es: 'Azúcar de Caña',
     },
+    cardVarieties: {
+      en: 'ICUMSA 45 · VHP',
+      pt: 'ICUMSA 45 · VHP',
+      es: 'ICUMSA 45 · VHP',
+    },
+    cardSummary: {
+      en: 'Refined white sugar for food applications and VHP raw sugar for further refining.',
+      pt: 'Açúcar branco refinado para a indústria alimentícia e açúcar bruto VHP para refino adicional.',
+      es: 'Azúcar blanco refinado para la industria alimentaria y azúcar crudo VHP para refinación posterior.',
+    },
+    atAGlance: [
+      {
+        icon: 'layers',
+        label: { en: 'Types', pt: 'Tipos', es: 'Tipos' },
+        value: {
+          en: 'Refined white & raw sugar',
+          pt: 'Açúcar branco refinado e bruto',
+          es: 'Azúcar blanco refinado y crudo',
+        },
+      },
+      {
+        icon: 'calendar',
+        label: { en: 'Harvest', pt: 'Safra', es: 'Zafra' },
+        value: {
+          en: 'April–November*',
+          pt: 'Abril–Novembro*',
+          es: 'Abril–Noviembre*',
+        },
+      },
+      {
+        icon: 'ship',
+        label: { en: 'Shipment format', pt: 'Formato de embarque', es: 'Formato de embarque' },
+        value: {
+          en: 'Bulk or container, by agreement',
+          pt: 'A granel ou contêiner, sob acordo',
+          es: 'A granel o contenedor, bajo acuerdo',
+        },
+      },
+    ],
     shortDesc: {
       en: 'Refined white cane sugar (ICUMSA 45) and raw centrifugal VHP bulk sugar directly from São Paulo and Center-South mills.',
       pt: 'Açúcar branco refinado (ICUMSA 45) e açúcar bruto centrifugado VHP a granel das principais usinas do Centro-Sul.',
@@ -303,6 +390,45 @@ export const PRODUCTS: ProductItem[] = [
       pt: 'Feijões & Pulses',
       es: 'Frijoles y Legumbres',
     },
+    cardVarieties: {
+      en: 'Carioca · Black beans · Cowpea · Mung',
+      pt: 'Carioca · Feijão preto · Caupi · Mungo',
+      es: 'Carioca · Frijol negro · Caupí · Mungo',
+    },
+    cardSummary: {
+      en: 'Brazilian beans and pulses for distributors and food processors, with variety and quality requirements matched to the destination market.',
+      pt: 'Feijões e leguminosas brasileiros para distribuidores e processadores de alimentos, com variedades e requisitos de qualidade adequados ao mercado de destino.',
+      es: 'Frijoles y legumbres brasileños para distribuidores y procesadores de alimentos, con variedades y requisitos de calidad adaptados al mercado de destino.',
+    },
+    atAGlance: [
+      {
+        icon: 'map-pin',
+        label: { en: 'Origins', pt: 'Origens', es: 'Orígenes' },
+        value: {
+          en: 'Paraná, Minas Gerais, Goiás & Bahia',
+          pt: 'Paraná, Minas Gerais, Goiás e Bahia',
+          es: 'Paraná, Minas Gerais, Goiás y Bahía',
+        },
+      },
+      {
+        icon: 'package',
+        label: { en: 'Packaging', pt: 'Embalagem', es: 'Empaque' },
+        value: {
+          en: '60 kg bags, big bags or bulk, by agreement',
+          pt: 'Sacas de 60 kg, big bags ou granel, sob acordo',
+          es: 'Sacos de 60 kg, big bags o granel, bajo acuerdo',
+        },
+      },
+      {
+        icon: 'calendar',
+        label: { en: 'Seasonality', pt: 'Sazonalidade', es: 'Estacionalidad' },
+        value: {
+          en: 'Varies by variety and region',
+          pt: 'Varia conforme a variedade e região',
+          es: 'Varía según variedad y región',
+        },
+      },
+    ],
     shortDesc: {
       en: 'Commercial and human-consumption dry beans: Carioca, Black, Dark Red Kidney, Cranberry, Fradinho (Cowpea), and Mung.',
       pt: 'Feijões secos para alimentação humana: Carioca, Preto, Vermelho Dark Red, Fradinho (Caupi) e Mungo.',
@@ -422,6 +548,36 @@ export const PRODUCTS: ProductItem[] = [
       pt: 'Frutas Frescas',
       es: 'Frutas Frescas',
     },
+    cardVarieties: {
+      en: 'Selection by variety & season',
+      pt: 'Seleção por variedade e safra',
+      es: 'Selección por variedad y temporada',
+    },
+    cardSummary: {
+      en: 'Fresh-fruit sourcing guided by the buyer’s destination market, seasonal options and handling requirements.',
+      pt: 'Originação de frutas frescas orientada pelo mercado de destino do comprador, opções sazonais e requisitos de manuseio.',
+      es: 'Originación de fruta fresca guiada por el mercado de destino del comprador, opciones de temporada y requerimientos de manejo.',
+    },
+    atAGlance: [
+      {
+        icon: 'sliders',
+        label: { en: 'Product requirements', pt: 'Requisitos do produto', es: 'Requisitos del producto' },
+        value: {
+          en: 'Variety, size & maturity',
+          pt: 'Variedade, calibre e maturação',
+          es: 'Variedad, calibre y maduración',
+        },
+      },
+      {
+        icon: 'package',
+        label: { en: 'Packing requirements', pt: 'Embalagem e rotulagem', es: 'Empaque y rotulado' },
+        value: {
+          en: 'Packaging & labeling for the destination market',
+          pt: 'Embalagem e rotulagem para o mercado de destino',
+          es: 'Empaque y etiquetado para el mercado de destino',
+        },
+      },
+    ],
     shortDesc: {
       en: 'Export-grade whole fresh fruits (Tahiti limes, mangoes, seedless table grapes, melons) with temperature-controlled reefer logistics.',
       pt: 'Frutas frescas inteiras para exportação (limão tahiti, mangas, uvas sem sementes e melões) com cadeia de frio controlada.',
@@ -529,15 +685,54 @@ export const PRODUCTS: ProductItem[] = [
       es: 'Sorgo Granífero Brasileño (Alimento Animal y Energía)',
     },
     shortTitle: {
-      en: 'Grain Sorghum',
-      pt: 'Sorgo Granífero',
-      es: 'Sorgo Granífero',
+      en: 'Sorghum',
+      pt: 'Sorgo',
+      es: 'Sorgo',
     },
     category: {
       en: 'Feed Grains',
       pt: 'Grãos Forrageiros',
       es: 'Granos Forrajeros',
     },
+    cardVarieties: {
+      en: 'Feed · Grain ethanol · Baijiu',
+      pt: 'Nutrição animal · Etanol de grão · Baijiu',
+      es: 'Nutrición animal · Etanol de grano · Baijiu',
+    },
+    cardSummary: {
+      en: 'Brazilian sorghum sourced to the buyer’s intended application and agreed quality requirements.',
+      pt: 'Sorgo brasileiro originado conforme a aplicação pretendida pelo comprador e padrões de qualidade acordados.',
+      es: 'Sorgo brasileño originado según la aplicación requerida por el comprador y estándares de calidad acordados.',
+    },
+    atAGlance: [
+      {
+        icon: 'map-pin',
+        label: { en: 'Origins', pt: 'Origens', es: 'Orígenes' },
+        value: {
+          en: 'Goiás, Minas Gerais, Mato Grosso do Sul, Bahia & São Paulo',
+          pt: 'Goiás, Minas Gerais, Mato Grosso do Sul, Bahia e São Paulo',
+          es: 'Goiás, Minas Gerais, Mato Grosso do Sul, Bahía y São Paulo',
+        },
+      },
+      {
+        icon: 'calendar',
+        label: { en: 'Harvest', pt: 'Safra', es: 'Cosecha' },
+        value: {
+          en: 'June–September*',
+          pt: 'Junho–Setembro*',
+          es: 'Junio–Septiembre*',
+        },
+      },
+      {
+        icon: 'ship',
+        label: { en: 'Shipment format', pt: 'Formato de embarque', es: 'Formato de embarque' },
+        value: {
+          en: 'Bulk or container, by agreement',
+          pt: 'A granel ou contêiner, sob acordo',
+          es: 'A granel o contenedor, bajo acuerdo',
+        },
+      },
+    ],
     shortDesc: {
       en: 'High-energy red and bronze grain sorghum for animal nutrition, compound feed mills, and grain ethanol manufacturing.',
       pt: 'Grão forrageiro vermelho e bronze com alto teor energético para nutrição animal, fábricas de ração e etanol de grãos.',
@@ -600,14 +795,14 @@ export const PRODUCTS: ProductItem[] = [
       ],
     },
     origins: {
-      en: ['Mato Grosso', 'Goiás', 'Minas Gerais', 'Rio Grande do Sul'],
-      pt: ['Mato Grosso', 'Goiás', 'Minas Gerais', 'Rio Grande do Sul'],
-      es: ['Mato Grosso', 'Goiás', 'Minas Gerais', 'Rio Grande do Sul'],
+      en: ['Goiás', 'Minas Gerais', 'Mato Grosso do Sul', 'Bahia', 'São Paulo'],
+      pt: ['Goiás', 'Minas Gerais', 'Mato Grosso do Sul', 'Bahia', 'São Paulo'],
+      es: ['Goiás', 'Minas Gerais', 'Mato Grosso do Sul', 'Bahía', 'São Paulo'],
     },
     harvestWindow: {
-      en: 'Second-crop (Safrinha) harvest primarily between February and July',
-      pt: 'Safra de safrinha colhida principalmente entre Fevereiro e Julho',
-      es: 'Cosecha de segunda zafra (safrinha) recolectada entre Febrero y Julio',
+      en: 'Second-crop (Safrinha) harvest primarily between June and September',
+      pt: 'Safra de safrinha colhida principalmente entre Junho e Setembro',
+      es: 'Cosecha de safrinha recolectada principalmente entre Junio y Septiembre',
     },
     typicalOrderUnit: {
       en: 'Container lots (min. 2 to 5 FCLs / ~50 to 135 MT) or dedicated bulk batches',
@@ -650,6 +845,11 @@ export const PRODUCTS: ProductItem[] = [
       en: 'Sourcing on Inquiry',
       pt: 'Originação sob Consulta',
       es: 'Originación bajo Consulta',
+    },
+    cardSummary: {
+      en: 'Brazilian soybeans for crushing and export markets, arranged on inquiry according to commercial specifications.',
+      pt: 'Soja brasileira para esmagamento e mercados de exportação, estruturada sob consulta conforme padrões comerciais.',
+      es: 'Soja brasileña para molienda y mercados de exportación, gestionada bajo consulta según especificaciones comerciales.',
     },
     shortDesc: {
       en: 'Export-grade soybeans for crushing, animal protein feed, and Identity Preserved (IP) Non-GMO food applications.',
@@ -737,6 +937,11 @@ export const PRODUCTS: ProductItem[] = [
       pt: 'Originação sob Consulta',
       es: 'Originación bajo Consulta',
     },
+    cardSummary: {
+      en: 'Brazilian yellow corn for animal feed and industrial processing, with terms aligned per operation.',
+      pt: 'Milho amarelo brasileiro para nutrição animal e processamento industrial, com termos alinhados por operação.',
+      es: 'Maíz amarillo brasileño para nutrición animal y procesamiento industrial, con términos alineados por operación.',
+    },
     shortDesc: {
       en: 'High-density yellow feed corn for livestock nutrition, dry milling, and commercial ethanol processing.',
       pt: 'Milho amarelo em grão com alta densidade para indústria de ração, moagem e processamento de etanol.',
@@ -815,13 +1020,18 @@ export const PRODUCTS: ProductItem[] = [
     },
     shortTitle: {
       en: 'Açaí & Pulps',
-      pt: 'Açaí & Polpas',
+      pt: 'Açaí e Polpas',
       es: 'Açaí y Pulpas',
     },
     category: {
       en: 'Sourcing on Inquiry',
       pt: 'Originação sob Consulta',
       es: 'Originación bajo Consulta',
+    },
+    cardSummary: {
+      en: 'Brazilian açaí and tropical fruit pulps for beverage and food manufacturers, sourced to buyer requirements.',
+      pt: 'Açaí e polpas de frutas tropicais brasileiras para fabricantes de alimentos e bebidas, originados sob demanda.',
+      es: 'Açaí y pulpas de frutas tropicales brasileñas para fabricantes de alimentos e bebidas, originados según requerimientos.',
     },
     shortDesc: {
       en: 'Industrial pure pasteurized frozen açaí pulp (Medium & Special solids) and IQF fruit ingredients from Pará.',

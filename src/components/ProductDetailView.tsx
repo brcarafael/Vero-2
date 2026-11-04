@@ -14,7 +14,6 @@ import {
   MapPin,
   ShieldCheck,
   Building,
-  Anchor,
 } from 'lucide-react';
 
 interface ProductDetailViewProps {
@@ -33,68 +32,65 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
     en: {
       backToCatalog: 'Back to products',
       productsBreadcrumb: 'Products',
-      switchLabel: 'Switch commodity:',
+      switchLabel: 'Switch product:',
       addToInquiry: 'Add to inquiry',
       inInquiry: 'In your inquiry',
       removeFromInquiry: 'Remove from inquiry',
-      inquireNow: 'Complete inquiry with this product',
-      shareLink: 'Share technical page',
+      inquireNow: 'Continue to inquiry with this product',
+      shareLink: 'Share product page',
       linkCopied: 'Link copied to clipboard!',
-      specsHeading: 'Export Specifications & Quality Grades',
-      packagingHeading: 'Packaging & Containerization Formats',
-      originsHeading: 'Primary Producing Regions',
-      harvestHeading: 'Crop Harvest & Shipping Calendar',
-      orderUnitHeading: 'Typical Minimum Order & Lot Size',
-      logisticsHeading: 'Commercial & Maritime Terms',
-      inspectionHeading: 'Quality Inspection & Phytosanitary Control',
+      specsHeading: 'Types & Commercial Varieties',
+      packagingHeading: 'Packaging & Sourcing Logistics',
+      originsHeading: 'Producing Origins',
+      harvestHeading: 'Indicative Harvest Information',
+      logisticsHeading: 'Shipping Ports & Terms',
+      inspectionHeading: 'Quality Verification & Phytosanitary Control',
       notesHeading: 'Commercial & Contracting Notes',
-      applicationsHeading: 'Industrial & Wholesale Applications',
-      relatedHeading: 'Explore other Brazilian commodities',
-      sourcingNotice: 'Originated on inquiry based on buyer volume and target specifications.',
+      applicationsHeading: 'Applications',
+      relatedHeading: 'Explore other Brazilian products',
+      sourcingNotice: 'Sourcing can be discussed according to buyer requirements.',
     },
     pt: {
       backToCatalog: 'Voltar aos produtos',
       productsBreadcrumb: 'Produtos',
-      switchLabel: 'Alternar commodity:',
+      switchLabel: 'Alternar produto:',
       addToInquiry: 'Adicionar à consulta',
       inInquiry: 'Na sua consulta',
       removeFromInquiry: 'Remover da consulta',
-      inquireNow: 'Concluir consulta com este produto',
-      shareLink: 'Compartilhar ficha técnica',
+      inquireNow: 'Prosseguir para consulta com este produto',
+      shareLink: 'Compartilhar página do produto',
       linkCopied: 'Link copiado para a área de transferência!',
-      specsHeading: 'Especificações Técnicas e Padrões de Exportação',
-      packagingHeading: 'Formatos de Embalagem e Estufagem',
-      originsHeading: 'Regiões Produtoras Principais',
-      harvestHeading: 'Calendário de Safra e Janela de Embarque',
-      orderUnitHeading: 'Lote Mínimo Típico e Escopo Operacional',
-      logisticsHeading: 'Termos Comerciais e Marítimos',
-      inspectionHeading: 'Controle de Qualidade e Fitossanitário',
+      specsHeading: 'Tipos e Variedades Comerciais',
+      packagingHeading: 'Embalagem e Logística de Fornecimento',
+      originsHeading: 'Origens Produtoras',
+      harvestHeading: 'Informações Indicativas de Safra',
+      logisticsHeading: 'Portos e Termos de Embarque',
+      inspectionHeading: 'Verificação de Qualidade e Fitossanitária',
       notesHeading: 'Observações Comerciais e Contratuais',
-      applicationsHeading: 'Aplicações Industriais e Comerciais',
-      relatedHeading: 'Conheça outras commodities brasileiras',
-      sourcingNotice: 'Item originado sob consulta conforme volume e especificações do comprador.',
+      applicationsHeading: 'Aplicações',
+      relatedHeading: 'Conheça outros produtos brasileiros',
+      sourcingNotice: 'Fornecimento discutido conforme os requisitos do comprador.',
     },
     es: {
       backToCatalog: 'Volver a productos',
       productsBreadcrumb: 'Productos',
-      switchLabel: 'Cambiar commodity:',
+      switchLabel: 'Cambiar producto:',
       addToInquiry: 'Añadir a consulta',
       inInquiry: 'En su consulta',
       removeFromInquiry: 'Eliminar de la consulta',
-      inquireNow: 'Completar consulta con este producto',
-      shareLink: 'Compartir ficha técnica',
+      inquireNow: 'Continuar a consulta con este producto',
+      shareLink: 'Compartir página del producto',
       linkCopied: '¡Enlace copiado al portapapeles!',
-      specsHeading: 'Especificaciones Técnicas y Grados de Exportación',
-      packagingHeading: 'Formatos de Empaque y Carga',
-      originsHeading: 'Regiones Productoras Principales',
-      harvestHeading: 'Calendario de Cosecha y Ventana de Embarque',
-      orderUnitHeading: 'Lote Mínimo Típico y Escala Operativa',
-      logisticsHeading: 'Términos Comerciales y Marítimos',
-      inspectionHeading: 'Control de Calidad e Inspección Fitosanitaria',
+      specsHeading: 'Tipos y Variedades Comerciales',
+      packagingHeading: 'Empaque y Logística de Suministro',
+      originsHeading: 'Orígenes Productores',
+      harvestHeading: 'Información Indicativa de Cosecha',
+      logisticsHeading: 'Puertos y Términos de Embarque',
+      inspectionHeading: 'Verificación de Calidad y Control Fitosanitario',
       notesHeading: 'Notas Comerciales y Contractuales',
-      applicationsHeading: 'Aplicaciones Industriales y Comerciales',
-      relatedHeading: 'Conozca otras commodities brasileñas',
-      sourcingNotice: 'Originado bajo consulta según volumen y especificaciones solicitadas.',
+      applicationsHeading: 'Aplicaciones',
+      relatedHeading: 'Conozca otros productos brasileños',
+      sourcingNotice: 'El suministro se evalúa según los requisitos del comprador.',
     },
   }[language];
 
@@ -118,23 +114,23 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
     navigateToHome();
     setTimeout(() => {
       scrollToInquiryForm();
-    }, 100);
+    }, 80);
   };
 
   const relatedProducts = PRODUCTS.filter((p) => p.id !== product.id).slice(0, 3);
-  const currentShortName = product.shortTitle?.[language] || product.title[language] || product.title.en;
+  const currentShortName = product.shortTitle[language] || product.shortTitle.en;
 
   return (
     <div className="w-full bg-[#FAF7EF] text-[#111827] min-h-screen pb-24">
-      {/* Top Breadcrumb & Nav Bar */}
-      <div className="bg-[#FAF7EF] border-b border-[#E2ECE3] sticky top-16 sm:top-20 z-20 backdrop-blur-md bg-opacity-95">
+      {/* Top Breadcrumb & Product Switcher Bar */}
+      <div className="bg-[#FAF7EF] border-b border-[#E5DEC9] sticky top-16 sm:top-20 z-20 backdrop-blur-md bg-opacity-95">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col gap-2">
           <div className="flex items-center justify-between">
             {/* Breadcrumb Navigation */}
             <div className="flex items-center space-x-2 text-xs sm:text-sm">
               <button
                 onClick={navigateToHome}
-                className="inline-flex items-center space-x-1.5 font-semibold text-[#064E3B] hover:text-[#0B3D2E] transition-colors group cursor-pointer focus-visible:outline-none focus-visible:underline"
+                className="inline-flex items-center space-x-1.5 font-semibold text-[#0B3D2E] hover:text-[#064E3B] transition-colors group cursor-pointer focus-visible:outline-none focus-visible:underline"
               >
                 <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
                 <span>{tLabels.backToCatalog}</span>
@@ -150,7 +146,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
             {/* Share Control */}
             <button
               onClick={handleShare}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-[#D8E0D2] bg-white text-xs font-medium text-[#4B5563] hover:text-[#111827] hover:border-[#064E3B] transition-colors cursor-pointer"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-[#D8E0D2] bg-white text-xs font-medium text-[#4B5563] hover:text-[#111827] hover:border-[#0B3D2E] transition-colors cursor-pointer"
               title={tLabels.shareLink}
             >
               <Share2 className="w-3.5 h-3.5" />
@@ -158,23 +154,23 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
             </button>
           </div>
 
-          {/* Compact Product Switcher (Accessible without scrolling) */}
-          <div className="pt-2 border-t border-[#E2ECE3]/60 flex items-center gap-2 overflow-x-auto scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
+          {/* Compact Product Switcher (Accessible near the top) */}
+          <div className="pt-2 border-t border-[#E5DEC9]/60 flex items-center gap-2 overflow-x-auto scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
             <span className="text-[11px] font-bold text-[#6B7280] uppercase tracking-wider whitespace-nowrap shrink-0 hidden md:inline">
               {tLabels.switchLabel}
             </span>
             <div className="flex items-center gap-1.5 shrink-0">
               {PRODUCTS.map((item) => {
                 const isActive = item.id === product.id;
-                const shortName = item.shortTitle?.[language] || item.title[language] || item.title.en;
+                const shortName = item.shortTitle[language] || item.shortTitle.en;
                 return (
                   <button
                     key={item.id}
                     onClick={() => navigateToProduct(item.id)}
                     className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
                       isActive
-                        ? 'bg-[#064E3B] text-white shadow-xs'
-                        : 'bg-white border border-[#D8E0D2] text-[#374151] hover:border-[#064E3B] hover:text-[#064E3B]'
+                        ? 'bg-[#0B3D2E] text-white shadow-2xs'
+                        : 'bg-white border border-[#D8E0D2] text-[#374151] hover:border-[#0B3D2E] hover:text-[#0B3D2E]'
                     }`}
                   >
                     {shortName}
@@ -195,21 +191,19 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
               <img
                 src={product.image}
                 alt={product.title[language] || product.title.en}
-                className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105"
                 loading="eager"
               />
-              <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#064E3B] text-[#FAF7EF] shadow-sm">
-                  {product.category[language] || product.category.en}
-                </span>
+              <div className="absolute top-3 left-3 bg-[#0B3D2E] text-white px-3 py-1 rounded-md text-xs font-semibold">
+                {product.category[language] || product.category.en}
               </div>
             </div>
 
-            {/* Quick Sourcing Notice if Origination on Inquiry */}
+            {/* Sourcing notice if additional category */}
             {!product.isCore && (
-              <div className="mt-4 p-4 rounded-xl bg-[#E2ECE3]/60 border border-[#D8E0D2] text-xs text-[#064E3B] leading-relaxed">
-                <p className="font-semibold mb-1">Origination on Inquiry</p>
-                <p>{tLabels.sourcingNotice}</p>
+              <div className="mt-4 p-4 rounded-xl bg-[#FAF7EF] border border-[#E5DEC9] text-xs text-[#0B3D2E] leading-relaxed">
+                <p className="font-semibold mb-0.5">Additional Sourcing on Demand</p>
+                <p className="text-gray-600">{tLabels.sourcingNotice}</p>
               </div>
             )}
           </div>
@@ -217,10 +211,10 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
           {/* Core Technical & Commercial Identity */}
           <div className="lg:col-span-7 flex flex-col justify-between">
             <div>
-              <span className="text-xs uppercase tracking-wider font-semibold text-[#064E3B]">
-                VERO · Canadian Commercial Desk
-              </span>
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-[#111827] mt-1.5 mb-4 tracking-tight">
+              <div className="text-xs uppercase tracking-wider font-bold text-[#0B3D2E]">
+                {product.cardVarieties?.[language] || product.cardVarieties?.en || product.category[language] || product.category.en}
+              </div>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-[#111827] mt-1.5 mb-3 tracking-tight">
                 {product.title[language] || product.title.en}
               </h1>
 
@@ -229,8 +223,8 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
               </p>
 
               <div className="p-4 sm:p-5 rounded-xl bg-[#F5EFE3] border border-[#EFE3CF] mb-6">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-[#064E3B] mb-2">
-                  Market Context & Sourcing Structure
+                <h3 className="text-xs font-bold uppercase tracking-wider text-[#0B3D2E] mb-2">
+                  Overview & Sourcing Context
                 </h3>
                 <p className="text-xs sm:text-sm text-[#4B5563] leading-relaxed">
                   {product.overview[language] || product.overview.en}
@@ -239,11 +233,12 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
             </div>
 
             {/* Primary Action Buttons */}
-            <div className="pt-4 border-t border-[#E2ECE3] flex flex-col sm:flex-row gap-3">
+            <div className="pt-4 border-t border-[#E5DEC9] flex flex-col sm:flex-row gap-3">
               {isSelected ? (
                 <button
+                  type="button"
                   onClick={() => removeProduct(product.id)}
-                  className="flex-1 inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-[#E2ECE3] text-[#064E3B] font-semibold text-sm hover:bg-[#D8E0D2] transition-colors border border-[#064E3B]/30 cursor-pointer"
+                  className="flex-1 inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-[#E2ECE3] text-[#0B3D2E] font-semibold text-sm hover:bg-[#D8E0D2] transition-colors border border-[#0B3D2E]/30 cursor-pointer"
                 >
                   <Check className="w-4 h-4 stroke-[2.5]" />
                   <span>{tLabels.inInquiry}</span>
@@ -253,8 +248,9 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
                 </button>
               ) : (
                 <button
+                  type="button"
                   onClick={() => addProduct(product.id)}
-                  className="flex-1 inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-[#064E3B] text-[#FAF7EF] font-semibold text-sm hover:bg-[#0B3D2E] transition-all shadow-md active:scale-98 cursor-pointer"
+                  className="flex-1 inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-[#0B3D2E] text-white font-semibold text-sm hover:bg-[#064E3B] transition-all shadow-sm active:scale-98 cursor-pointer"
                 >
                   <Plus className="w-4 h-4" />
                   <span>{tLabels.addToInquiry}</span>
@@ -262,8 +258,9 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
               )}
 
               <button
+                type="button"
                 onClick={handleDirectInquiry}
-                className="flex-1 inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-[#FAF7EF] border-2 border-[#064E3B] text-[#064E3B] font-semibold text-sm hover:bg-[#064E3B] hover:text-[#FAF7EF] transition-all cursor-pointer"
+                className="flex-1 inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-white border border-[#0B3D2E] text-[#0B3D2E] font-semibold text-sm hover:bg-[#FAF7EF] transition-all cursor-pointer"
               >
                 <span>{tLabels.inquireNow}</span>
               </button>
@@ -271,13 +268,13 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
           </div>
         </div>
 
-        {/* Deep Technical Specifications Grid */}
-        <div className="mt-12 sm:mt-16 pt-10 border-t border-[#E2ECE3]">
+        {/* Technical & Sourcing Information Grid */}
+        <div className="mt-12 sm:mt-16 pt-10 border-t border-[#E5DEC9]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Grades & Specs */}
-            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#D8E0D2] shadow-sm">
+            {/* Types & Commercial Varieties */}
+            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#D8E0D2] shadow-xs">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-9 h-9 rounded-xl bg-[#E2ECE3] text-[#064E3B] flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-[#E2ECE3] text-[#0B3D2E] flex items-center justify-center flex-shrink-0">
                   <Layers className="w-5 h-5" />
                 </div>
                 <h3 className="text-base sm:text-lg font-bold font-heading text-[#111827]">
@@ -287,7 +284,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
               <ul className="space-y-2.5">
                 {(product.grades[language] || product.grades.en).map((grade, idx) => (
                   <li key={idx} className="flex items-start text-xs sm:text-sm text-[#374151]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#064E3B] mt-2 mr-2.5 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0B3D2E] mt-2 mr-2.5 flex-shrink-0" />
                     <span>{grade}</span>
                   </li>
                 ))}
@@ -295,9 +292,9 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
             </div>
 
             {/* Packaging & Logistics */}
-            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#D8E0D2] shadow-sm">
+            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#D8E0D2] shadow-xs">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-9 h-9 rounded-xl bg-[#E2ECE3] text-[#064E3B] flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-[#E2ECE3] text-[#0B3D2E] flex items-center justify-center flex-shrink-0">
                   <Package className="w-5 h-5" />
                 </div>
                 <h3 className="text-base sm:text-lg font-bold font-heading text-[#111827]">
@@ -307,17 +304,17 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
               <ul className="space-y-2.5">
                 {(product.packaging[language] || product.packaging.en).map((item, idx) => (
                   <li key={idx} className="flex items-start text-xs sm:text-sm text-[#374151]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24A] mt-2 mr-2.5 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0B3D2E] mt-2 mr-2.5 flex-shrink-0" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Producing Origins & Port Outlets */}
-            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#D8E0D2] shadow-sm">
+            {/* Origins & Shipping Ports */}
+            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#D8E0D2] shadow-xs">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-9 h-9 rounded-xl bg-[#E2ECE3] text-[#064E3B] flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-[#E2ECE3] text-[#0B3D2E] flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <h3 className="text-base sm:text-lg font-bold font-heading text-[#111827]">
@@ -342,10 +339,10 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
               </div>
             </div>
 
-            {/* Quality & Phytosanitary Protocol */}
-            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#D8E0D2] shadow-sm">
+            {/* Quality & Inspection Protocols */}
+            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#D8E0D2] shadow-xs">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-9 h-9 rounded-xl bg-[#E2ECE3] text-[#064E3B] flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-[#E2ECE3] text-[#0B3D2E] flex items-center justify-center flex-shrink-0">
                   <ShieldCheck className="w-5 h-5" />
                 </div>
                 <h3 className="text-base sm:text-lg font-bold font-heading text-[#111827]">
@@ -355,7 +352,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
               <p className="text-xs sm:text-sm text-[#374151] leading-relaxed mb-4">
                 {product.inspection[language] || product.inspection.en}
               </p>
-              <div className="p-3 rounded-lg bg-[#FAF7EF] border border-[#EFE3CF] text-xs text-[#064E3B]">
+              <div className="p-3 rounded-lg bg-[#FAF7EF] border border-[#EFE3CF] text-xs text-[#0B3D2E]">
                 <span className="font-semibold">Compliance Note:</span>{' '}
                 {product.complianceNotes[language] || product.complianceNotes.en}
               </div>
@@ -363,10 +360,10 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
           </div>
         </div>
 
-        {/* Operating Terms Strip */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {/* Indicative Harvest & Applications Strip */}
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="p-5 rounded-xl bg-[#F5EFE3] border border-[#D8E0D2]">
-            <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#064E3B] mb-1.5">
+            <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#0B3D2E] mb-1.5">
               <Calendar className="w-4 h-4" />
               <span>{tLabels.harvestHeading}</span>
             </div>
@@ -376,28 +373,18 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
           </div>
 
           <div className="p-5 rounded-xl bg-[#F5EFE3] border border-[#D8E0D2]">
-            <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#064E3B] mb-1.5">
-              <Anchor className="w-4 h-4" />
-              <span>{tLabels.orderUnitHeading}</span>
-            </div>
-            <p className="text-xs sm:text-sm text-[#111827] font-medium">
-              {product.typicalOrderUnit[language] || product.typicalOrderUnit.en}
-            </p>
-          </div>
-
-          <div className="p-5 rounded-xl bg-[#F5EFE3] border border-[#D8E0D2]">
-            <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#064E3B] mb-1.5">
+            <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#0B3D2E] mb-1.5">
               <Building className="w-4 h-4" />
               <span>{tLabels.applicationsHeading}</span>
             </div>
             <p className="text-xs sm:text-sm text-[#111827] font-medium">
-              {(product.commercialUse[language] || product.commercialUse.en).slice(0, 2).join(' · ')}
+              {(product.commercialUse[language] || product.commercialUse.en).join(' · ')}
             </p>
           </div>
         </div>
 
-        {/* Related Commodities Section */}
-        <div className="mt-16 pt-12 border-t border-[#E2ECE3]">
+        {/* Related Brazilian Products Section */}
+        <div className="mt-16 pt-12 border-t border-[#E5DEC9]">
           <h2 className="text-xl sm:text-2xl font-bold font-heading text-[#111827] mb-6">
             {tLabels.relatedHeading}
           </h2>
@@ -406,7 +393,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
               <div
                 key={rel.id}
                 onClick={() => navigateToProduct(rel.id)}
-                className="group cursor-pointer bg-white rounded-xl overflow-hidden border border-[#D8E0D2] hover:border-[#064E3B] transition-all hover:shadow-md"
+                className="group cursor-pointer bg-white rounded-xl overflow-hidden border border-[#D8E0D2] hover:border-[#0B3D2E] transition-all hover:shadow-md"
               >
                 <div className="aspect-[16/10] overflow-hidden bg-gray-100">
                   <img
@@ -416,11 +403,11 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
                   />
                 </div>
                 <div className="p-4">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#064E3B]">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#0B3D2E]">
                     {rel.category[language] || rel.category.en}
                   </span>
-                  <h3 className="text-sm font-bold text-[#111827] mt-1 group-hover:text-[#064E3B] transition-colors truncate">
-                    {rel.title[language] || rel.title.en}
+                  <h3 className="text-sm font-bold text-[#111827] mt-1 group-hover:text-[#0B3D2E] transition-colors truncate">
+                    {rel.shortTitle[language] || rel.shortTitle.en}
                   </h3>
                   <p className="text-xs text-[#4B5563] mt-1 line-clamp-2">
                     {rel.shortDesc[language] || rel.shortDesc.en}

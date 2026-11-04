@@ -44,7 +44,7 @@ function AppContent() {
     }
 
     return (
-      <div className="min-h-screen bg-[#FAF7EF] text-[#111827] flex flex-col selection:bg-[#E2ECE3] selection:text-[#064E3B]">
+      <div className="min-h-screen bg-[#FAF7EF] text-[#111827] flex flex-col selection:bg-[#E2ECE3] selection:text-[#0B3D2E]">
         <Header />
         <main className="flex-grow pt-16 sm:pt-20">
           <ProductDetailView product={product} />
@@ -57,7 +57,7 @@ function AppContent() {
 
   // Home Route (Main Discovery & Lead Generation Narrative)
   return (
-    <div className="min-h-screen bg-[#FAF7EF] text-[#111827] flex flex-col selection:bg-[#E2ECE3] selection:text-[#064E3B]">
+    <div className="min-h-screen bg-[#FAF7EF] text-[#111827] flex flex-col selection:bg-[#E2ECE3] selection:text-[#0B3D2E]">
       {/* Fixed Header */}
       <Header />
 

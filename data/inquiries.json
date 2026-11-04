@@ -1,5 +1,34 @@
 [
   {
+    "id": "VTC-20261104-9D5T",
+    "receivedAt": "2026-11-04T18:38:44.732Z",
+    "clientIp": "127.0.0.1",
+    "userAgent": "curl/7.88.1",
+    "name": "Elena Rostova",
+    "email": "elena@eurocommodities.com",
+    "company": "Euro Commodities NV",
+    "products": [
+      {
+        "id": "green-coffee",
+        "name": "Brazilian Green Coffee"
+      },
+      {
+        "id": "beans-pulses",
+        "name": "Brazilian Beans & Pulses"
+      }
+    ],
+    "country": "Netherlands",
+    "phone": "+31 20 555 1234",
+    "message": "Looking for Arabica Cerrado lots and Black Mung beans for Rotterdam delivery.",
+    "technicalDetails": null,
+    "status": "recorded",
+    "notificationQueue": {
+      "recipient": "rafael@verotrading.ca",
+      "status": "queued_commercial_review",
+      "dispatchedAt": "2026-11-04T18:38:44.732Z"
+    }
+  },
+  {
     "id": "VTC-20261104-Z36F",
     "receivedAt": "2026-11-04T18:00:21.252Z",
     "clientIp": "127.0.0.1",

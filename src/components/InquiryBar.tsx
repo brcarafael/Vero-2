@@ -19,48 +19,52 @@ export default function InquiryBar() {
 
   const tLabels = {
     en: {
-      inquiryTitle: 'Your Inquiry Basket',
-      itemSingle: 'commodity selected',
-      itemPlural: 'commodities selected',
+      inquiryTitle: 'Your Inquiry Selection',
+      itemSingle: 'product selected',
+      itemPlural: 'products selected',
       proceedBtn: 'Complete Inquiry',
       clearBtn: 'Clear all',
-      noItems: 'No commodities selected yet',
-      hint: 'Browse commodities and click "Add to inquiry" to combine multiple items.',
+      otherLabel: 'Other / Not sure yet',
     },
     pt: {
-      inquiryTitle: 'Sua Consulta Comercial',
-      itemSingle: 'commodity selecionada',
-      itemPlural: 'commodities selecionadas',
+      inquiryTitle: 'Sua Seleção de Consulta',
+      itemSingle: 'produto selecionado',
+      itemPlural: 'produtos selecionados',
       proceedBtn: 'Concluir Consulta',
-      clearBtn: 'Limpar',
-      noItems: 'Nenhuma commodity selecionada',
-      hint: 'Navegue pelos produtos e clique em "Adicionar à consulta" para combinar múltiplos itens.',
+      clearBtn: 'Limpar tudo',
+      otherLabel: 'Outro / A definir',
     },
     es: {
-      inquiryTitle: 'Su Consulta Comercial',
-      itemSingle: 'commodity seleccionada',
-      itemPlural: 'commodities seleccionadas',
+      inquiryTitle: 'Su Selección de Consulta',
+      itemSingle: 'producto seleccionado',
+      itemPlural: 'productos seleccionados',
       proceedBtn: 'Completar Consulta',
-      clearBtn: 'Limpiar',
-      noItems: 'Ninguna commodity seleccionada',
-      hint: 'Explore los productos y haga clic en "Añadir a consulta" para combinar varios productos.',
+      clearBtn: 'Limpiar todo',
+      otherLabel: 'Otro / Por definir',
     },
   }[language];
+
+  const getProductName = (id: string) => {
+    if (id === 'other') return tLabels.otherLabel;
+    const prod = getProductById(id);
+    return prod ? prod.shortTitle[language] || prod.shortTitle.en : id;
+  };
 
   // Toast notification for newly added item
   const renderToast = () => {
     if (!notification) return null;
     return (
       <div className="fixed bottom-24 right-4 sm:right-8 z-50 animate-bounce duration-300">
-        <div className="bg-[#064E3B] text-[#FAF7EF] px-4 py-3 rounded-xl shadow-xl flex items-center space-x-3 border border-[#E2ECE3]/30">
-          <div className="w-5 h-5 rounded-full bg-[#FAF7EF] text-[#064E3B] flex items-center justify-center flex-shrink-0">
+        <div className="bg-[#0B3D2E] text-white px-4 py-3 rounded-xl shadow-xl flex items-center space-x-3 border border-[#E5DEC9]/30">
+          <div className="w-5 h-5 rounded-full bg-white text-[#0B3D2E] flex items-center justify-center flex-shrink-0">
             <Check className="w-3.5 h-3.5 stroke-[3]" />
           </div>
           <span className="text-xs sm:text-sm font-medium">{notification}</span>
           <button
+            type="button"
             onClick={dismissNotification}
-            className="text-[#FAF7EF]/70 hover:text-white ml-2"
-            aria-label="Dismiss"
+            className="text-white/70 hover:text-white ml-2 cursor-pointer"
+            aria-label="Dismiss notification"
           >
             <X className="w-4 h-4" />
           </button>
@@ -80,43 +84,40 @@ export default function InquiryBar() {
       {inquiryCount > 0 && (
         <aside
           aria-label="Inquiry Basket"
-          className="fixed bottom-0 inset-x-0 z-40 bg-[#0B3D2E] text-[#FAF7EF] border-t border-[#FAF7EF]/20 shadow-2xl transition-all duration-300 backdrop-blur-md"
+          className="fixed bottom-0 inset-x-0 z-40 bg-[#0B3D2E] text-[#FAF7EF] border-t border-white/15 shadow-2xl transition-all duration-200 backdrop-blur-md"
         >
           {/* Expanded Drawer preview */}
           {isExpanded && (
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 pb-2 border-b border-[#FAF7EF]/10">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-4 pb-2 border-b border-white/10">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-xs uppercase tracking-widest text-[#FAF7EF]/60 font-medium">
+                <span className="text-xs uppercase tracking-widest text-[#A3C4B6] font-semibold">
                   {tLabels.inquiryTitle} ({inquiryCount})
                 </span>
                 <button
+                  type="button"
                   onClick={clearInquiry}
-                  className="text-xs text-[#FAF7EF]/60 hover:text-[#FAF7EF] underline decoration-[#FAF7EF]/40"
+                  className="text-xs text-[#D4DED9] hover:text-white underline decoration-white/40 cursor-pointer"
                 >
                   {tLabels.clearBtn}
                 </button>
               </div>
               <div className="flex flex-wrap gap-2 pb-2 max-h-36 overflow-y-auto">
-                {selectedProductIds.map((id) => {
-                  const product = getProductById(id);
-                  if (!product) return null;
-                  const title = product.shortTitle?.[language] || product.title[language] || product.title.en;
-                  return (
-                    <span
-                      key={id}
-                      className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-[#FAF7EF]/15 border border-[#FAF7EF]/20 text-xs sm:text-sm font-medium text-white"
+                {selectedProductIds.map((id) => (
+                  <span
+                    key={id}
+                    className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-white/10 border border-white/15 text-xs sm:text-sm font-medium text-white"
+                  >
+                    <span>{getProductName(id)}</span>
+                    <button
+                      type="button"
+                      onClick={() => removeProduct(id)}
+                      className="text-white/70 hover:text-white hover:bg-black/20 rounded p-0.5 cursor-pointer"
+                      title="Remove"
                     >
-                      <span>{title}</span>
-                      <button
-                        onClick={() => removeProduct(id)}
-                        className="text-[#FAF7EF]/70 hover:text-white hover:bg-black/20 rounded p-0.5"
-                        title="Remove"
-                      >
-                        <X className="w-3.5 h-3.5" />
-                      </button>
-                    </span>
-                  );
-                })}
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  </span>
+                ))}
               </div>
             </div>
           )}
@@ -125,13 +126,14 @@ export default function InquiryBar() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
             <div className="flex items-center space-x-3 min-w-0">
               <button
+                type="button"
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="flex items-center space-x-2 text-left group"
+                className="flex items-center space-x-2.5 text-left group cursor-pointer"
                 aria-expanded={isExpanded}
               >
-                <div className="relative w-8 h-8 rounded-lg bg-[#FAF7EF] text-[#064E3B] flex items-center justify-center font-bold text-xs shadow-sm flex-shrink-0">
-                  <ShoppingBag className="w-4 h-4 text-[#064E3B]" />
-                  <span className="absolute -top-1.5 -right-1.5 bg-[#C9A24A] text-[#111827] text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                <div className="relative w-8 h-8 rounded-lg bg-white text-[#0B3D2E] flex items-center justify-center font-bold text-xs shadow-xs flex-shrink-0">
+                  <ShoppingBag className="w-4 h-4 text-[#0B3D2E]" />
+                  <span className="absolute -top-1.5 -right-1.5 bg-[#0B3D2E] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold border border-white">
                     {inquiryCount}
                   </span>
                 </div>
@@ -140,13 +142,11 @@ export default function InquiryBar() {
                     {inquiryCount}{' '}
                     {inquiryCount === 1 ? tLabels.itemSingle : tLabels.itemPlural}
                   </p>
-                  <p className="text-[11px] text-[#FAF7EF]/70 hidden sm:block truncate">
-                    {selectedProductIds
-                      .map((id) => getProductById(id)?.shortTitle?.[language] || id)
-                      .join(' · ')}
+                  <p className="text-[11px] text-[#A3C4B6] hidden sm:block truncate">
+                    {selectedProductIds.map(getProductName).join(' · ')}
                   </p>
                 </div>
-                <div className="text-[#FAF7EF]/60 group-hover:text-white pl-1">
+                <div className="text-white/60 group-hover:text-white pl-1">
                   {isExpanded ? (
                     <ChevronDown className="w-4 h-4" />
                   ) : (
@@ -158,8 +158,9 @@ export default function InquiryBar() {
 
             <div className="flex items-center space-x-2 flex-shrink-0">
               <button
+                type="button"
                 onClick={scrollToInquiryForm}
-                className="inline-flex items-center space-x-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg bg-[#FAF7EF] text-[#064E3B] hover:bg-white text-xs sm:text-sm font-semibold transition-all shadow-md hover:shadow-lg active:scale-95"
+                className="inline-flex items-center space-x-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg bg-white text-[#0B3D2E] hover:bg-[#FAF7EF] text-xs sm:text-sm font-semibold transition-all shadow-sm active:scale-95 cursor-pointer"
               >
                 <span>{tLabels.proceedBtn}</span>
                 <ArrowRight className="w-4 h-4" />
