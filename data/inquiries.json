@@ -1,5 +1,34 @@
 [
   {
+    "id": "VTC-20261104-Z36F",
+    "receivedAt": "2026-11-04T18:00:21.252Z",
+    "clientIp": "127.0.0.1",
+    "userAgent": "curl/7.88.1",
+    "name": "Alex Mercer",
+    "email": "alex@torontoroasters.ca",
+    "company": "Toronto Roasters Ltd",
+    "products": [
+      {
+        "id": "green-coffee",
+        "name": "Brazilian Green Coffee (Arabica & Conilon)"
+      },
+      {
+        "id": "cane-sugar",
+        "name": "Brazilian Cane Sugar (ICUMSA 45 & VHP)"
+      }
+    ],
+    "country": "Canada",
+    "phone": "+1-416-555-0199",
+    "message": "Looking for 1 FCL coffee samples and IC45 sugar trial.",
+    "technicalDetails": null,
+    "status": "recorded",
+    "notificationQueue": {
+      "recipient": "rafael@verotrading.ca",
+      "status": "queued_commercial_review",
+      "dispatchedAt": "2026-11-04T18:00:21.253Z"
+    }
+  },
+  {
     "id": "VTC-20261031-SL39",
     "receivedAt": "2026-10-31T01:58:58.595Z",
     "clientIp": "127.0.0.1",
@@ -8,8 +37,14 @@
     "email": "dmiller@roasters-direct.com",
     "company": "Miller Roasting Group",
     "products": [
-      "green-coffee",
-      "sugar"
+      {
+        "id": "green-coffee",
+        "name": "Brazilian Green Coffee (Arabica & Conilon)"
+      },
+      {
+        "id": "cane-sugar",
+        "name": "Brazilian Cane Sugar (ICUMSA 45 & VHP)"
+      }
     ],
     "country": "Canada",
     "phone": null,

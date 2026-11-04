@@ -100,7 +100,7 @@ export default function InquiryBar() {
                 {selectedProductIds.map((id) => {
                   const product = getProductById(id);
                   if (!product) return null;
-                  const title = product.title[language] || product.title.en;
+                  const title = product.shortTitle?.[language] || product.title[language] || product.title.en;
                   return (
                     <span
                       key={id}
@@ -142,7 +142,7 @@ export default function InquiryBar() {
                   </p>
                   <p className="text-[11px] text-[#FAF7EF]/70 hidden sm:block truncate">
                     {selectedProductIds
-                      .map((id) => getProductById(id)?.title[language] || id)
+                      .map((id) => getProductById(id)?.shortTitle?.[language] || id)
                       .join(' · ')}
                   </p>
                 </div>

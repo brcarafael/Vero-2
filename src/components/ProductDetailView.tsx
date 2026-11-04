@@ -15,7 +15,6 @@ import {
   ShieldCheck,
   Building,
   Anchor,
-  FileCheck2,
 } from 'lucide-react';
 
 interface ProductDetailViewProps {
@@ -32,11 +31,13 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
 
   const tLabels = {
     en: {
-      backToCatalog: 'Back to all commodities',
-      addToInquiry: 'Add to my inquiry',
-      inInquiry: 'Included in your inquiry',
+      backToCatalog: 'Back to products',
+      productsBreadcrumb: 'Products',
+      switchLabel: 'Switch commodity:',
+      addToInquiry: 'Add to inquiry',
+      inInquiry: 'In your inquiry',
       removeFromInquiry: 'Remove from inquiry',
-      inquireNow: 'Proceed to inquiry with this product',
+      inquireNow: 'Complete inquiry with this product',
       shareLink: 'Share technical page',
       linkCopied: 'Link copied to clipboard!',
       specsHeading: 'Export Specifications & Quality Grades',
@@ -52,12 +53,14 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
       sourcingNotice: 'Originated on inquiry based on buyer volume and target specifications.',
     },
     pt: {
-      backToCatalog: 'Voltar a todas as commodities',
-      addToInquiry: 'Adicionar à minha consulta',
-      inInquiry: 'Incluído na sua consulta',
+      backToCatalog: 'Voltar aos produtos',
+      productsBreadcrumb: 'Produtos',
+      switchLabel: 'Alternar commodity:',
+      addToInquiry: 'Adicionar à consulta',
+      inInquiry: 'Na sua consulta',
       removeFromInquiry: 'Remover da consulta',
-      inquireNow: 'Avançar para consulta com este produto',
-      shareLink: 'Compartilhar página técnica',
+      inquireNow: 'Concluir consulta com este produto',
+      shareLink: 'Compartilhar ficha técnica',
       linkCopied: 'Link copiado para a área de transferência!',
       specsHeading: 'Especificações Técnicas e Padrões de Exportação',
       packagingHeading: 'Formatos de Embalagem e Estufagem',
@@ -72,11 +75,13 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
       sourcingNotice: 'Item originado sob consulta conforme volume e especificações do comprador.',
     },
     es: {
-      backToCatalog: 'Volver a todas las commodities',
-      addToInquiry: 'Añadir a mi consulta',
-      inInquiry: 'Incluido en su consulta',
+      backToCatalog: 'Volver a productos',
+      productsBreadcrumb: 'Productos',
+      switchLabel: 'Cambiar commodity:',
+      addToInquiry: 'Añadir a consulta',
+      inInquiry: 'En su consulta',
       removeFromInquiry: 'Eliminar de la consulta',
-      inquireNow: 'Avanzar a consulta con este producto',
+      inquireNow: 'Completar consulta con este producto',
       shareLink: 'Compartir ficha técnica',
       linkCopied: '¡Enlace copiado al portapapeles!',
       specsHeading: 'Especificaciones Técnicas y Grados de Exportación',
@@ -110,42 +115,78 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
     if (!isSelected) {
       addProduct(product.id);
     }
-    // Navigate home, then scroll to inquiry form
     navigateToHome();
     setTimeout(() => {
       scrollToInquiryForm();
-    }, 150);
+    }, 100);
   };
 
   const relatedProducts = PRODUCTS.filter((p) => p.id !== product.id).slice(0, 3);
+  const currentShortName = product.shortTitle?.[language] || product.title[language] || product.title.en;
 
   return (
     <div className="w-full bg-[#FAF7EF] text-[#111827] min-h-screen pb-24">
       {/* Top Breadcrumb & Nav Bar */}
       <div className="bg-[#FAF7EF] border-b border-[#E2ECE3] sticky top-16 sm:top-20 z-20 backdrop-blur-md bg-opacity-95">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
-          <button
-            onClick={navigateToHome}
-            className="inline-flex items-center space-x-2 text-xs sm:text-sm font-medium text-[#064E3B] hover:text-[#0B3D2E] transition-colors group"
-          >
-            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <span>{tLabels.backToCatalog}</span>
-          </button>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col gap-2">
+          <div className="flex items-center justify-between">
+            {/* Breadcrumb Navigation */}
+            <div className="flex items-center space-x-2 text-xs sm:text-sm">
+              <button
+                onClick={navigateToHome}
+                className="inline-flex items-center space-x-1.5 font-semibold text-[#064E3B] hover:text-[#0B3D2E] transition-colors group cursor-pointer focus-visible:outline-none focus-visible:underline"
+              >
+                <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+                <span>{tLabels.backToCatalog}</span>
+              </button>
+              <span className="text-gray-300">/</span>
+              <span className="text-[#6B7280] hidden sm:inline">{tLabels.productsBreadcrumb}</span>
+              <span className="text-gray-300 hidden sm:inline">/</span>
+              <span className="font-semibold text-[#111827] truncate max-w-[200px] sm:max-w-none">
+                {currentShortName}
+              </span>
+            </div>
 
-          <div className="flex items-center space-x-3">
+            {/* Share Control */}
             <button
               onClick={handleShare}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-[#D8E0D2] bg-white text-xs font-medium text-[#4B5563] hover:text-[#111827] hover:border-[#064E3B] transition-colors"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-[#D8E0D2] bg-white text-xs font-medium text-[#4B5563] hover:text-[#111827] hover:border-[#064E3B] transition-colors cursor-pointer"
               title={tLabels.shareLink}
             >
               <Share2 className="w-3.5 h-3.5" />
               <span>{copiedLink ? tLabels.linkCopied : tLabels.shareLink}</span>
             </button>
           </div>
+
+          {/* Compact Product Switcher (Accessible without scrolling) */}
+          <div className="pt-2 border-t border-[#E2ECE3]/60 flex items-center gap-2 overflow-x-auto scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
+            <span className="text-[11px] font-bold text-[#6B7280] uppercase tracking-wider whitespace-nowrap shrink-0 hidden md:inline">
+              {tLabels.switchLabel}
+            </span>
+            <div className="flex items-center gap-1.5 shrink-0">
+              {PRODUCTS.map((item) => {
+                const isActive = item.id === product.id;
+                const shortName = item.shortTitle?.[language] || item.title[language] || item.title.en;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => navigateToProduct(item.id)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
+                      isActive
+                        ? 'bg-[#064E3B] text-white shadow-xs'
+                        : 'bg-white border border-[#D8E0D2] text-[#374151] hover:border-[#064E3B] hover:text-[#064E3B]'
+                    }`}
+                  >
+                    {shortName}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10">
         {/* Main Product Showcase Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Product Image Column */}
@@ -202,7 +243,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
               {isSelected ? (
                 <button
                   onClick={() => removeProduct(product.id)}
-                  className="flex-1 inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-[#E2ECE3] text-[#064E3B] font-semibold text-sm hover:bg-[#D8E0D2] transition-colors border border-[#064E3B]/30"
+                  className="flex-1 inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-[#E2ECE3] text-[#064E3B] font-semibold text-sm hover:bg-[#D8E0D2] transition-colors border border-[#064E3B]/30 cursor-pointer"
                 >
                   <Check className="w-4 h-4 stroke-[2.5]" />
                   <span>{tLabels.inInquiry}</span>
@@ -213,7 +254,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
               ) : (
                 <button
                   onClick={() => addProduct(product.id)}
-                  className="flex-1 inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-[#064E3B] text-[#FAF7EF] font-semibold text-sm hover:bg-[#0B3D2E] transition-all shadow-md active:scale-98"
+                  className="flex-1 inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-[#064E3B] text-[#FAF7EF] font-semibold text-sm hover:bg-[#0B3D2E] transition-all shadow-md active:scale-98 cursor-pointer"
                 >
                   <Plus className="w-4 h-4" />
                   <span>{tLabels.addToInquiry}</span>
@@ -222,7 +263,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
 
               <button
                 onClick={handleDirectInquiry}
-                className="flex-1 inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-[#FAF7EF] border-2 border-[#064E3B] text-[#064E3B] font-semibold text-sm hover:bg-[#064E3B] hover:text-[#FAF7EF] transition-all"
+                className="flex-1 inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-[#FAF7EF] border-2 border-[#064E3B] text-[#064E3B] font-semibold text-sm hover:bg-[#064E3B] hover:text-[#FAF7EF] transition-all cursor-pointer"
               >
                 <span>{tLabels.inquireNow}</span>
               </button>

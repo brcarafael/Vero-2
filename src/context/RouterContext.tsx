@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef, ReactNode } from 'react';
 import { ProductId, getProductById } from '../data/products';
 
 export type AppRoute =
@@ -10,6 +10,7 @@ interface RouterContextType {
   navigateToHome: () => void;
   navigateToProduct: (id: ProductId) => void;
   currentPath: string;
+  lastOpenedProductId: ProductId | null;
 }
 
 const RouterContext = createContext<RouterContextType | undefined>(undefined);
@@ -38,33 +39,76 @@ export function RouterProvider({ children }: { children: ReactNode }) {
     parsePath(window.location.pathname, window.location.hash)
   );
 
+  const [lastOpenedProductId, setLastOpenedProductId] = useState<ProductId | null>(null);
+  const catalogScrollYRef = useRef<number>(0);
+
+  // Instant scroll jump helper (never animates through previous pages)
+  const jumpToTopInstant = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+  };
+
   useEffect(() => {
-    const handlePopState = () => {
-      setRoute(parsePath(window.location.pathname, window.location.hash));
+    const handlePopState = (event: PopStateEvent) => {
+      const targetRoute = parsePath(window.location.pathname, window.location.hash);
+      setRoute(targetRoute);
+
+      if (targetRoute.view === 'product') {
+        jumpToTopInstant();
+      } else {
+        // Returning to catalog via browser Back button
+        const restoreY = event.state?.catalogScrollY ?? catalogScrollYRef.current ?? 0;
+        window.scrollTo({ top: restoreY, left: 0, behavior: 'instant' as ScrollBehavior });
+      }
     };
 
     window.addEventListener('popstate', handlePopState);
-    window.addEventListener('hashchange', handlePopState);
+    window.addEventListener('hashchange', handlePopState as EventListener);
 
     return () => {
       window.removeEventListener('popstate', handlePopState);
-      window.removeEventListener('hashchange', handlePopState);
+      window.removeEventListener('hashchange', handlePopState as EventListener);
     };
   }, []);
 
   const navigateToHome = () => {
+    const returnY = catalogScrollYRef.current;
+
     if (window.location.pathname !== '/' || window.location.hash !== '') {
-      window.history.pushState({}, '', '/');
+      window.history.pushState({ view: 'home', catalogScrollY: returnY }, '', '/');
     }
     setRoute({ view: 'home' });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Restore catalog position instantly without scrolling through content
+    window.scrollTo({ top: returnY, left: 0, behavior: 'instant' as ScrollBehavior });
+
+    // Return focus to the link or card that opened the product
+    if (lastOpenedProductId) {
+      setTimeout(() => {
+        const triggerEl = document.getElementById(`product-detail-trigger-${lastOpenedProductId}`);
+        if (triggerEl) {
+          triggerEl.focus({ preventScroll: true });
+        }
+      }, 50);
+    }
   };
 
   const navigateToProduct = (id: ProductId) => {
+    // Record current catalog scroll position before leaving home
+    if (route.view === 'home') {
+      catalogScrollYRef.current = window.scrollY;
+    }
+    setLastOpenedProductId(id);
+
     const newPath = `/products/${id}`;
-    window.history.pushState({}, '', newPath);
+    window.history.pushState(
+      { view: 'product', productId: id, catalogScrollY: catalogScrollYRef.current },
+      '',
+      newPath
+    );
     setRoute({ view: 'product', productId: id });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Instant top positioning without animated scrolling through the page
+    jumpToTopInstant();
   };
 
   const currentPath =
@@ -77,6 +121,7 @@ export function RouterProvider({ children }: { children: ReactNode }) {
         navigateToHome,
         navigateToProduct,
         currentPath,
+        lastOpenedProductId,
       }}
     >
       {children}

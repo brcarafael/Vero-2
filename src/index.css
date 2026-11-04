@@ -18,8 +18,9 @@
   --color-vero-muted: #4B5563;
 }
 
+/* Global styles - smooth scroll applied to specific in-page actions, not page-level route transitions */
 html {
-  scroll-behavior: smooth;
+  /* instant scroll for clean route transitions */
 }
 
 body {

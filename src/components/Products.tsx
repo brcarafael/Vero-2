@@ -141,9 +141,10 @@ export default function Products() {
           {/* Card Action Controls */}
           <div className="pt-4 border-t border-[#E2ECE3] flex items-center justify-between gap-2">
             <button
+              id={`product-detail-trigger-${product.id}`}
               type="button"
               onClick={() => navigateToProduct(product.id)}
-              className="inline-flex items-center space-x-1.5 text-xs font-semibold text-[#064E3B] hover:text-[#0B3D2E] py-2 px-2.5 rounded-lg hover:bg-[#FAF7EF] transition-colors"
+              className="inline-flex items-center space-x-1.5 text-xs font-semibold text-[#064E3B] hover:text-[#0B3D2E] py-2 px-2.5 rounded-lg hover:bg-[#FAF7EF] focus-visible:ring-2 focus-visible:ring-[#064E3B] focus-visible:outline-none transition-colors"
             >
               <span>{tLabels.viewSpecs}</span>
               <ArrowRight className="w-3.5 h-3.5" />

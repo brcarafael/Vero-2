@@ -38,6 +38,7 @@ export interface ProductItem {
   isCore: boolean;
   image: string;
   title: LocalizedString;
+  shortTitle: LocalizedString;
   category: LocalizedString;
   shortDesc: LocalizedString;
   overview: LocalizedString;
@@ -62,6 +63,11 @@ export const PRODUCTS: ProductItem[] = [
       en: 'Brazilian Green Coffee (Arabica & Conilon)',
       pt: 'Café Verde Brasileiro (Arábica & Conilon)',
       es: 'Café Verde Brasileño (Arábica y Conilón)',
+    },
+    shortTitle: {
+      en: 'Green Coffee',
+      pt: 'Café Verde',
+      es: 'Café Verde',
     },
     category: {
       en: 'Green Coffee',
@@ -174,6 +180,11 @@ export const PRODUCTS: ProductItem[] = [
       pt: 'Açúcar de Cana Brasileiro (ICUMSA 45 & VHP)',
       es: 'Azúcar de Caña Brasileño (ICUMSA 45 y VHP)',
     },
+    shortTitle: {
+      en: 'Cane Sugar',
+      pt: 'Açúcar de Cana',
+      es: 'Azúcar de Caña',
+    },
     category: {
       en: 'Cane Sugar',
       pt: 'Açúcar de Cana',
@@ -281,6 +292,11 @@ export const PRODUCTS: ProductItem[] = [
       en: 'Brazilian Beans & Pulses (Edible Legumes)',
       pt: 'Feijões e Pulses Secos Brasileiros',
       es: 'Frijoles y Legumbres Secas Brasileñas',
+    },
+    shortTitle: {
+      en: 'Beans & Pulses',
+      pt: 'Feijões & Pulses',
+      es: 'Frijoles y Legumbres',
     },
     category: {
       en: 'Beans & Pulses',
@@ -396,6 +412,11 @@ export const PRODUCTS: ProductItem[] = [
       pt: 'Frutas Frescas Brasileiras (Cadeia de Frio)',
       es: 'Frutas Frescas Brasileñas (Cadena de Frío)',
     },
+    shortTitle: {
+      en: 'Fresh Fruits',
+      pt: 'Frutas Frescas',
+      es: 'Frutas Frescas',
+    },
     category: {
       en: 'Fresh Fruits',
       pt: 'Frutas Frescas',
@@ -507,6 +528,11 @@ export const PRODUCTS: ProductItem[] = [
       pt: 'Sorgo Granífero Brasileiro (Ração & Energia)',
       es: 'Sorgo Granífero Brasileño (Alimento Animal y Energía)',
     },
+    shortTitle: {
+      en: 'Grain Sorghum',
+      pt: 'Sorgo Granífero',
+      es: 'Sorgo Granífero',
+    },
     category: {
       en: 'Feed Grains',
       pt: 'Grãos Forrageiros',
@@ -615,6 +641,11 @@ export const PRODUCTS: ProductItem[] = [
       pt: 'Soja Brasileira (Comercial & Não-OGM)',
       es: 'Soja Brasileña (Comercial y No-OGM)',
     },
+    shortTitle: {
+      en: 'Soybeans',
+      pt: 'Soja',
+      es: 'Soja',
+    },
     category: {
       en: 'Sourcing on Inquiry',
       pt: 'Originação sob Consulta',
@@ -696,6 +727,11 @@ export const PRODUCTS: ProductItem[] = [
       pt: 'Milho Amarelo Brasileiro (Grau Ração)',
       es: 'Maíz Amarillo Brasileño (Grado Alimento)',
     },
+    shortTitle: {
+      en: 'Yellow Corn',
+      pt: 'Milho Amarelo',
+      es: 'Maíz Amarillo',
+    },
     category: {
       en: 'Sourcing on Inquiry',
       pt: 'Originação sob Consulta',
@@ -776,6 +812,11 @@ export const PRODUCTS: ProductItem[] = [
       en: 'Brazilian Açaí & Frozen Fruit Pulps',
       pt: 'Açaí e Polpas Congeladas Brasileiras',
       es: 'Açaí y Pulpas Congeladas Brasileñas',
+    },
+    shortTitle: {
+      en: 'Açaí & Pulps',
+      pt: 'Açaí & Polpas',
+      es: 'Açaí y Pulpas',
     },
     category: {
       en: 'Sourcing on Inquiry',

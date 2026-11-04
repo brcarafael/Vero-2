@@ -110,7 +110,15 @@ async function startServer() {
         name: name.trim(),
         email: email.trim().toLowerCase(),
         company: company.trim(),
-        products: products.map((p: unknown) => String(p).trim()),
+        products: products.map((p: any) => {
+          if (typeof p === 'object' && p !== null) {
+            return {
+              id: String(p.id || '').trim(),
+              name: String(p.name || p.title || p.id || '').trim(),
+            };
+          }
+          return String(p).trim();
+        }),
         country: country ? String(country).trim() : null,
         phone: phone ? String(phone).trim() : null,
         message: message ? String(message).trim() : null,
@@ -135,7 +143,10 @@ async function startServer() {
       inquiriesList.unshift(newInquiry);
       fs.writeFileSync(inquiriesFile, JSON.stringify(inquiriesList, null, 2), 'utf-8');
 
-      console.log(`[VERO INQUIRY RECORDED] Reference: ${inquiryId} | Company: ${newInquiry.company} | Products: ${newInquiry.products.join(', ')}`);
+      const productSummary = newInquiry.products
+        .map((p: any) => (typeof p === 'object' ? `${p.name} (${p.id})` : p))
+        .join(', ');
+      console.log(`[VERO INQUIRY RECORDED] Reference: ${inquiryId} | Company: ${newInquiry.company} | Products: ${productSummary}`);
 
       // 6. Return transparent, verified response
       return res.status(201).json({
