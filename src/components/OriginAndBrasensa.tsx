@@ -9,7 +9,7 @@ export default function OriginAndBrasensa() {
   return (
     <section
       id="about-vero"
-      className="py-16 sm:py-24 bg-[#FAF7EF] border-b border-[#E5DEC9]"
+      className="py-16 sm:py-24 bg-[#FAF7EF] border-b border-[#E5DEC9] scroll-mt-20"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}

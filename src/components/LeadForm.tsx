@@ -308,7 +308,7 @@ export default function LeadForm() {
   // If successfully submitted, display verified receipt
   if (submissionResult) {
     return (
-      <section id="inquiry-form" className="py-16 sm:py-24 bg-[#FAF7EF] border-b border-[#E5DEC9]">
+      <section id="inquiry-form" className="py-16 sm:py-24 bg-[#FAF7EF] border-b border-[#E5DEC9] scroll-mt-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-2xl border border-[#0B3D2E] p-6 sm:p-10 shadow-lg">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0B3D2E] mb-2">
@@ -401,7 +401,7 @@ export default function LeadForm() {
   }
 
   return (
-    <section id="inquiry-form" className="py-16 sm:py-24 bg-[#FAF7EF] border-b border-[#E5DEC9]">
+    <section id="inquiry-form" className="py-16 sm:py-24 bg-[#FAF7EF] border-b border-[#E5DEC9] scroll-mt-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-10 sm:mb-14">

@@ -16,9 +16,18 @@ export interface CopyTranslations {
   hero: {
     tag: string;
     headline: string;
-    supporting: string;
+    mainSupporting: string;
+    secondarySupporting: string;
+    supporting?: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    benefits: Array<{
+      title: string;
+      desc: string;
+    }>;
+    panelCommercial: string;
+    panelOrigin: string;
+    supportingStrip: string;
   };
   products: {
     tag: string;
@@ -33,21 +42,24 @@ export interface CopyTranslations {
   howVeroHelps: {
     tag: string;
     headline: string;
-    subheadline: string;
-    points: Array<{
+    introduction: string;
+    cards: Array<{
       num: string;
       title: string;
       desc: string;
     }>;
+    bottomStrip: string;
+    bottomLink: string;
   };
   process: {
     tag: string;
     headline: string;
-    subheadline: string;
+    introduction: string;
     steps: Array<{
       num: string;
       title: string;
       desc: string;
+      footerLabel: string;
     }>;
     notice: string;
   };
@@ -89,12 +101,33 @@ export const translations: Record<Language, CopyTranslations> = {
       additionalCategoryLabel: 'Additional Sourcing on Demand',
     },
     hero: {
-      tag: 'Canadian Commercial Desk · Brazilian Origin',
-      headline: 'Brazilian agricultural products. A direct conversation from Canada.',
+      tag: 'CANADA COMMERCIAL DESK · BRAZILIAN ORIGIN',
+      headline: 'Direct access to Brazilian commodities for international B2B buyers.',
+      mainSupporting:
+        'VERO connects your sourcing requirements with Brasensa in Brazil, coordinating commercial discussions from Canada.',
+      secondarySupporting:
+        'Explore our products, share what you need, and work with a clear point of contact to discuss specifications, supply options and next steps.',
       supporting:
-        'Explore coffee, sugar, beans and pulses, fresh fruit and sorghum. Tell us what interests you—we’ll coordinate the next steps with Brasensa in Brazil.',
-      ctaPrimary: 'Explore products',
-      ctaSecondary: 'Talk to VERO',
+        'VERO connects your sourcing requirements with Brasensa in Brazil, coordinating commercial discussions from Canada.',
+      ctaPrimary: 'Discuss my demand',
+      ctaSecondary: 'Explore products',
+      benefits: [
+        {
+          title: 'Canada-based contact',
+          desc: 'A clear point of contact for your sourcing conversation.',
+        },
+        {
+          title: 'Coordination with Brasensa',
+          desc: 'Connecting buyer requirements with Brazilian origin.',
+        },
+        {
+          title: 'Requirements-led sourcing',
+          desc: 'Product, packaging and shipment options discussed around your needs.',
+        },
+      ],
+      panelCommercial: 'COMMERCIAL CONTACT — VERO · Canada',
+      panelOrigin: 'BRAZILIAN ORIGIN — Brasensa · Brazil',
+      supportingStrip: 'B2B sourcing · Specifications and supply terms by agreement',
     },
     products: {
       tag: 'Commodity Portfolio',
@@ -109,62 +142,69 @@ export const translations: Record<Language, CopyTranslations> = {
         'Soybeans, yellow corn, and açaí can be discussed for sourcing according to buyer requirements.',
     },
     howVeroHelps: {
-      tag: 'Practical Assistance',
-      headline: 'How VERO assists B2B buyers.',
-      subheadline:
-        'We provide direct, knowledgeable commercial coordination from Canada, working hand-in-hand with Brasensa in Brazil.',
-      points: [
+      tag: 'HOW VERO HELPS',
+      headline: 'How VERO supports your sourcing.',
+      introduction:
+        'A commercial point of contact in Canada, helping your purchasing team clarify requirements and coordinate discussions with Brasensa in Brazil.',
+      cards: [
         {
           num: '01',
-          title: 'Commercial contact based in Canada',
-          desc: 'Direct communication in your time zone across English, Spanish, and Portuguese, without bureaucratic communication barriers.',
+          title: 'An accessible point of contact',
+          desc: 'Keep your sourcing conversation organized through VERO in Canada, with clear communication as your requirements develop.',
         },
         {
           num: '02',
-          title: 'Help clarifying buyer requirements',
-          desc: 'We assist in reviewing product specifications, volume feasibility, packaging preferences, and target destination ports.',
+          title: 'Clear sourcing requirements',
+          desc: 'We help organize product specifications, intended volumes, packaging preferences, destination and delivery expectations.',
         },
         {
           num: '03',
-          title: 'Coordination with Brasensa in Brazil',
-          desc: 'Your demand is coordinated directly with Brasensa’s export and origination desk in Brazil, eliminating opaque intermediary layers.',
+          title: 'Coordination with Brasensa',
+          desc: 'We communicate your requirements to Brasensa in Brazil and coordinate the information needed to assess suitable supply options.',
         },
         {
           num: '04',
-          title: 'Discussion of product information and potential availability',
-          desc: 'We clarify seasonal crop timing, origin parameters, and logistics considerations before formal commitments.',
-        },
-        {
-          num: '05',
-          title: 'Clear follow-up and next steps',
-          desc: 'Transparent progress updates and aligned operational next steps as your commercial discussion moves forward.',
+          title: 'Information for your decision',
+          desc: 'We coordinate discussion of availability, technical information, relevant documentation and preliminary shipment options for your inquiry.',
         },
       ],
+      bottomStrip:
+        'Start with the products you need. We can clarify the commercial and technical details together.',
+      bottomLink: 'Discuss your requirements',
     },
     process: {
-      tag: 'Commercial Flow',
-      headline: 'A straightforward 3-step process.',
-      subheadline:
-        'Transparent commercial steps designed for international B2B agricultural trade.',
+      tag: 'COMMERCIAL PROCESS',
+      headline: 'A straightforward four-step commercial pathway.',
+      introduction:
+        'From your first inquiry to agreed commercial next steps, understand how VERO coordinates your requirements with Brasensa in Brazil.',
       steps: [
         {
           num: '1',
-          title: 'Tell us what interests you.',
-          desc: 'Select the Brazilian products that match your commercial demand and share your basic contact details and requirements.',
+          title: 'Share your demand',
+          desc: 'Select the products that interest you and leave your contact details. Add any requirements you already know; detailed specifications can follow.',
+          footerLabel: 'Initial inquiry',
         },
         {
           num: '2',
-          title: 'We discuss your requirements and evaluate options with origin.',
-          desc: 'We clarify your specifications and review seasonal crop availability, logistics feasibility, and operational parameters with Brasensa in Brazil.',
+          title: 'Review with origin',
+          desc: 'We coordinate with Brasensa to assess product fit, seasonal availability and the information needed to progress your inquiry.',
+          footerLabel: 'Origin review',
         },
         {
           num: '3',
-          title: 'We align the next commercial steps.',
-          desc: 'Following initial qualification, formal commercial terms, inspection requirements, and contract sequence are coordinated with origin.',
+          title: 'Align specifications and terms',
+          desc: 'Together, we clarify quality requirements, volumes, packaging, destination, proposed delivery terms and logistics.',
+          footerLabel: 'Commercial alignment',
+        },
+        {
+          num: '4',
+          title: 'Define next steps',
+          desc: 'Where a suitable supply option is identified, we coordinate the proposed commercial terms and clarify documentation and contracting next steps.',
+          footerLabel: 'Agreed next steps',
         },
       ],
       notice:
-        'Notice: VERO does not promise guaranteed quotes, samples, response times, or shipment schedules without prior requirement review.',
+        'Timing, samples and supply arrangements depend on the product, buyer requirements and commercial qualification.',
     },
     partnership: {
       tag: 'Commercial Roles',
@@ -219,12 +259,33 @@ export const translations: Record<Language, CopyTranslations> = {
       additionalCategoryLabel: 'Originação Adicional sob Consulta',
     },
     hero: {
-      tag: 'Desk Comercial no Canadá · Origem Brasileira',
-      headline: 'Produtos agrícolas brasileiros. Uma conversa direta a partir do Canadá.',
+      tag: 'MESA COMERCIAL NO CANADÁ · ORIGEM BRASILEIRA',
+      headline: 'Acesso direto a commodities brasileiras para compradores B2B internacionais.',
+      mainSupporting:
+        'A VERO conecta suas demandas de suprimento à Brasensa no Brasil, coordenando as conversas comerciais a partir do Canadá.',
+      secondarySupporting:
+        'Explore nossos produtos, informe o que você precisa e conte com um ponto de contato claro para discutir especificações, opções de fornecimento e próximos passos.',
       supporting:
-        'Explore café, açúcar, feijões e leguminosas, frutas frescas e sorgo. Conte-nos o que interessa à sua empresa—nós coordenamos os próximos passos com a Brasensa no Brasil.',
-      ctaPrimary: 'Explorar produtos',
-      ctaSecondary: 'Falar com a VERO',
+        'A VERO conecta suas demandas de suprimento à Brasensa no Brasil, coordenando as conversas comerciais a partir do Canadá.',
+      ctaPrimary: 'Discutir minha demanda',
+      ctaSecondary: 'Explorar produtos',
+      benefits: [
+        {
+          title: 'Contato no Canadá',
+          desc: 'Um ponto de contato claro para sua conversa de suprimento.',
+        },
+        {
+          title: 'Coordenação com a Brasensa',
+          desc: 'Conectando as demandas do comprador à origem brasileira.',
+        },
+        {
+          title: 'Suprimento orientado a requisitos',
+          desc: 'Opções de produto, embalagem e embarque alinhadas às suas necessidades.',
+        },
+      ],
+      panelCommercial: 'CONTATO COMERCIAL — VERO · Canadá',
+      panelOrigin: 'ORIGEM BRASILEIRA — Brasensa · Brasil',
+      supportingStrip: 'Suprimento B2B · Especificações e termos de fornecimento sob acordo',
     },
     products: {
       tag: 'Portfólio de Produtos',
@@ -239,62 +300,69 @@ export const translations: Record<Language, CopyTranslations> = {
         'Soja, milho amarelo e açaí podem ser discutidos para fornecimento conforme as exigências do comprador.',
     },
     howVeroHelps: {
-      tag: 'Apoio Prático',
-      headline: 'Como a VERO ajuda compradores B2B.',
-      subheadline:
-        'Oferecemos coordenação comercial direta e fundamentada a partir do Canadá, trabalhando em conjunto com a Brasensa no Brasil.',
-      points: [
+      tag: 'COMO A VERO AJUDA',
+      headline: 'Como a VERO apoia seu suprimento.',
+      introduction:
+        'Um ponto de contato comercial no Canadá, ajudando sua equipe de compras a esclarecer requisitos e coordenar conversas com a Brasensa no Brasil.',
+      cards: [
         {
           num: '01',
-          title: 'Contato comercial sediado no Canadá',
-          desc: 'Comunicação direta no seu fuso horário em português, inglês e espanhol, sem barreiras de interlocução.',
+          title: 'Um ponto de contato acessível',
+          desc: 'Mantenha suas conversas de suprimento organizadas através da VERO no Canadá, com comunicação clara conforme suas demandas evoluem.',
         },
         {
           num: '02',
-          title: 'Apoio no esclarecimento de requisitos',
-          desc: 'Auxiliamos na estruturação de especificações técnicas, volumes viáveis, opções de embalagem e porto de destino.',
+          title: 'Requisitos claros de suprimento',
+          desc: 'Ajudamos a estruturar especificações de produto, volumes planejados, preferências de embalagem, destino e expectativas de entrega.',
         },
         {
           num: '03',
-          title: 'Coordenação com a Brasensa no Brasil',
-          desc: 'Sua demanda é tratada diretamente com o desk de originação e exportação da Brasensa no Brasil, sem camadas opacas.',
+          title: 'Coordenação com a Brasensa',
+          desc: 'Comunicamos suas necessidades à Brasensa no Brasil e coordenamos as informações necessárias para avaliar opções adequadas de fornecimento.',
         },
         {
           num: '04',
-          title: 'Discussão de informações e disponibilidade potencial',
-          desc: 'Esclarecemos janelas de safra, parâmetros de origem e condições logísticas antes de compromissos formais.',
-        },
-        {
-          num: '05',
-          title: 'Acompanhamento claro e próximos passos',
-          desc: 'Acompanhamento transparente e sequência formal alinhada à medida que as tratativas comerciais avançam.',
+          title: 'Informações para sua decisão',
+          desc: 'Coordenamos discussões sobre disponibilidade, fichas técnicas, documentação pertinente e opções preliminares de embarque para sua consulta.',
         },
       ],
+      bottomStrip:
+        'Comece pelos produtos que você procura. Podemos esclarecer os detalhes comerciais e técnicos juntos.',
+      bottomLink: 'Discutir seus requisitos',
     },
     process: {
-      tag: 'Fluxo Comercial',
-      headline: 'Um processo simples em três etapas.',
-      subheadline:
-        'Etapas comerciais transparentes e alinhadas às práticas do comércio agrícola internacional.',
+      tag: 'PROCESSO COMERCIAL',
+      headline: 'Uma rota comercial clara em quatro etapas.',
+      introduction:
+        'Da primeira consulta aos próximos passos comerciais acordados, entenda como a VERO coordena suas demandas com a Brasensa no Brasil.',
       steps: [
         {
           num: '1',
-          title: 'Conte-nos o que interessa à sua empresa.',
-          desc: 'Selecione os produtos brasileiros relevantes para sua operação e compartilhe seus dados de contato e necessidades preliminares.',
+          title: 'Compartilhe sua demanda',
+          desc: 'Selecione os produtos de interesse e informe seus dados de contato. Adicione os requisitos que já souber; especificações detalhadas virão a seguir.',
+          footerLabel: 'Consulta inicial',
         },
         {
           num: '2',
-          title: 'Conversamos sobre seus requisitos e avaliamos opções com a origem.',
-          desc: 'Esclarecemos suas especificações e checamos disponibilidade de safra, viabilidade logística e parâmetros com a Brasensa no Brasil.',
+          title: 'Avaliação com a origem',
+          desc: 'Coordenamos com a Brasensa para avaliar a adequação do produto, a disponibilidade da safra e as informações necessárias para avançar sua consulta.',
+          footerLabel: 'Análise na origem',
         },
         {
           num: '3',
-          title: 'Alinhamos os próximos passos comerciais.',
-          desc: 'Após a qualificação inicial, termos comerciais formais, laudos e sequência contratual são alinhados junto à origem.',
+          title: 'Alinhamento de especificações e termos',
+          desc: 'Juntos, esclarecemos requisitos de qualidade, volumes, embalagens, destino, termos de entrega propostos e logística.',
+          footerLabel: 'Alineação comercial',
+        },
+        {
+          num: '4',
+          title: 'Definição dos próximos passos',
+          desc: 'Identificada uma opção de fornecimento viável, coordenamos os termos comerciais propostos e esclarecemos os passos de documentação e contratação.',
+          footerLabel: 'Próximos passos acordados',
         },
       ],
       notice:
-        'Nota: A VERO não promete cotações imediatas, envio prévio de amostras ou prazos de embarque sem avaliação prévia dos requisitos.',
+        'Prazos, amostras e arranjos de fornecimento dependem do produto, dos requisitos do comprador e da qualificação comercial.',
     },
     partnership: {
       tag: 'Papéis Comerciais',
@@ -349,12 +417,33 @@ export const translations: Record<Language, CopyTranslations> = {
       additionalCategoryLabel: 'Originación Adicional bajo Consulta',
     },
     hero: {
-      tag: 'Desk Comercial en Canadá · Origen Brasileño',
-      headline: 'Productos agrícolas brasileños. Una conversación directa desde Canadá.',
+      tag: 'MESA COMERCIAL EN CANADÁ · ORIGEN BRASILEÑO',
+      headline: 'Acceso directo a commodities brasileñas para compradores B2B internacionales.',
+      mainSupporting:
+        'VERO conecta sus requerimientos de suministro con Brasensa en Brasil, coordinando las conversaciones comerciales desde Canadá.',
+      secondarySupporting:
+        'Explore nuestros productos, comparta lo que necesita y cuente con un punto de contacto claro para evaluar especificaciones, opciones de suministro y próximos pasos.',
       supporting:
-        'Explore café, azúcar, legumbres, fruta fresca y sorgo. Cuéntenos su interés y coordinaremos los siguientes pasos con Brasensa en Brasil.',
-      ctaPrimary: 'Explorar productos',
-      ctaSecondary: 'Hablar con VERO',
+        'VERO conecta sus requerimientos de suministro con Brasensa en Brasil, coordinando las conversaciones comerciales desde Canadá.',
+      ctaPrimary: 'Conversar sobre mi demanda',
+      ctaSecondary: 'Explorar productos',
+      benefits: [
+        {
+          title: 'Contacto en Canadá',
+          desc: 'Un punto de contacto claro para su conversación de suministro.',
+        },
+        {
+          title: 'Coordinación con Brasensa',
+          desc: 'Conectando los requerimientos del comprador con el origen brasileño.',
+        },
+        {
+          title: 'Suministro basado en requisitos',
+          desc: 'Opciones de producto, empaque y embarque evaluadas según sus necesidades.',
+        },
+      ],
+      panelCommercial: 'CONTACTO COMERCIAL — VERO · Canadá',
+      panelOrigin: 'ORIGEN BRASILEÑO — Brasensa · Brasil',
+      supportingStrip: 'Suministro B2B · Especificaciones y términos de suministro bajo acuerdo',
     },
     products: {
       tag: 'Portafolio de Productos',
@@ -369,62 +458,69 @@ export const translations: Record<Language, CopyTranslations> = {
         'Soja, maíz amarillo y açaí pueden evaluarse para suministro según las necesidades del comprador.',
     },
     howVeroHelps: {
-      tag: 'Asistencia Práctica',
-      headline: 'Cómo VERO asiste a compradores B2B.',
-      subheadline:
-        'Brindamos coordinación comercial directa y técnica desde Canadá, colaborando estrechamente con Brasensa en Brasil.',
-      points: [
+      tag: 'CÓMO AYUDA VERO',
+      headline: 'Cómo apoya VERO su aprovisionamiento.',
+      introduction:
+        'Un punto de contacto comercial en Canadá, que ayuda a su equipo de compras a clarificar requerimientos y coordinar conversaciones con Brasensa en Brasil.',
+      cards: [
         {
           num: '01',
-          title: 'Contacto comercial basado en Canadá',
-          desc: 'Comunicación directa en su huso horario en español, inglés y portugués, sin intermediarios innecesarios.',
+          title: 'Un punto de contacto accesible',
+          desc: 'Mantenga sus conversaciones de suministro organizadas a través de VERO en Canadá, con comunicación clara según evolucionan sus demandas.',
         },
         {
           num: '02',
-          title: 'Clarificación de requisitos de compra',
-          desc: 'Ayudamos a definir especificaciones técnicas, volúmenes realistas, empaques adecuados y puerto de destino.',
+          title: 'Requerimientos claros de suministro',
+          desc: 'Ayudamos a organizar especificaciones de producto, volúmenes previstos, preferencias de empaque, destino y expectativas de entrega.',
         },
         {
           num: '03',
-          title: 'Coordinación con Brasensa en Brasil',
-          desc: 'Su demanda se gestiona directamente con la estructura de exportación y origen de Brasensa en Brasil.',
+          title: 'Coordinación con Brasensa',
+          desc: 'Comunicamos sus requerimientos a Brasensa en Brasil y coordinamos la información necesaria para evaluar opciones adecuadas de suministro.',
         },
         {
           num: '04',
-          title: 'Evaluación de disponibilidad e información técnica',
-          desc: 'Revisamos temporadas de cosecha, parámetros de origen y logística preliminar antes de compromisos formales.',
-        },
-        {
-          num: '05',
-          title: 'Seguimiento transparente y próximos pasos',
-          desc: 'Acompañamiento claro y formalización ordenada a medida que avanza la conversación comercial.',
+          title: 'Información para su decisión',
+          desc: 'Coordinamos discusiones sobre disponibilidad, fichas técnicas, documentación pertinente y opciones preliminares de embarque para su consulta.',
         },
       ],
+      bottomStrip:
+        'Comience con los productos que necesita. Podemos clarificar los detalles comerciales y técnicos juntos.',
+      bottomLink: 'Conversar sobre sus requerimientos',
     },
     process: {
-      tag: 'Flujo Comercial',
-      headline: 'Un proceso directo en tres pasos.',
-      subheadline:
-        'Pasos comerciales claros y adaptados a las exigencias del comercio exterior agrícola B2B.',
+      tag: 'PROCESO COMERCIAL',
+      headline: 'Una ruta comercial clara en cuatro etapas.',
+      introduction:
+        'Desde su primera consulta hasta los próximos pasos comerciales acordados, entienda cómo coordina VERO sus requerimientos con Brasensa en Brasil.',
       steps: [
         {
           num: '1',
-          title: 'Cuéntenos lo que le interesa.',
-          desc: 'Seleccione los productos brasileños relevantes y comparta sus datos de contacto y necesidades preliminares.',
+          title: 'Comparta su demanda',
+          desc: 'Seleccione los productos de interés e ingrese sus datos de contacto. Agregue los requerimientos que ya conozca; las especificaciones detalladas vendrán a continuación.',
+          footerLabel: 'Consulta inicial',
         },
         {
           num: '2',
-          title: 'Conversamos sobre sus requisitos y evaluamos opciones con origen.',
-          desc: 'Analizamos sus especificaciones y revisamos disponibilidad de zafra, factibilidad logística y parámetros con Brasensa en Brasil.',
+          title: 'Revisión con el origen',
+          desc: 'Coordinamos con Brasensa para evaluar la adecuación del producto, la disponibilidad de temporada y la información necesaria para avanzar su consulta.',
+          footerLabel: 'Revisión en origen',
         },
         {
           num: '3',
-          title: 'Alineamos los próximos pasos comerciales.',
-          desc: 'Tras la calificación inicial, las condiciones comerciales formales, inspecciones y secuencia contractual se definen con origen.',
+          title: 'Alineación de especificaciones y términos',
+          desc: 'Juntos, clarificamos requisitos de calidad, volúmenes, empaques, destino, términos de entrega propuestos y logística.',
+          footerLabel: 'Alineación comercial',
+        },
+        {
+          num: '4',
+          title: 'Definición de los próximos pasos',
+          desc: 'Identificada una opción de suministro viable, coordinamos los términos comerciales propuestos y clarificamos los pasos de documentación y contratación.',
+          footerLabel: 'Próximos pasos acordados',
         },
       ],
       notice:
-        'Aviso: VERO no promete cotizaciones inmediatas, muestras previas ni plazos de despacho sin evaluación previa de requisitos.',
+        'Plazos, muestras y acuerdos de suministro dependen del producto, de los requerimientos del comprador y de la calificación comercial.',
     },
     partnership: {
       tag: 'Roles Comerciales',
@@ -469,4 +565,3 @@ export const translations: Record<Language, CopyTranslations> = {
 };
 
 export const content = translations;
-
