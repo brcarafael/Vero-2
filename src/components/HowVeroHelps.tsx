@@ -1,11 +1,89 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useInquiry } from '../context/InquiryContext';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import { ArrowRight, UserCheck, FileText, ArrowLeftRight, CheckCircle2 } from 'lucide-react';
+
+interface HowCardItem {
+  num: string;
+  title: string;
+  desc: string;
+}
+
+interface HowVeroHelpsCardProps {
+  key?: React.Key;
+  card: HowCardItem;
+  index: number;
+  Icon: React.ComponentType<{ className?: string }>;
+  isContainerVisible: boolean;
+}
+
+function HowVeroHelpsCard({
+  card,
+  index,
+  Icon,
+  isContainerVisible,
+}: HowVeroHelpsCardProps) {
+  const [cardRef, isCardVisible] = useScrollReveal({
+    threshold: 0.1,
+    rootMargin: '0px 0px -30px 0px',
+    exitBufferPx: 50,
+  });
+
+  const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
+  const isSettled = isDesktop ? isContainerVisible : isCardVisible;
+  const staggerDelay = isDesktop ? index * 60 : 0;
+
+  return (
+    <div
+      ref={cardRef}
+      className="bg-white rounded-2xl border border-[#D8E0D2] p-6 sm:p-7 shadow-xs flex flex-col justify-between"
+    >
+      <div>
+        {/* Top Row: Number on left, Pale-green Icon Tile on right with scroll-triggered settle */}
+        <div className="flex items-center justify-between">
+          <span className="font-mono text-xs sm:text-sm font-bold text-[#064E3B] tracking-wider">
+            {card.num}
+          </span>
+          <div
+            className={`w-9 h-9 rounded-xl bg-[#E2ECE3] text-[#064E3B] flex items-center justify-center shrink-0 icon-tile-settle ${
+              isSettled ? 'is-settled' : ''
+            }`}
+            style={{ transitionDelay: `${staggerDelay}ms` }}
+          >
+            <Icon className="w-4 h-4 stroke-[1.75]" />
+          </div>
+        </div>
+
+        {/* Title & Description stay completely stationary */}
+        <div className="mt-5">
+          <h3 className="text-base sm:text-lg font-heading font-semibold text-[#111827] leading-snug">
+            {card.title}
+          </h3>
+          <p className="text-xs sm:text-sm text-[#4B5563] leading-relaxed mt-2.5">
+            {card.desc}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function HowVeroHelps() {
   const { t } = useLanguage();
   const { scrollToInquiryForm } = useInquiry();
+
+  const [headingRef, isHeadingVisible] = useScrollReveal({
+    threshold: 0.1,
+    rootMargin: '0px 0px -30px 0px',
+    exitBufferPx: 50,
+  });
+
+  const [cardsContainerRef, isCardsContainerVisible] = useScrollReveal({
+    threshold: 0.1,
+    rootMargin: '0px 0px -30px 0px',
+    exitBufferPx: 50,
+  });
 
   const cardIcons = [UserCheck, FileText, ArrowLeftRight, CheckCircle2];
 
@@ -15,8 +93,13 @@ export default function HowVeroHelps() {
       className="py-16 sm:py-24 bg-[#FAF7EF] border-b border-[#E5DEC9] scroll-mt-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
+        {/* Section Header with consistent heading reveal */}
+        <div
+          ref={headingRef}
+          className={`max-w-3xl mb-12 sm:mb-16 heading-reveal ${
+            isHeadingVisible ? 'is-visible' : ''
+          }`}
+        >
           <div className="text-xs uppercase tracking-wider font-bold text-[#064E3B] mb-2">
             {t.howVeroHelps.tag}
           </div>
@@ -28,37 +111,21 @@ export default function HowVeroHelps() {
           </p>
         </div>
 
-        {/* Four White Numbered Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-12">
+        {/* Four White Numbered Cards with staggered green icon tile settle */}
+        <div
+          ref={cardsContainerRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-12"
+        >
           {t.howVeroHelps.cards.map((card, idx) => {
             const Icon = cardIcons[idx] || UserCheck;
             return (
-              <div
+              <HowVeroHelpsCard
                 key={idx}
-                className="bg-white rounded-2xl border border-[#D8E0D2] p-6 sm:p-7 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between group"
-              >
-                <div>
-                  {/* Top Row: Number on left, Pale-green Icon Tile on right */}
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs sm:text-sm font-bold text-[#064E3B] tracking-wider">
-                      {card.num}
-                    </span>
-                    <div className="w-9 h-9 rounded-xl bg-[#E2ECE3] text-[#064E3B] flex items-center justify-center shrink-0">
-                      <Icon className="w-4 h-4 stroke-[1.75]" />
-                    </div>
-                  </div>
-
-                  {/* Title & Description */}
-                  <div className="mt-5">
-                    <h3 className="text-base sm:text-lg font-heading font-semibold text-[#111827] leading-snug">
-                      {card.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-[#4B5563] leading-relaxed mt-2.5">
-                      {card.desc}
-                    </p>
-                  </div>
-                </div>
-              </div>
+                card={card}
+                index={idx}
+                Icon={Icon}
+                isContainerVisible={isCardsContainerVisible}
+              />
             );
           })}
         </div>

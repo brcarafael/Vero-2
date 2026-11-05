@@ -10,14 +10,19 @@ export default function Footer() {
   const { route, navigateToHome, navigateToProduct } = useRouter();
 
   const handleFooterLink = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const targetId = href.replace(/^\/?#/, '');
     if (route.view !== 'home') {
       e.preventDefault();
-      navigateToHome();
-      setTimeout(() => {
-        const id = href.replace('#', '');
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 80);
+      navigateToHome(targetId);
+    } else {
+      e.preventDefault();
+      const el = document.getElementById(targetId);
+      if (el) {
+        if (window.location.hash !== `#${targetId}`) {
+          window.history.pushState(null, '', `/#${targetId}`);
+        }
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -52,8 +57,8 @@ export default function Footer() {
             <ul className="space-y-2 text-xs text-[#D4DED9]">
               <li>
                 <a
-                  href="#products"
-                  onClick={(e) => handleFooterLink(e, '#products')}
+                  href="/#products"
+                  onClick={(e) => handleFooterLink(e, '/#products')}
                   className="hover:text-white transition-colors"
                 >
                   {t.nav.products}
@@ -61,8 +66,8 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#how-it-works"
-                  onClick={(e) => handleFooterLink(e, '#how-it-works')}
+                  href="/#how-it-works"
+                  onClick={(e) => handleFooterLink(e, '/#how-it-works')}
                   className="hover:text-white transition-colors"
                 >
                   {t.nav.howItWorks}
@@ -70,8 +75,8 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#about-vero"
-                  onClick={(e) => handleFooterLink(e, '#about-vero')}
+                  href="/#about-vero"
+                  onClick={(e) => handleFooterLink(e, '/#about-vero')}
                   className="hover:text-white transition-colors"
                 >
                   {t.nav.about}
@@ -79,8 +84,8 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#inquiry-form"
-                  onClick={(e) => handleFooterLink(e, '#inquiry-form')}
+                  href="/#inquiry-form"
+                  onClick={(e) => handleFooterLink(e, '/#inquiry-form')}
                   className="hover:text-white transition-colors"
                 >
                   {t.nav.contact}

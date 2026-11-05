@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useInquiry } from '../context/InquiryContext';
 import { useLanguage } from '../context/LanguageContext';
+import { useRouter } from '../context/RouterContext';
 import { getProductById } from '../data/products';
 import { ShoppingBag, ArrowRight, X, Check, ChevronUp, ChevronDown } from 'lucide-react';
 
@@ -14,8 +15,21 @@ export default function InquiryBar() {
     dismissNotification,
     scrollToInquiryForm,
   } = useInquiry();
+  const { route, navigateToHome } = useRouter();
   const { language } = useLanguage();
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isPulsing, setIsPulsing] = useState(false);
+  const prevCountRef = useRef(inquiryCount);
+
+  useEffect(() => {
+    if (prevCountRef.current !== inquiryCount && inquiryCount > 0) {
+      setIsPulsing(true);
+      const timer = setTimeout(() => setIsPulsing(false), 240);
+      prevCountRef.current = inquiryCount;
+      return () => clearTimeout(timer);
+    }
+    prevCountRef.current = inquiryCount;
+  }, [inquiryCount]);
 
   const tLabels = {
     en: {
@@ -131,9 +145,9 @@ export default function InquiryBar() {
                 className="flex items-center space-x-2.5 text-left group cursor-pointer"
                 aria-expanded={isExpanded}
               >
-                <div className="relative w-8 h-8 rounded-lg bg-white text-[#0B3D2E] flex items-center justify-center font-bold text-xs shadow-xs flex-shrink-0">
+                <div className={`relative w-8 h-8 rounded-lg bg-white text-[#0B3D2E] flex items-center justify-center font-bold text-xs shadow-xs flex-shrink-0 transition-transform ${isPulsing ? 'animate-counter-pulse' : ''}`}>
                   <ShoppingBag className="w-4 h-4 text-[#0B3D2E]" />
-                  <span className="absolute -top-1.5 -right-1.5 bg-[#0B3D2E] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold border border-white">
+                  <span className={`absolute -top-1.5 -right-1.5 bg-[#0B3D2E] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold border border-white transition-transform ${isPulsing ? 'animate-counter-pulse' : ''}`}>
                     {inquiryCount}
                   </span>
                 </div>
@@ -159,7 +173,13 @@ export default function InquiryBar() {
             <div className="flex items-center space-x-2 flex-shrink-0">
               <button
                 type="button"
-                onClick={scrollToInquiryForm}
+                onClick={() => {
+                  if (route.view !== 'home') {
+                    navigateToHome('inquiry-form');
+                  } else {
+                    scrollToInquiryForm();
+                  }
+                }}
                 className="inline-flex items-center space-x-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg bg-white text-[#0B3D2E] hover:bg-[#FAF7EF] text-xs sm:text-sm font-semibold transition-all shadow-sm active:scale-95 cursor-pointer"
               >
                 <span>{tLabels.proceedBtn}</span>

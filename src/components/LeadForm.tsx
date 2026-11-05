@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useInquiry } from '../context/InquiryContext';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import { COMMERCIAL_EMAIL } from '../constants/contact';
 import { PRODUCTS, ProductId, getProductById } from '../data/products';
 import { Check, AlertCircle, Copy, RotateCcw, Mail } from 'lucide-react';
@@ -14,6 +15,12 @@ interface SubmissionResult {
 export default function LeadForm() {
   const { language } = useLanguage();
   const { selectedProductIds, toggleProduct, isProductSelected, clearInquiry } = useInquiry();
+
+  const [headingRef, isHeadingVisible] = useScrollReveal({
+    threshold: 0.1,
+    rootMargin: '0px 0px -30px 0px',
+    exitBufferPx: 50,
+  });
 
   // Required Fields
   const [name, setName] = useState('');
@@ -403,8 +410,13 @@ export default function LeadForm() {
   return (
     <section id="inquiry-form" className="py-16 sm:py-24 bg-[#FAF7EF] border-b border-[#E5DEC9] scroll-mt-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-10 sm:mb-14">
+        {/* Section Header with consistent heading reveal */}
+        <div
+          ref={headingRef}
+          className={`max-w-3xl mb-10 sm:mb-14 heading-reveal ${
+            isHeadingVisible ? 'is-visible' : ''
+          }`}
+        >
           <div className="text-xs uppercase tracking-wider font-bold text-[#0B3D2E] mb-2">
             {tLabels.tag}
           </div>

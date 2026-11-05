@@ -1,11 +1,107 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Send, Search, Sliders, CheckCircle2 } from 'lucide-react';
 
 export default function CommercialProcess() {
   const { t } = useLanguage();
-
   const stepIcons = [Send, Search, Sliders, CheckCircle2];
+
+  const [headingRef, isHeadingVisible] = useScrollReveal({
+    threshold: 0.1,
+    rootMargin: '0px 0px -30px 0px',
+    exitBufferPx: 50,
+  });
+
+  const gridRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [revealedSteps, setRevealedSteps] = useState<boolean[]>([false, false, false, false]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setRevealedSteps([true, true, true, true]);
+      return;
+    }
+
+    const isDesktop = window.innerWidth >= 1024;
+
+    if (isDesktop) {
+      // Desktop: sequence the four step labels and dividers 60ms apart
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              [0, 1, 2, 3].forEach((stepIdx) => {
+                setTimeout(() => {
+                  setRevealedSteps((prev) => {
+                    const next = [...prev];
+                    next[stepIdx] = true;
+                    return next;
+                  });
+                }, stepIdx * 60);
+              });
+            } else {
+              // Re-arm only when fully out of view by margin
+              const rect = entry.boundingClientRect;
+              const fullyAbove = rect.bottom < -50;
+              const fullyBelow = rect.top > window.innerHeight + 50;
+              if (fullyAbove || fullyBelow) {
+                setRevealedSteps([false, false, false, false]);
+              }
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -30px 0px' }
+      );
+
+      if (gridRef.current) {
+        observer.observe(gridRef.current);
+      }
+
+      return () => observer.disconnect();
+    } else {
+      // Mobile: reveal each label and draw divider as card enters view
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const indexStr = entry.target.getAttribute('data-step-index');
+            if (indexStr !== null) {
+              const idx = parseInt(indexStr, 10);
+              if (entry.isIntersecting) {
+                setRevealedSteps((prev) => {
+                  if (prev[idx]) return prev;
+                  const next = [...prev];
+                  next[idx] = true;
+                  return next;
+                });
+              } else {
+                const rect = entry.boundingClientRect;
+                const fullyAbove = rect.bottom < -50;
+                const fullyBelow = rect.top > window.innerHeight + 50;
+                if (fullyAbove || fullyBelow) {
+                  setRevealedSteps((prev) => {
+                    if (!prev[idx]) return prev;
+                    const next = [...prev];
+                    next[idx] = false;
+                    return next;
+                  });
+                }
+              }
+            }
+          });
+        },
+        { threshold: 0.2, rootMargin: '0px 0px -30px 0px' }
+      );
+
+      cardRefs.current.forEach((el) => {
+        if (el) observer.observe(el);
+      });
+
+      return () => observer.disconnect();
+    }
+  }, []);
 
   return (
     <section
@@ -20,8 +116,13 @@ export default function CommercialProcess() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
+        {/* Section Header with consistent heading reveal */}
+        <div
+          ref={headingRef}
+          className={`max-w-3xl mb-12 sm:mb-16 heading-reveal ${
+            isHeadingVisible ? 'is-visible' : ''
+          }`}
+        >
           <div className="text-xs uppercase tracking-widest font-bold text-[#C9A24A] mb-2 font-mono">
             {t.process.tag}
           </div>
@@ -34,18 +135,27 @@ export default function CommercialProcess() {
         </div>
 
         {/* Four Darker Green Cards in a Row on Desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-6">
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-6"
+        >
           {t.process.steps.map((step, index) => {
             const Icon = stepIcons[index] || Send;
             return (
               <div
                 key={index}
+                ref={(el) => (cardRefs.current[index] = el)}
+                data-step-index={index}
                 className="bg-[#062D22]/85 border border-[#164E3D] rounded-2xl p-6 sm:p-7 flex flex-col justify-between shadow-xs hover:border-[#1F6A53] transition-colors"
               >
                 <div>
                   {/* Top Row: Gold Accent Step Number & Outline Icon */}
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold text-[#C9A24A] tracking-widest uppercase">
+                    <span
+                      className={`font-mono text-xs font-bold text-[#C9A24A] tracking-widest uppercase transition-opacity duration-300 motion-reduce:transition-none motion-reduce:opacity-100 ${
+                        revealedSteps[index] ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    >
                       Step 0{step.num}
                     </span>
                     <div className="w-8 h-8 rounded-lg bg-[#0F3D30] text-[#A3C4B6] flex items-center justify-center shrink-0 border border-white/5">
@@ -53,7 +163,7 @@ export default function CommercialProcess() {
                     </div>
                   </div>
 
-                  {/* Title & Description */}
+                  {/* Title & Description remain completely readable throughout */}
                   <div className="mt-4">
                     <h3 className="text-base sm:text-lg font-heading font-semibold text-white leading-snug">
                       {step.title}
@@ -64,8 +174,14 @@ export default function CommercialProcess() {
                   </div>
                 </div>
 
-                {/* Compact Footer Label */}
-                <div className="mt-6 pt-3.5 border-t border-white/10 flex items-center justify-between text-[11px] font-medium text-[#A3C4B6]">
+                {/* Compact Footer Label with subtle divider drawing left to right */}
+                <div className="relative mt-6 pt-3.5 flex items-center justify-between text-[11px] font-medium text-[#A3C4B6]">
+                  <div
+                    className={`absolute top-0 left-0 right-0 h-[1px] bg-white/10 divider-draw ${
+                      revealedSteps[index] ? 'is-drawn' : ''
+                    }`}
+                    aria-hidden="true"
+                  />
                   <span>{step.footerLabel}</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C9A24A]" />
                 </div>

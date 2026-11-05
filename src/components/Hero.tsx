@@ -46,7 +46,15 @@ export default function Hero() {
               </button>
 
               <a
-                href="#products"
+                href="/#products"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (window.location.hash !== '#products') {
+                    window.history.pushState(null, '', '/#products');
+                  }
+                  const el = document.getElementById('products');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="px-7 py-3.5 bg-white hover:bg-[#F5EFE3] text-[#111827] border border-[#D8E0D2] rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 shadow-2xs cursor-pointer active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#064E3B]"
               >
                 <span>{t.hero.ctaSecondary}</span>
@@ -73,7 +81,7 @@ export default function Hero() {
 
           {/* Right Column (5 cols): Framed Shipping Photograph with Relationship Panels */}
           <div className="lg:col-span-5 order-2">
-            <div className="bg-white p-3 sm:p-3.5 rounded-2xl border border-[#D8E0D2] shadow-xl">
+            <div className="bg-white p-3 sm:p-3.5 rounded-2xl border border-[#D8E0D2] shadow-xl animate-hero-settle motion-reduce:animate-none">
               {/* Shipping Photograph */}
               <div className="relative rounded-xl overflow-hidden bg-[#0F2F24] aspect-[4/3] sm:aspect-[16/11]">
                 <img

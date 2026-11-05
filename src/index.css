@@ -45,3 +45,133 @@ body {
   background: #064E3B; 
 }
 
+/* Restrained motion keyframes */
+@keyframes settleCheck {
+  0% {
+    transform: scale(0.65);
+    opacity: 0.3;
+  }
+  70% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes heroSettle {
+  0% {
+    transform: translateY(6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes counterPulse {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.18);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-settle-check {
+  animation: settleCheck 160ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-hero-settle {
+  animation: heroSettle 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-counter-pulse {
+  animation: counterPulse 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Consistent section heading reveal: settles upward ~6px with subtle fade over 300-350ms */
+.heading-reveal {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 320ms cubic-bezier(0.16, 1, 0.3, 1), transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.heading-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Product photograph scroll-triggered crop settle (1.025x -> 1.0x) */
+.photo-settle {
+  transform: scale(1.025);
+  transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.photo-settle.is-settled {
+  transform: scale(1);
+}
+
+/* Commercial process divider drawing from left to right */
+.divider-draw {
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.divider-draw.is-drawn {
+  transform: scaleX(1);
+}
+
+/* How VERO Helps icon tile settle */
+.icon-tile-settle {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.icon-tile-settle.is-settled {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Origin & Brasensa role labels */
+.role-label-settle {
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.role-label-settle.is-settled {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-settle-check,
+  .animate-hero-settle,
+  .animate-counter-pulse {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .heading-reveal,
+  .photo-settle,
+  .divider-draw,
+  .icon-tile-settle,
+  .role-label-settle {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+

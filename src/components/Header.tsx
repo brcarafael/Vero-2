@@ -12,7 +12,19 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
+  const [isPulsing, setIsPulsing] = useState(false);
+  const prevCountRef = useRef(inquiryCount);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (prevCountRef.current !== inquiryCount && inquiryCount > 0) {
+      setIsPulsing(true);
+      const timer = setTimeout(() => setIsPulsing(false), 240);
+      prevCountRef.current = inquiryCount;
+      return () => clearTimeout(timer);
+    }
+    prevCountRef.current = inquiryCount;
+  }, [inquiryCount]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,21 +47,27 @@ export default function Header() {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     setProductsDropdownOpen(false);
+    const targetId = href.replace(/^\/?#/, '');
+
     if (route.view !== 'home') {
       e.preventDefault();
-      navigateToHome();
-      setTimeout(() => {
-        const targetId = href.replace('#', '');
-        const el = document.getElementById(targetId);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 80);
+      navigateToHome(targetId);
+    } else {
+      e.preventDefault();
+      const el = document.getElementById(targetId);
+      if (el) {
+        if (window.location.hash !== `#${targetId}`) {
+          window.history.pushState(null, '', `/#${targetId}`);
+        }
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
   const navLinks = [
-    { name: t.nav.howItWorks, href: '#how-it-works' },
-    { name: t.nav.about, href: '#about-vero' },
-    { name: t.nav.contact, href: '#inquiry-form' },
+    { name: t.nav.howItWorks, href: '/#how-it-works' },
+    { name: t.nav.about, href: '/#about-vero' },
+    { name: t.nav.contact, href: '/#inquiry-form' },
   ];
 
   return (
@@ -105,8 +123,8 @@ export default function Header() {
                     {t.nav.coreCategoryLabel}
                   </span>
                   <a
-                    href="#products"
-                    onClick={(e) => handleNavClick(e, '#products')}
+                    href="/#products"
+                    onClick={(e) => handleNavClick(e, '/#products')}
                     className="text-[11px] text-[#064E3B] hover:underline font-medium"
                   >
                     View All
@@ -215,8 +233,16 @@ export default function Header() {
           {inquiryCount > 0 && (
             <button
               type="button"
-              onClick={scrollToInquiryForm}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-[#E2ECE3] text-[#0B3D2E] text-xs font-semibold border border-[#0B3D2E]/20 hover:bg-[#D8E0D2] transition-colors cursor-pointer"
+              onClick={() => {
+                if (route.view !== 'home') {
+                  navigateToHome('inquiry-form');
+                } else {
+                  scrollToInquiryForm();
+                }
+              }}
+              className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-[#E2ECE3] text-[#0B3D2E] text-xs font-semibold border border-[#0B3D2E]/20 hover:bg-[#D8E0D2] transition-colors cursor-pointer ${
+                isPulsing ? 'animate-counter-pulse' : ''
+              }`}
               title="View Inquiry Basket"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
@@ -227,7 +253,13 @@ export default function Header() {
           {/* Primary CTA */}
           <button
             type="button"
-            onClick={scrollToInquiryForm}
+            onClick={() => {
+              if (route.view !== 'home') {
+                navigateToHome('inquiry-form');
+              } else {
+                scrollToInquiryForm();
+              }
+            }}
             className="bg-[#0B3D2E] hover:bg-[#064E3B] text-white px-5 py-2.5 rounded-lg text-xs font-semibold transition-all shadow-xs flex items-center gap-1.5 group whitespace-nowrap cursor-pointer active:scale-98"
           >
             <span>{t.nav.cta}</span>
@@ -266,8 +298,16 @@ export default function Header() {
           {inquiryCount > 0 && (
             <button
               type="button"
-              onClick={scrollToInquiryForm}
-              className="relative p-2 rounded-lg bg-[#E2ECE3] text-[#0B3D2E]"
+              onClick={() => {
+                if (route.view !== 'home') {
+                  navigateToHome('inquiry-form');
+                } else {
+                  scrollToInquiryForm();
+                }
+              }}
+              className={`relative p-2 rounded-lg bg-[#E2ECE3] text-[#0B3D2E] ${
+                isPulsing ? 'animate-counter-pulse' : ''
+              }`}
               aria-label="Inquiry Basket"
             >
               <ShoppingBag className="w-4 h-4" />
@@ -403,7 +443,11 @@ export default function Header() {
               type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
-                scrollToInquiryForm();
+                if (route.view !== 'home') {
+                  navigateToHome('inquiry-form');
+                } else {
+                  scrollToInquiryForm();
+                }
               }}
               className="w-full bg-[#0B3D2E] text-white py-3.5 rounded-xl font-semibold text-sm text-center block shadow-md cursor-pointer"
             >

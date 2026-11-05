@@ -85,6 +85,9 @@ export function InquiryProvider({ children }: { children: ReactNode }) {
   const isProductSelected = (id: ProductId) => selectedProductIds.includes(id);
 
   const scrollToInquiryForm = () => {
+    if (window.location.hash !== '#inquiry-form') {
+      window.history.pushState(null, '', '/#inquiry-form');
+    }
     const el = document.getElementById('inquiry-form') || document.getElementById('contact');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
