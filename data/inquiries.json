@@ -1,5 +1,34 @@
 [
   {
+    "id": "VTC-20261106-1GEF",
+    "receivedAt": "2026-11-06T18:14:58.752Z",
+    "clientIp": "127.0.0.1",
+    "userAgent": "curl/7.88.1",
+    "name": "Alex Morgan",
+    "email": "alex.morgan@importers.ca",
+    "company": "Canadian Specialty Foods",
+    "products": [
+      {
+        "id": "grain-sorghum",
+        "name": "Grain Sorghum"
+      },
+      {
+        "id": "other",
+        "name": "Other / custom sourcing"
+      }
+    ],
+    "country": "Canada",
+    "phone": null,
+    "message": "We require non-standard bulk organic chia seeds in 25kg bags.",
+    "technicalDetails": null,
+    "status": "recorded",
+    "notificationQueue": {
+      "recipient": "rafael@verotrading.ca",
+      "status": "queued_commercial_review",
+      "dispatchedAt": "2026-11-06T18:14:58.753Z"
+    }
+  },
+  {
     "id": "VTC-20261104-9D5T",
     "receivedAt": "2026-11-04T18:38:44.732Z",
     "clientIp": "127.0.0.1",

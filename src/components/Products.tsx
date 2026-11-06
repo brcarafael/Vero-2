@@ -18,6 +18,8 @@ import {
   Layers,
   Ship,
   Sliders,
+  Search,
+  MessageSquare,
 } from 'lucide-react';
 
 interface MainProductCardProps {
@@ -287,10 +289,151 @@ function AdditionalProductCard({
   );
 }
 
+interface CustomSourcingCardProps {
+  language: 'en' | 'pt' | 'es';
+  tLabels: any;
+  isSelected: boolean;
+  onSelect: () => void;
+}
+
+function CustomSourcingCard({
+  language,
+  tLabels,
+  isSelected,
+  onSelect,
+}: CustomSourcingCardProps) {
+  const [cardRef, isCardVisible] = useScrollReveal({
+    threshold: 0.1,
+    rootMargin: '0px 0px -30px 0px',
+    exitBufferPx: 50,
+  });
+
+  const content = tLabels.customSourcing;
+  const staggerDelay = (5 % 3) * 50;
+
+  return (
+    <article
+      ref={cardRef}
+      className="bg-[#F2F7F4] rounded-2xl border border-[#CCDDCF] overflow-hidden shadow-xs hover:shadow-md transition-shadow duration-300 flex flex-col md:grid md:grid-rows-subgrid md:row-span-5 md:gap-y-0"
+    >
+      {/* Track 1: Package & Magnifying-Glass Motif (Dimensions match neighboring cards' aspect-[16/10]) */}
+      <div
+        className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-[#E6EFE8] via-[#EAF2EC] to-[#DCECE0] border-b border-[#CCDDCF] flex items-center justify-center p-6 select-none"
+        aria-hidden="true"
+      >
+        <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(#0B3D2E_1px,transparent_1px)] [background-size:14px_14px]" />
+
+        <div
+          className={`relative photo-settle ${isCardVisible ? 'is-settled' : ''}`}
+          style={{ transitionDelay: `${staggerDelay}ms` }}
+        >
+          <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-2xl bg-white/90 border border-[#0B3D2E]/20 shadow-xs flex items-center justify-center">
+            <Package className="w-10 h-10 sm:w-11 sm:h-11 text-[#0B3D2E] stroke-[1.5]" />
+          </div>
+          <div className="absolute -bottom-2 -right-2 w-9 h-9 rounded-full bg-[#FAF7EF] border border-[#0B3D2E]/25 shadow-xs flex items-center justify-center text-[#064E3B]">
+            <Search className="w-4 h-4 stroke-[2.25]" />
+          </div>
+        </div>
+      </div>
+
+      {/* Track 2: Title & Subtitle (Photo to title: ~18px) */}
+      <div className="px-5 sm:px-6 pt-5 sm:pt-6 md:pt-[18px] md:pb-0">
+        <h3 className="text-lg sm:text-xl font-bold font-heading text-[#0B3D2E] tracking-tight">
+          {content.title}
+        </h3>
+        <p className="text-xs sm:text-sm font-semibold text-[#064E3B] mt-1 tracking-wide">
+          {content.subtitle}
+        </p>
+      </div>
+
+      {/* Track 3: Description (Subtitle to description: ~10px; Description to divider: ~14px below longest description) */}
+      <div className="px-5 sm:px-6 pt-2 pb-2 md:pt-2.5 md:pb-3.5">
+        <p className="text-sm sm:text-[15px] text-[#2D3748] leading-relaxed">
+          {content.description}
+        </p>
+      </div>
+
+      {/* Track 4: First Divider & 3 Compact Fact Rows (Facts to actions: ~14px below tallest facts list) */}
+      <div className="px-5 sm:px-6 pt-3.5 pb-2 md:pb-3.5 border-t border-[#CCDDCF] mt-auto md:mt-0 flex flex-col justify-start">
+        <div className="space-y-2.5">
+          <div className="flex items-start gap-2.5 text-xs sm:text-[13px] leading-snug">
+            <span
+              className="w-4 h-4 flex items-center justify-center shrink-0 pt-0.5 text-[#064E3B]"
+              aria-hidden="true"
+            >
+              <Search className="w-3.5 h-3.5 stroke-[2]" />
+            </span>
+            <div className="flex-1 min-w-0">
+              <span className="font-semibold text-[#0B3D2E]">
+                {content.factBeyond}
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-2.5 text-xs sm:text-[13px] leading-snug">
+            <span
+              className="w-4 h-4 flex items-center justify-center shrink-0 pt-0.5 text-[#064E3B]"
+              aria-hidden="true"
+            >
+              <Sliders className="w-3.5 h-3.5 stroke-[2]" />
+            </span>
+            <div className="flex-1 min-w-0">
+              <span className="font-semibold text-[#0B3D2E]">
+                {content.factSpecs}
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-2.5 text-xs sm:text-[13px] leading-snug">
+            <span
+              className="w-4 h-4 flex items-center justify-center shrink-0 pt-0.5 text-[#064E3B]"
+              aria-hidden="true"
+            >
+              <MessageSquare className="w-3.5 h-3.5 stroke-[2]" />
+            </span>
+            <div className="flex-1 min-w-0">
+              <span className="font-semibold text-[#0B3D2E]">
+                {content.factDesc}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Track 5: Bottom Divider & Action Controls (aligned with neighboring bottom actions) */}
+      <div className="px-5 sm:px-6 py-4 sm:py-5 md:py-3.5 border-t border-[#CCDDCF] flex items-center justify-between gap-3 mt-auto">
+        <div className="flex items-center gap-1.5 text-xs font-semibold text-[#064E3B]">
+          <span className="inline-block w-2 h-2 rounded-full bg-[#064E3B]" />
+          <span>{content.badge}</span>
+        </div>
+
+        <button
+          type="button"
+          onClick={onSelect}
+          className={`inline-flex items-center justify-center space-x-1.5 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-2 rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-[#064E3B] focus-visible:outline-none cursor-pointer w-[156px] sm:w-[172px] shrink-0 text-center whitespace-nowrap shadow-2xs group ${
+            isSelected
+              ? 'bg-[#E2ECE3] text-[#064E3B] hover:bg-[#D8E0D2] border border-[#064E3B]/30'
+              : 'bg-[#0B3D2E] hover:bg-[#064E3B] text-white border border-transparent'
+          }`}
+          aria-pressed={isSelected}
+        >
+          {isSelected && (
+            <Check className="w-3.5 h-3.5 stroke-[2.5] text-[#064E3B]" />
+          )}
+          <span>{content.button}</span>
+          {!isSelected && (
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transform-none" />
+          )}
+        </button>
+      </div>
+    </article>
+  );
+}
+
 export default function Products() {
   const { language } = useLanguage();
-  const { addProduct, removeProduct, isProductSelected } = useInquiry();
-  const { navigateToProduct } = useRouter();
+  const { addProduct, removeProduct, isProductSelected, scrollToInquiryForm } = useInquiry();
+  const { route, navigateToHome, navigateToProduct } = useRouter();
 
   const [headingRef, isHeadingVisible] = useScrollReveal({
     threshold: 0.1,
@@ -317,6 +460,17 @@ export default function Products() {
       viewDetails: 'View details',
       addToInquiry: 'Add to inquiry',
       addedToInquiry: 'In your inquiry',
+      customSourcing: {
+        title: 'Looking for another product?',
+        subtitle: 'Sourcing around your requirements',
+        description:
+          'Tell us what you’re looking for. We can explore sourcing options and assess suitable suppliers based on your product, quality and destination requirements.',
+        factBeyond: 'Products beyond our catalog',
+        factSpecs: 'Your specifications guide the search',
+        factDesc: 'Start with a brief description',
+        badge: 'Custom Sourcing',
+        button: 'Tell us what you need',
+      },
     },
     pt: {
       eyebrow: 'ORIGENS BRASILEIRAS',
@@ -331,6 +485,17 @@ export default function Products() {
       viewDetails: 'Ver detalhes',
       addToInquiry: 'Adicionar à consulta',
       addedToInquiry: 'Na sua consulta',
+      customSourcing: {
+        title: 'Procura outro produto?',
+        subtitle: 'Originação sob medida para sua demanda',
+        description:
+          'Conte-nos o que você procura. Podemos explorar opções de originação e avaliar fornecedores adequados com base no seu produto, qualidade e requisitos de destino.',
+        factBeyond: 'Produtos além do nosso catálogo',
+        factSpecs: 'Suas especificações orientam a busca',
+        factDesc: 'Comece com uma breve descrição',
+        badge: 'Demanda Sob Medida',
+        button: 'Diga-nos o que precisa',
+      },
     },
     es: {
       eyebrow: 'ORÍGENES BRASILEÑOS',
@@ -345,8 +510,36 @@ export default function Products() {
       viewDetails: 'Ver detalhes',
       addToInquiry: 'Añadir a consulta',
       addedToInquiry: 'En su consulta',
+      customSourcing: {
+        title: '¿Busca otro producto?',
+        subtitle: 'Abastecimiento según sus requisitos',
+        description:
+          'Cuéntenos qué está buscando. Podemos explorar opciones de suministro y evaluar proveedores adecuados según su producto, calidad y requisitos de destino.',
+        factBeyond: 'Productos más allá de nuestro catálogo',
+        factSpecs: 'Sus especificaciones guían la búsqueda',
+        factDesc: 'Comience con una breve descripción',
+        badge: 'Demanda a Medida',
+        button: 'Díganos qué necesita',
+      },
     },
   }[language];
+
+  const handleCustomSourcingClick = () => {
+    if (!isProductSelected('other')) {
+      addProduct('other');
+    }
+    if (route.view !== 'home') {
+      navigateToHome('inquiry-form');
+    } else {
+      scrollToInquiryForm();
+    }
+    setTimeout(() => {
+      const messageInput = document.getElementById('inquiry-message');
+      if (messageInput) {
+        messageInput.focus({ preventScroll: true });
+      }
+    }, 450);
+  };
 
   const renderFactIcon = (iconName: string) => {
     const iconProps = {
@@ -392,7 +585,7 @@ export default function Products() {
           </p>
         </div>
 
-        {/* 5 Main Product Cards Grid with Subgrid Row Alignment & Row-level photograph settle */}
+        {/* 6 Main Product Cards Grid with Subgrid Row Alignment & Row-level photograph settle */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-6">
           {CORE_PRODUCTS.map((prod, idx) => (
             <MainProductCard
@@ -408,6 +601,12 @@ export default function Products() {
               onNavigate={() => navigateToProduct(prod.id)}
             />
           ))}
+          <CustomSourcingCard
+            language={language}
+            tLabels={tLabels}
+            isSelected={isProductSelected('other')}
+            onSelect={handleCustomSourcingClick}
+          />
         </div>
 
         {/* Understated Harvest Windows Note */}

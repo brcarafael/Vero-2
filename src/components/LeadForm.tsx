@@ -52,8 +52,8 @@ export default function LeadForm() {
       reqBadge: 'Required',
       optBadge: 'Optional',
       productsLabel: 'Products of interest',
-      productsHelper: 'Select one or more Brazilian products. You can also select Other / Not sure yet.',
-      otherOptionLabel: 'Other / Not sure yet',
+      productsHelper: 'Select one or more Brazilian products. You can also select Other / custom sourcing.',
+      otherOptionLabel: 'Other / custom sourcing',
       nameLabel: 'Full Name',
       namePlaceholder: 'e.g. Sarah Jenkins',
       emailLabel: 'Work Email',
@@ -68,6 +68,8 @@ export default function LeadForm() {
       messageHelper:
         'You can mention quantities, destination or questions for any of your selected products.',
       messagePlaceholder: 'For example: coffee for roasting and sugar for distribution.',
+      customMessagePlaceholder:
+        'Which product are you looking for? Add any requirements you already know.',
       submitBtn: 'Send inquiry',
       submittingBtn: 'Sending inquiry...',
       successTag: 'Inquiry Received',
@@ -93,8 +95,8 @@ export default function LeadForm() {
       reqBadge: 'Obrigatório',
       optBadge: 'Opcional',
       productsLabel: 'Produtos de interesse',
-      productsHelper: 'Selecione um ou mais produtos brasileiros. Você também pode marcar Outro / A definir.',
-      otherOptionLabel: 'Outro / A definir',
+      productsHelper: 'Selecione um ou mais produtos brasileiros. Você também pode marcar Outro / demanda personalizada.',
+      otherOptionLabel: 'Outro / demanda personalizada',
       nameLabel: 'Nome Completo',
       namePlaceholder: 'ex: Carlos Silva',
       emailLabel: 'E-mail Corporativo',
@@ -109,6 +111,8 @@ export default function LeadForm() {
       messageHelper:
         'Você pode mencionar quantidades, destino ou dúvidas para qualquer um dos produtos selecionados.',
       messagePlaceholder: 'Por exemplo: café para torrefação e açúcar para distribuição.',
+      customMessagePlaceholder:
+        'Qual produto você procura? Adicione os requisitos que você já tiver.',
       submitBtn: 'Enviar consulta',
       submittingBtn: 'Enviando consulta...',
       successTag: 'Consulta Recebida',
@@ -134,8 +138,8 @@ export default function LeadForm() {
       reqBadge: 'Obligatorio',
       optBadge: 'Opcional',
       productsLabel: 'Productos de interés',
-      productsHelper: 'Seleccione uno o más productos brasileños. También puede elegir Otro / Por definir.',
-      otherOptionLabel: 'Otro / Por definir',
+      productsHelper: 'Seleccione uno o más productos brasileños. También puede elegir Otro / abastecimiento personalizado.',
+      otherOptionLabel: 'Otro / abastecimiento personalizado',
       nameLabel: 'Nombre Completo',
       namePlaceholder: 'ej: Alejandro Gómez',
       emailLabel: 'Correo Electrónico Corporativo',
@@ -150,6 +154,8 @@ export default function LeadForm() {
       messageHelper:
         'Puede mencionar cantidades, destino o dudas para cualquiera de sus productos seleccionados.',
       messagePlaceholder: 'Por ejemplo: café para tostar y azúcar para distribución.',
+      customMessagePlaceholder:
+        '¿Qué producto está buscando? Indique cualquier requisito que ya conozca.',
       submitBtn: 'Enviar consulta',
       submittingBtn: 'Enviando consulta...',
       successTag: 'Consulta Recibida',
@@ -158,7 +164,7 @@ export default function LeadForm() {
         'Nuestro desk en Canadá ha recibido su solicitud y coordinará la revisión con Brasensa en Brasil.',
       refNumber: 'Código de Referencia',
       timestampLabel: 'Recibido en (UTC)',
-      selectedProductsLabel: 'Productos Seleccionados',
+      selectedProductsLabel: 'Productos Selecionados',
       newInquiryBtn: 'Enviar otra consulta',
       copySummaryBtn: 'Copiar resumen de la consulta',
       copiedText: '¡Copiado al portapapeles!',
@@ -665,7 +671,11 @@ export default function LeadForm() {
               rows={3}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder={tLabels.messagePlaceholder}
+              placeholder={
+                isProductSelected('other')
+                  ? tLabels.customMessagePlaceholder
+                  : tLabels.messagePlaceholder
+              }
               className="w-full px-3.5 py-2.5 rounded-xl border border-[#D8E0D2] focus:border-[#0B3D2E] focus:ring-1 focus:ring-[#0B3D2E] text-xs sm:text-sm text-[#111827] font-medium placeholder:text-gray-400 placeholder:font-normal focus:outline-none transition-colors"
             />
           </div>

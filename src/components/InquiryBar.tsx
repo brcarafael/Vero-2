@@ -38,7 +38,7 @@ export default function InquiryBar() {
       itemPlural: 'products selected',
       proceedBtn: 'Complete Inquiry',
       clearBtn: 'Clear all',
-      otherLabel: 'Other / Not sure yet',
+      otherLabel: 'Other / custom sourcing',
     },
     pt: {
       inquiryTitle: 'Sua Seleção de Consulta',
@@ -46,7 +46,7 @@ export default function InquiryBar() {
       itemPlural: 'produtos selecionados',
       proceedBtn: 'Concluir Consulta',
       clearBtn: 'Limpar tudo',
-      otherLabel: 'Outro / A definir',
+      otherLabel: 'Outro / demanda personalizada',
     },
     es: {
       inquiryTitle: 'Su Selección de Consulta',
@@ -54,7 +54,7 @@ export default function InquiryBar() {
       itemPlural: 'productos seleccionados',
       proceedBtn: 'Completar Consulta',
       clearBtn: 'Limpiar todo',
-      otherLabel: 'Otro / Por definir',
+      otherLabel: 'Otro / abastecimiento personalizado',
     },
   }[language];
 

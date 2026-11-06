@@ -54,8 +54,18 @@ export function InquiryProvider({ children }: { children: ReactNode }) {
   const addProduct = (id: ProductId) => {
     if (!selectedProductIds.includes(id)) {
       setSelectedProductIds((prev) => [...prev, id]);
-      const product = getProductById(id);
-      const name = product ? product.title[language] || product.title.en : id;
+      let name = id as string;
+      if (id === 'other') {
+        name =
+          language === 'pt'
+            ? 'Outro / demanda personalizada'
+            : language === 'es'
+            ? 'Otro / abastecimiento personalizado'
+            : 'Other / custom sourcing';
+      } else {
+        const product = getProductById(id);
+        name = product ? product.title[language] || product.title.en : id;
+      }
       const feedback =
         language === 'pt'
           ? `✓ ${name} adicionado à sua consulta`

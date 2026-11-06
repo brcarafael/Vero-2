@@ -18,7 +18,9 @@ export type ProductId =
   | 'grain-sorghum'
   | 'soybeans'
   | 'corn'
-  | 'acai';
+  | 'acai'
+  | 'other';
+
 
 export interface LocalizedString {
   en: string;

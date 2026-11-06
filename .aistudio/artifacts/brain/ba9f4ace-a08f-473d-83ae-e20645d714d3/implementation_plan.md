@@ -319,4 +319,49 @@ The Vero Trading Co. website has been completely redesigned and rebuilt into a d
   - 768px (Tablet) & 1440px (Desktop): Seamless two-column alignment, intact geometry, and connecting line drawing smoothly into Brazil.
 - **Trilingual Rendering**: Verified English, Portuguese, and Spanish text wrapping, character encodings, and layout stability.
 
+---
+
+## 11. Custom-Sourcing Card Addition in "Explore our products" Grid
+
+### A. Architectural & Visual Integration (`Products.tsx`)
+1. **Grid Position & Responsive Layout**:
+   - Added as the 6th card in the main commodities grid immediately following Grain Sorghum (`CORE_PRODUCTS.map(...)` + `<CustomSourcingCard />`).
+   - Desktop (`lg:grid-cols-3`): Creates a balanced $2 \times 3$ grid of 6 cards.
+   - Tablet (`md:grid-cols-2`): Placed as the 6th item, completing row 3 ($3 \times 2$ grid).
+   - Mobile (`grid-cols-1`): Flows naturally in reading order immediately below Sorghum.
+2. **Visual Consistency & Subgrid Alignment**:
+   - Shares the same card dimensions, rounded corners (`rounded-2xl`), border styling, and CSS subgrid tracks (`md:grid md:grid-rows-subgrid md:row-span-5 md:gap-y-0`).
+   - Light green background (`bg-[#F2F7F4]`) with subtle green border (`border-[#CCDDCF]`), deep forest-green typography (`#0B3D2E`), and crisp accents (`#064E3B`).
+   - Area corresponding to neighboring cards' photos uses an identical `aspect-[16/10]` illustration area with an outline `Package` and `Search` magnifying-glass composition, dot-matrix motif, and scroll-triggered settle animation.
+   - Controlled track spacing: Track 2 (`md:pt-[18px]`), Track 3 (`md:pt-2.5 md:pb-3.5`), Track 4 facts divider (`md:pb-3.5`), and Track 5 action area (`md:py-3.5`) aligning with neighboring cards' bottom controls.
+
+### B. Content & Trilingual Copy
+1. **Card Content**:
+   - **Title**: *"Looking for another product?"* (PT: *"Procura outro produto?"*, ES: *"¿Busca otro producto?"*)
+   - **Subtitle**: *"Sourcing around your requirements"* (PT: *"Originação sob medida para sua demanda"*, ES: *"Abastecimiento según sus requisitos"*)
+   - **Description**: *"Tell us what you’re looking for. We can explore sourcing options and assess suitable suppliers based on your product, quality and destination requirements."*
+   - **Three Fact Rows**:
+     - Search icon: *"Products beyond our catalog"*
+     - Sliders icon: *"Your specifications guide the search"*
+     - Message icon: *"Start with a brief description"*
+   - **Primary Action**: *"Tell us what you need"* (PT: *"Diga-nos o que precisa"*, ES: *"Díganos qué necesita"*)
+
+### C. Inquiry State & Form Workflow Integration
+1. **Reusing 'Other' Option (`InquiryContext.tsx`, `LeadForm.tsx`, `InquiryBar.tsx`)**:
+   - Added `'other'` to `ProductId` union type.
+   - Clicking *"Tell us what you need"* executes `handleCustomSourcingClick`:
+     - Calls `addProduct('other')` without clearing or modifying existing product selections.
+     - Performs working single-click navigation down to `#inquiry-form` (`scrollToInquiryForm()` on home, or `navigateToHome('inquiry-form')` from detail views).
+     - Focuses `#inquiry-message` textarea so the buyer can type their specifications immediately.
+     - Repeated clicks reuse the existing `'other'` selection without toggling it off.
+2. **Contextual Placeholder & Visible Label**:
+   - In `LeadForm.tsx`, the 'other' option is labeled: *"Other / custom sourcing"* (PT: *"Outro / demanda personalizada"*, ES: *"Otro / abastecimiento personalizado"*).
+   - If `other` is selected and the message field is empty, the textarea displays:
+     *"Which product are you looking for? Add any requirements you already know."*
+     (PT: *"Qual produto você procura? Adicione os requisitos que você já tiver."*, ES: *"¿Qué producto está buscando? Indique cualquier requisito que ya conozca."*)
+   - All entered message text and contact fields are strictly preserved.
+3. **Backend Submission Verification**:
+   - Verified that `POST /api/inquiries` accepts `{ id: 'other', name: 'Other / custom sourcing' }`, logs the payload to `data/inquiries.json`, and returns verified reference ID.
+
+
 
