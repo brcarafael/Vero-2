@@ -55,7 +55,7 @@ export default function Hero() {
                   const el = document.getElementById('products');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-7 py-3.5 bg-white hover:bg-[#F5EFE3] text-[#111827] border border-[#D8E0D2] rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 shadow-2xs cursor-pointer active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#064E3B]"
+                className="px-7 py-3.5 bg-white hover:bg-[#EEE7D8] text-[#111827] border border-[#E5DEC9] rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center justify-center gap-2 shadow-2xs cursor-pointer active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#064E3B]"
               >
                 <span>{t.hero.ctaSecondary}</span>
                 <ArrowDown className="w-4 h-4 text-[#064E3B]" />
@@ -81,7 +81,7 @@ export default function Hero() {
 
           {/* Right Column (5 cols): Framed Shipping Photograph with Relationship Panels */}
           <div className="lg:col-span-5 order-2">
-            <div className="bg-white p-3 sm:p-3.5 rounded-2xl border border-[#D8E0D2] shadow-xl animate-hero-settle motion-reduce:animate-none">
+            <div className="bg-white p-3 sm:p-3.5 rounded-2xl border border-[#E5DEC9] shadow-xl animate-hero-settle motion-reduce:animate-none">
               {/* Shipping Photograph */}
               <div className="relative rounded-xl overflow-hidden bg-[#0F2F24] aspect-[4/3] sm:aspect-[16/11]">
                 <img
@@ -94,7 +94,7 @@ export default function Hero() {
 
               {/* Two Clearly Labeled Canada-Brazil Relationship Panels */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3">
-                <div className="p-2.5 rounded-lg bg-[#FAF7EF] border border-[#EFE3CF] text-xs">
+                <div className="p-2.5 rounded-lg bg-[#FAF7EF] border border-[#E5DEC9] text-xs">
                   <div className="text-[10px] font-bold text-[#064E3B] uppercase tracking-wider">
                     Commercial Contact
                   </div>
@@ -103,7 +103,7 @@ export default function Hero() {
                   </div>
                 </div>
 
-                <div className="p-2.5 rounded-lg bg-[#FAF7EF] border border-[#EFE3CF] text-xs">
+                <div className="p-2.5 rounded-lg bg-[#FAF7EF] border border-[#E5DEC9] text-xs">
                   <div className="text-[10px] font-bold text-[#064E3B] uppercase tracking-wider">
                     Brazilian Origin
                   </div>

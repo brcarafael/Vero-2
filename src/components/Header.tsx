@@ -106,8 +106,8 @@ export default function Header() {
         <div
           className={`absolute inset-0 -z-10 pointer-events-none transition-all duration-200 ${
             isScrolled
-              ? 'bg-[#FAF7EF]/95 backdrop-blur-md shadow-xs border-b border-[#E5DEC9]'
-              : 'bg-[#FAF7EF] border-b border-[#E5DEC9]'
+              ? 'bg-[#072C21]/95 backdrop-blur-md shadow-md border-b border-[#0B3D2E]'
+              : 'bg-[#072C21] border-b border-[#0B3D2E]'
           }`}
         />
 
@@ -115,29 +115,29 @@ export default function Header() {
           {/* Brand Identity */}
           <button
             onClick={navigateToHome}
-            className="flex flex-col text-left group shrink-0 cursor-pointer"
+            className="flex flex-col text-left group shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FAF7EF] rounded"
           >
             <div className="flex items-center gap-2">
-              <span className="font-heading font-bold text-2xl tracking-tight text-[#0B3D2E] group-hover:text-[#064E3B] transition-colors">
+              <span className="font-heading font-bold text-2xl tracking-tight text-[#FAF7EF] group-hover:text-white transition-colors">
                 VERO
               </span>
-              <span className="hidden sm:inline-block text-[11px] font-semibold text-[#0B3D2E]/80 border-l border-[#0B3D2E]/25 pl-2 tracking-wide uppercase">
+              <span className="hidden sm:inline-block text-[11px] font-semibold text-[#D9E5DC] border-l border-white/20 pl-2 tracking-wide uppercase">
                 Trading Co.
               </span>
             </div>
-            <span className="text-[10px] tracking-wider text-[#6B7280] uppercase font-medium">
+            <span className="text-[10px] tracking-wider text-[#D9E5DC]/80 uppercase font-medium">
               Canada · Commercial Desk
             </span>
           </button>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center gap-7 text-xs font-semibold text-[#2D3748]">
+          <nav className="hidden lg:flex items-center gap-7 text-xs font-semibold text-[#FAF7EF]">
             {/* Products Dropdown Menu */}
             <div className="relative" ref={dropdownRef}>
               <button
                 type="button"
                 onClick={() => setProductsDropdownOpen((prev) => !prev)}
-                className="flex items-center gap-1 hover:text-[#0B3D2E] transition-colors py-1 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B3D2E] rounded"
+                className="flex items-center gap-1 hover:text-white transition-colors py-1 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FAF7EF] rounded"
                 aria-expanded={productsDropdownOpen}
                 aria-controls="products-dropdown-menu"
                 aria-haspopup="true"
@@ -145,7 +145,7 @@ export default function Header() {
                 <span>{t.nav.products}</span>
                 <ChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    productsDropdownOpen ? 'rotate-180 text-[#0B3D2E]' : 'text-[#6B7280]'
+                    productsDropdownOpen ? 'rotate-180 text-[#FAF7EF]' : 'text-[#D9E5DC]'
                   }`}
                 />
               </button>
@@ -153,16 +153,16 @@ export default function Header() {
               {productsDropdownOpen && (
                 <div
                   id="products-dropdown-menu"
-                  className="absolute top-full left-0 mt-2 w-80 bg-white rounded-xl shadow-xl border border-[#D8E0D2] p-4 text-[#111827] z-50 animate-fade-in"
+                  className="absolute top-full left-0 mt-2 w-80 bg-[#FFFDF8] rounded-xl shadow-xl border border-[#CBD8CE] p-4 text-[#072C21] z-50 animate-fade-in"
                 >
-                  <div className="mb-3 pb-2 border-b border-gray-100 flex items-center justify-between">
-                    <span className="text-[11px] font-bold text-[#0B3D2E] uppercase tracking-wider">
+                  <div className="mb-3 pb-2 border-b border-[#E5DEC9] flex items-center justify-between">
+                    <span className="text-[11px] font-bold text-[#072C21] uppercase tracking-wider">
                       {t.nav.coreCategoryLabel}
                     </span>
                     <a
                       href="/#products"
                       onClick={(e) => handleNavClick(e, '/#products')}
-                      className="text-[11px] text-[#064E3B] hover:underline font-medium"
+                      className="text-[11px] text-[#064E3B] hover:text-[#0B3D2E] hover:underline font-semibold"
                     >
                       View All
                     </a>
@@ -178,10 +178,10 @@ export default function Header() {
                           setProductsDropdownOpen(false);
                           navigateToProduct(prod.id);
                         }}
-                        className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs font-medium text-gray-800 hover:bg-[#FAF7EF] hover:text-[#0B3D2E] transition-colors flex items-center justify-between group cursor-pointer"
+                        className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#072C21] hover:bg-[#FAF7EF] hover:text-[#0B3D2E] transition-colors flex items-center justify-between group cursor-pointer"
                       >
                         <span>{prod.shortTitle[language] || prod.shortTitle.en}</span>
-                        <span className="text-[10px] text-gray-400 group-hover:text-[#0B3D2E]">
+                        <span className="text-[10px] text-[#0B3D2E]/60 group-hover:text-[#0B3D2E]">
                           →
                         </span>
                       </button>
@@ -189,8 +189,8 @@ export default function Header() {
                   </div>
 
                   {/* Additional Sourcing Section */}
-                  <div className="pt-2 border-t border-gray-100">
-                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider block mb-1.5">
+                  <div className="pt-2 border-t border-[#E5DEC9]">
+                    <span className="text-[10px] font-bold text-[#4B5563] uppercase tracking-wider block mb-1.5">
                       {t.nav.additionalCategoryLabel}
                     </span>
                     <div className="space-y-1">
@@ -202,10 +202,10 @@ export default function Header() {
                             setProductsDropdownOpen(false);
                             navigateToProduct(prod.id);
                           }}
-                          className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs font-medium text-gray-700 hover:bg-[#FAF7EF] hover:text-[#0B3D2E] transition-colors flex items-center justify-between group cursor-pointer"
+                          className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#374151] hover:bg-[#FAF7EF] hover:text-[#0B3D2E] transition-colors flex items-center justify-between group cursor-pointer"
                         >
                           <span>{prod.shortTitle[language] || prod.shortTitle.en}</span>
-                          <span className="text-[10px] text-gray-400 group-hover:text-[#0B3D2E]">
+                          <span className="text-[10px] text-[#0B3D2E]/60 group-hover:text-[#0B3D2E]">
                             →
                           </span>
                         </button>
@@ -222,10 +222,10 @@ export default function Header() {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="hover:text-[#0B3D2E] transition-colors whitespace-nowrap py-1 relative group tracking-wide cursor-pointer"
+                className="hover:text-white transition-colors whitespace-nowrap py-1 relative group tracking-wide cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FAF7EF] rounded"
               >
                 {link.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#0B3D2E] transition-all duration-200 group-hover:w-full" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FAF7EF] transition-all duration-200 group-hover:w-full" />
               </a>
             ))}
           </nav>
@@ -233,33 +233,33 @@ export default function Header() {
           {/* Right Actions: Lang Switcher + Inquiry Badge + Primary CTA */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
             {/* Trilingual Selector */}
-            <div className="flex items-center gap-1 text-xs font-semibold text-[#4B5563] border border-[#D8E0D2] bg-white px-2 py-1 rounded-lg shadow-2xs">
-              <Globe className="w-3.5 h-3.5 text-[#6B7280]" />
+            <div className="flex items-center gap-1 text-xs font-semibold text-[#D9E5DC] border border-white/20 bg-[#0B3D2E]/60 px-2 py-1 rounded-lg shadow-2xs">
+              <Globe className="w-3.5 h-3.5 text-[#D9E5DC]" />
               <button
                 type="button"
                 onClick={() => setLanguage('en')}
                 className={`px-1.5 py-0.5 rounded transition-colors cursor-pointer ${
-                  language === 'en' ? 'bg-[#0B3D2E] text-white' : 'hover:text-[#111827]'
+                  language === 'en' ? 'bg-[#FAF7EF] text-[#072C21] font-bold' : 'hover:text-[#FAF7EF]'
                 }`}
               >
                 EN
               </button>
-              <span className="text-gray-300">|</span>
+              <span className="text-white/20">|</span>
               <button
                 type="button"
                 onClick={() => setLanguage('pt')}
                 className={`px-1.5 py-0.5 rounded transition-colors cursor-pointer ${
-                  language === 'pt' ? 'bg-[#0B3D2E] text-white' : 'hover:text-[#111827]'
+                  language === 'pt' ? 'bg-[#FAF7EF] text-[#072C21] font-bold' : 'hover:text-[#FAF7EF]'
                 }`}
               >
                 PT
               </button>
-              <span className="text-gray-300">|</span>
+              <span className="text-white/20">|</span>
               <button
                 type="button"
                 onClick={() => setLanguage('es')}
                 className={`px-1.5 py-0.5 rounded transition-colors cursor-pointer ${
-                  language === 'es' ? 'bg-[#0B3D2E] text-white' : 'hover:text-[#111827]'
+                  language === 'es' ? 'bg-[#FAF7EF] text-[#072C21] font-bold' : 'hover:text-[#FAF7EF]'
                 }`}
               >
                 ES
@@ -277,17 +277,17 @@ export default function Header() {
                     scrollToInquiryForm();
                   }
                 }}
-                className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-[#E2ECE3] text-[#0B3D2E] text-xs font-semibold border border-[#0B3D2E]/20 hover:bg-[#D8E0D2] transition-colors cursor-pointer ${
+                className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-[#0B3D2E] text-[#FAF7EF] text-xs font-semibold border border-white/20 hover:bg-[#0B3D2E]/80 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FAF7EF] ${
                   isPulsing ? 'animate-counter-pulse' : ''
                 }`}
                 title="View Inquiry Basket"
               >
-                <ShoppingBag className="w-3.5 h-3.5" />
+                <ShoppingBag className="w-3.5 h-3.5 text-[#FAF7EF]" />
                 <span>{inquiryCount}</span>
               </button>
             )}
 
-            {/* Primary CTA */}
+            {/* Primary CTA: Talk to VERO with #FAF7EF background and #072C21 text, hover #EEE7D8 */}
             <button
               type="button"
               onClick={() => {
@@ -297,7 +297,7 @@ export default function Header() {
                   scrollToInquiryForm();
                 }
               }}
-              className="bg-[#0B3D2E] hover:bg-[#064E3B] text-white px-5 py-2.5 rounded-lg text-xs font-semibold transition-all shadow-xs flex items-center gap-1.5 group whitespace-nowrap cursor-pointer active:scale-98"
+              className="bg-[#FAF7EF] hover:bg-[#EEE7D8] text-[#072C21] px-5 py-2.5 rounded-lg text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 group whitespace-nowrap cursor-pointer active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FAF7EF]"
             >
               <span>{t.nav.cta}</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -306,27 +306,27 @@ export default function Header() {
 
           {/* Mobile Hamburger & Language Selector */}
           <div className="flex items-center gap-2 lg:hidden">
-            <div className="flex items-center gap-1 text-[11px] font-semibold text-[#4B5563] bg-white border border-[#D8E0D2] px-2 py-1 rounded-md">
+            <div className="flex items-center gap-1 text-[11px] font-semibold text-[#D9E5DC] bg-[#0B3D2E]/60 border border-white/20 px-2 py-1 rounded-md">
               <button
                 type="button"
                 onClick={() => setLanguage('en')}
-                className={`cursor-pointer ${language === 'en' ? 'text-[#0B3D2E] font-bold underline' : ''}`}
+                className={`cursor-pointer ${language === 'en' ? 'text-[#FAF7EF] font-bold underline' : 'hover:text-[#FAF7EF]'}`}
               >
                 EN
               </button>
-              <span>/</span>
+              <span className="text-white/20">/</span>
               <button
                 type="button"
                 onClick={() => setLanguage('pt')}
-                className={`cursor-pointer ${language === 'pt' ? 'text-[#0B3D2E] font-bold underline' : ''}`}
+                className={`cursor-pointer ${language === 'pt' ? 'text-[#FAF7EF] font-bold underline' : 'hover:text-[#FAF7EF]'}`}
               >
                 PT
               </button>
-              <span>/</span>
+              <span className="text-white/20">/</span>
               <button
                 type="button"
                 onClick={() => setLanguage('es')}
-                className={`cursor-pointer ${language === 'es' ? 'text-[#0B3D2E] font-bold underline' : ''}`}
+                className={`cursor-pointer ${language === 'es' ? 'text-[#FAF7EF] font-bold underline' : 'hover:text-[#FAF7EF]'}`}
               >
                 ES
               </button>
@@ -342,13 +342,13 @@ export default function Header() {
                     scrollToInquiryForm();
                   }
                 }}
-                className={`relative p-2 rounded-lg bg-[#E2ECE3] text-[#0B3D2E] cursor-pointer ${
+                className={`relative p-2 rounded-lg bg-[#0B3D2E] text-[#FAF7EF] border border-white/20 cursor-pointer ${
                   isPulsing ? 'animate-counter-pulse' : ''
                 }`}
                 aria-label="Inquiry Basket"
               >
-                <ShoppingBag className="w-4 h-4" />
-                <span className="absolute -top-1 -right-1 bg-[#0B3D2E] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                <ShoppingBag className="w-4 h-4 text-[#FAF7EF]" />
+                <span className="absolute -top-1 -right-1 bg-[#FAF7EF] text-[#072C21] text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
                   {inquiryCount}
                 </span>
               </button>
@@ -356,7 +356,7 @@ export default function Header() {
 
             <button
               type="button"
-              className="p-2 text-[#374151] hover:text-[#111827] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0B3D2E] rounded-lg cursor-pointer"
+              className="p-2 text-[#FAF7EF] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FAF7EF] rounded-lg cursor-pointer"
               onClick={() => setMobileMenuOpen(true)}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation-drawer"
@@ -377,21 +377,21 @@ export default function Header() {
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
-            className="fixed inset-0 z-[100] bg-[#FAF7EF] flex flex-col h-dvh max-h-screen overflow-y-auto animate-fade-in"
+            className="fixed inset-0 z-[100] bg-[#072C21] text-[#FAF7EF] flex flex-col h-dvh max-h-screen overflow-y-auto animate-fade-in"
           >
-            <div className="p-4 sm:p-6 flex items-center justify-between border-b border-[#E5DEC9] bg-[#FAF7EF] sticky top-0 z-10">
+            <div className="p-4 sm:p-6 flex items-center justify-between border-b border-[#0B3D2E] bg-[#072C21] sticky top-0 z-10">
               <div>
-                <span className="font-heading font-bold text-2xl text-[#0B3D2E] block">
+                <span className="font-heading font-bold text-2xl text-[#FAF7EF] block">
                   VERO
                 </span>
-                <span className="text-[10px] text-[#6B7280] uppercase tracking-wider">
+                <span className="text-[10px] text-[#D9E5DC] uppercase tracking-wider">
                   Canada · Commercial Desk
                 </span>
               </div>
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 text-[#4B5563] hover:text-[#111827] rounded-lg hover:bg-[#E5DEC9]/50 transition-colors cursor-pointer"
+                className="p-2 text-[#D9E5DC] hover:text-[#FAF7EF] rounded-lg hover:bg-[#0B3D2E]/60 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FAF7EF]"
                 aria-label="Close menu"
               >
                 <X className="w-6 h-6" />
@@ -401,10 +401,10 @@ export default function Header() {
             <nav className="flex-1 p-6 space-y-4 overflow-y-auto">
               {/* Products with Sub-items */}
               <div>
-                <div className="text-xs uppercase tracking-wider text-[#6B7280] font-bold mb-2">
+                <div className="text-xs uppercase tracking-wider text-[#D9E5DC] font-bold mb-2">
                   {t.nav.products}
                 </div>
-                <div className="space-y-1 pl-2 border-l-2 border-[#0B3D2E]/20">
+                <div className="space-y-1 pl-2 border-l-2 border-[#0B3D2E]">
                   {CORE_PRODUCTS.map((prod) => (
                     <button
                       key={prod.id}
@@ -413,7 +413,7 @@ export default function Header() {
                         setMobileMenuOpen(false);
                         navigateToProduct(prod.id);
                       }}
-                      className="block w-full text-left py-1.5 text-sm font-medium text-gray-800 hover:text-[#0B3D2E] cursor-pointer"
+                      className="block w-full text-left py-1.5 text-sm font-medium text-[#FAF7EF] hover:text-white transition-colors cursor-pointer"
                     >
                       {prod.shortTitle[language] || prod.shortTitle.en}
                     </button>
@@ -428,14 +428,14 @@ export default function Header() {
                   onClick={(e) => {
                     handleNavClick(e, link.href);
                   }}
-                  className="block text-lg font-heading font-semibold text-[#111827] hover:text-[#0B3D2E] py-2 border-b border-[#E5DEC9]/60 cursor-pointer"
+                  className="block text-lg font-heading font-semibold text-[#FAF7EF] hover:text-[#D9E5DC] py-2 border-b border-[#0B3D2E] cursor-pointer"
                 >
                   {link.name}
                 </a>
               ))}
 
               <div className="pt-4">
-                <span className="text-xs uppercase tracking-wider text-[#6B7280] block mb-2 font-semibold">
+                <span className="text-xs uppercase tracking-wider text-[#D9E5DC] block mb-2 font-semibold">
                   Language / Idioma
                 </span>
                 <div className="grid grid-cols-3 gap-2">
@@ -445,10 +445,10 @@ export default function Header() {
                       setLanguage('en');
                       setMobileMenuOpen(false);
                     }}
-                    className={`py-2 text-center text-xs font-semibold rounded-lg border cursor-pointer ${
+                    className={`py-2 text-center text-xs font-semibold rounded-lg border cursor-pointer transition-colors ${
                       language === 'en'
-                        ? 'bg-[#0B3D2E] text-white border-[#0B3D2E]'
-                        : 'bg-white text-[#374151] border-gray-200'
+                        ? 'bg-[#FAF7EF] text-[#072C21] font-bold border-[#FAF7EF]'
+                        : 'bg-[#0B3D2E] text-[#D9E5DC] border-white/20 hover:text-[#FAF7EF]'
                     }`}
                   >
                     English
@@ -459,10 +459,10 @@ export default function Header() {
                       setLanguage('pt');
                       setMobileMenuOpen(false);
                     }}
-                    className={`py-2 text-center text-xs font-semibold rounded-lg border cursor-pointer ${
+                    className={`py-2 text-center text-xs font-semibold rounded-lg border cursor-pointer transition-colors ${
                       language === 'pt'
-                        ? 'bg-[#0B3D2E] text-white border-[#0B3D2E]'
-                        : 'bg-white text-[#374151] border-gray-200'
+                        ? 'bg-[#FAF7EF] text-[#072C21] font-bold border-[#FAF7EF]'
+                        : 'bg-[#0B3D2E] text-[#D9E5DC] border-white/20 hover:text-[#FAF7EF]'
                     }`}
                   >
                     Português
@@ -473,10 +473,10 @@ export default function Header() {
                       setLanguage('es');
                       setMobileMenuOpen(false);
                     }}
-                    className={`py-2 text-center text-xs font-semibold rounded-lg border cursor-pointer ${
+                    className={`py-2 text-center text-xs font-semibold rounded-lg border cursor-pointer transition-colors ${
                       language === 'es'
-                        ? 'bg-[#0B3D2E] text-white border-[#0B3D2E]'
-                        : 'bg-white text-[#374151] border-gray-200'
+                        ? 'bg-[#FAF7EF] text-[#072C21] font-bold border-[#FAF7EF]'
+                        : 'bg-[#0B3D2E] text-[#D9E5DC] border-white/20 hover:text-[#FAF7EF]'
                     }`}
                   >
                     Español
@@ -485,7 +485,7 @@ export default function Header() {
               </div>
             </nav>
 
-            <div className="p-6 border-t border-[#E5DEC9] bg-white mt-auto">
+            <div className="p-6 border-t border-[#0B3D2E] bg-[#072C21] mt-auto">
               <button
                 type="button"
                 onClick={() => {
@@ -496,7 +496,7 @@ export default function Header() {
                     scrollToInquiryForm();
                   }
                 }}
-                className="w-full bg-[#0B3D2E] text-white py-3.5 rounded-xl font-semibold text-sm text-center block shadow-md cursor-pointer hover:bg-[#064E3B] transition-colors"
+                className="w-full bg-[#FAF7EF] hover:bg-[#EEE7D8] text-[#072C21] py-3.5 rounded-xl font-bold text-sm text-center block shadow-md cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FAF7EF]"
               >
                 {t.nav.cta}
               </button>

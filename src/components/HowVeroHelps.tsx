@@ -37,7 +37,7 @@ function HowVeroHelpsCard({
   return (
     <div
       ref={cardRef}
-      className="bg-white rounded-2xl border border-[#D8E0D2] p-6 sm:p-7 shadow-xs flex flex-col justify-between"
+      className="bg-white rounded-2xl border border-[#E5DEC9] p-6 sm:p-7 shadow-xs flex flex-col justify-between"
     >
       <div>
         {/* Top Row: Number on left, Pale-green Icon Tile on right with scroll-triggered settle */}

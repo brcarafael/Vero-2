@@ -321,9 +321,9 @@ export default function LeadForm() {
   // If successfully submitted, display verified receipt
   if (submissionResult) {
     return (
-      <section id="inquiry-form" className="py-16 sm:py-24 bg-[#FAF7EF] border-b border-[#E5DEC9] scroll-mt-20">
+      <section id="inquiry-form" className="py-16 sm:py-24 bg-[#E8EFE9] border-b border-[#CBD8CE] scroll-mt-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl border border-[#0B3D2E] p-6 sm:p-10 shadow-lg">
+          <div className="bg-white rounded-2xl border border-[#CBD8CE] p-6 sm:p-10 shadow-lg">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0B3D2E] mb-2">
               <Check className="w-4 h-4 stroke-[2.5]" />
               <span>{tLabels.successTag}</span>
@@ -375,7 +375,7 @@ export default function LeadForm() {
               <button
                 type="button"
                 onClick={handleCopy}
-                className="px-5 py-2.5 rounded-lg border border-[#D8E0D2] hover:bg-gray-50 text-xs font-semibold text-gray-800 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                className="px-5 py-2.5 rounded-lg border border-[#CBD8CE] hover:bg-gray-50 text-xs font-semibold text-gray-800 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
                 <span>{copied ? tLabels.copiedText : tLabels.copySummaryBtn}</span>
@@ -383,7 +383,7 @@ export default function LeadForm() {
 
               <a
                 href={mailtoUrl}
-                className="px-5 py-2.5 rounded-lg border border-[#D8E0D2] hover:bg-gray-50 text-xs font-semibold text-gray-800 transition-colors flex items-center justify-center gap-1.5"
+                className="px-5 py-2.5 rounded-lg border border-[#CBD8CE] hover:bg-gray-50 text-xs font-semibold text-gray-800 transition-colors flex items-center justify-center gap-1.5"
               >
                 <Mail className="w-4 h-4 text-[#0B3D2E]" />
                 <span>{tLabels.openMailBtn}</span>
@@ -414,7 +414,7 @@ export default function LeadForm() {
   }
 
   return (
-    <section id="inquiry-form" className="py-16 sm:py-24 bg-[#FAF7EF] border-b border-[#E5DEC9] scroll-mt-20">
+    <section id="inquiry-form" className="py-16 sm:py-24 bg-[#E8EFE9] border-b border-[#CBD8CE] scroll-mt-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with consistent heading reveal */}
         <div
@@ -460,7 +460,7 @@ export default function LeadForm() {
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="bg-white rounded-2xl border border-[#E5DEC9] p-6 sm:p-10 shadow-xs space-y-8"
+          className="bg-white rounded-2xl border border-[#CBD8CE] p-6 sm:p-10 shadow-xs space-y-8"
         >
           {/* Honeypot field for bot spam prevention */}
           <div className="hidden" aria-hidden="true">
@@ -504,7 +504,7 @@ export default function LeadForm() {
                     className={`relative flex items-center gap-3 p-3.5 rounded-xl border cursor-pointer select-none transition-all duration-150 ${
                       checked
                         ? 'bg-[#FAF7EF] border-[#0B3D2E] ring-1 ring-[#0B3D2E] text-[#111827]'
-                        : 'bg-white border-[#D8E0D2] hover:border-gray-400 text-gray-800'
+                        : 'bg-white border-[#7A8A80] hover:border-gray-500 text-gray-800'
                     }`}
                   >
                     <input
@@ -548,7 +548,7 @@ export default function LeadForm() {
                   if (errors.name) setErrors((prev) => ({ ...prev, name: '' }));
                 }}
                 placeholder={tLabels.namePlaceholder}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#D8E0D2] focus:border-[#0B3D2E] focus:ring-1 focus:ring-[#0B3D2E] text-xs sm:text-sm text-[#111827] font-medium placeholder:text-gray-400 placeholder:font-normal focus:outline-none transition-colors"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#7A8A80] focus:border-[#0B3D2E] focus:ring-1 focus:ring-[#0B3D2E] text-xs sm:text-sm text-[#111827] font-medium placeholder:text-[#647067] placeholder:font-normal focus:outline-none transition-colors"
                 required
               />
               {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
@@ -574,7 +574,7 @@ export default function LeadForm() {
                   if (errors.email) setErrors((prev) => ({ ...prev, email: '' }));
                 }}
                 placeholder={tLabels.emailPlaceholder}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#D8E0D2] focus:border-[#0B3D2E] focus:ring-1 focus:ring-[#0B3D2E] text-xs sm:text-sm text-[#111827] font-medium placeholder:text-gray-400 placeholder:font-normal focus:outline-none transition-colors"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#7A8A80] focus:border-[#0B3D2E] focus:ring-1 focus:ring-[#0B3D2E] text-xs sm:text-sm text-[#111827] font-medium placeholder:text-[#647067] placeholder:font-normal focus:outline-none transition-colors"
                 required
               />
               {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
@@ -600,7 +600,7 @@ export default function LeadForm() {
                   if (errors.company) setErrors((prev) => ({ ...prev, company: '' }));
                 }}
                 placeholder={tLabels.companyPlaceholder}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#D8E0D2] focus:border-[#0B3D2E] focus:ring-1 focus:ring-[#0B3D2E] text-xs sm:text-sm text-[#111827] font-medium placeholder:text-gray-400 placeholder:font-normal focus:outline-none transition-colors"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#7A8A80] focus:border-[#0B3D2E] focus:ring-1 focus:ring-[#0B3D2E] text-xs sm:text-sm text-[#111827] font-medium placeholder:text-[#647067] placeholder:font-normal focus:outline-none transition-colors"
                 required
               />
               {errors.company && (
@@ -628,7 +628,7 @@ export default function LeadForm() {
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                 placeholder={tLabels.countryPlaceholder}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#D8E0D2] focus:border-[#0B3D2E] focus:ring-1 focus:ring-[#0B3D2E] text-xs sm:text-sm text-[#111827] font-medium placeholder:text-gray-400 placeholder:font-normal focus:outline-none transition-colors"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#7A8A80] focus:border-[#0B3D2E] focus:ring-1 focus:ring-[#0B3D2E] text-xs sm:text-sm text-[#111827] font-medium placeholder:text-[#647067] placeholder:font-normal focus:outline-none transition-colors"
               />
             </div>
 
@@ -649,7 +649,7 @@ export default function LeadForm() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder={tLabels.phonePlaceholder}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#D8E0D2] focus:border-[#0B3D2E] focus:ring-1 focus:ring-[#0B3D2E] text-xs sm:text-sm text-[#111827] font-medium placeholder:text-gray-400 placeholder:font-normal focus:outline-none transition-colors"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-[#7A8A80] focus:border-[#0B3D2E] focus:ring-1 focus:ring-[#0B3D2E] text-xs sm:text-sm text-[#111827] font-medium placeholder:text-[#647067] placeholder:font-normal focus:outline-none transition-colors"
               />
             </div>
           </div>
@@ -676,7 +676,7 @@ export default function LeadForm() {
                   ? tLabels.customMessagePlaceholder
                   : tLabels.messagePlaceholder
               }
-              className="w-full px-3.5 py-2.5 rounded-xl border border-[#D8E0D2] focus:border-[#0B3D2E] focus:ring-1 focus:ring-[#0B3D2E] text-xs sm:text-sm text-[#111827] font-medium placeholder:text-gray-400 placeholder:font-normal focus:outline-none transition-colors"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-[#7A8A80] focus:border-[#0B3D2E] focus:ring-1 focus:ring-[#0B3D2E] text-xs sm:text-sm text-[#111827] font-medium placeholder:text-[#647067] placeholder:font-normal focus:outline-none transition-colors"
             />
           </div>
 

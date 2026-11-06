@@ -155,7 +155,7 @@ export default function AmericasMap({ isRevealed, language }: AmericasMapProps) 
             cx={CANADA_MARKER.x}
             cy={CANADA_MARKER.y}
             r="6.5"
-            fill="#FAF7EF"
+            fill="#FFFDF8"
             stroke="#0B3D2E"
             strokeWidth="1.25"
             filter="url(#markerGlow)"
@@ -172,7 +172,7 @@ export default function AmericasMap({ isRevealed, language }: AmericasMapProps) 
             cx={CANADA_MARKER.x}
             cy={CANADA_MARKER.y}
             r="1.2"
-            fill="#FAF7EF"
+            fill="#FFFDF8"
           />
         </g>
 
@@ -193,7 +193,7 @@ export default function AmericasMap({ isRevealed, language }: AmericasMapProps) 
             cx={BRAZIL_MARKER.x}
             cy={BRAZIL_MARKER.y}
             r="6.5"
-            fill="#FAF7EF"
+            fill="#FFFDF8"
             stroke="#0B3D2E"
             strokeWidth="1.25"
             filter="url(#markerGlow)"
@@ -210,7 +210,7 @@ export default function AmericasMap({ isRevealed, language }: AmericasMapProps) 
             cx={BRAZIL_MARKER.x}
             cy={BRAZIL_MARKER.y}
             r="1.2"
-            fill="#FAF7EF"
+            fill="#FFFDF8"
           />
         </g>
       </svg>
@@ -231,7 +231,7 @@ export default function AmericasMap({ isRevealed, language }: AmericasMapProps) 
             : 'opacity 350ms ease-out 120ms, transform 350ms ease-out 120ms',
         }}
       >
-        <span className="inline-block px-2 sm:px-2.5 py-0.5 rounded-md bg-[#FAF7EF]/95 shadow-2xs border border-[#0B3D2E]/20 text-xs sm:text-[13px] md:text-sm font-bold text-[#0B3D2E] tracking-tight whitespace-nowrap font-heading">
+        <span className="inline-block px-2 sm:px-2.5 py-0.5 rounded-md bg-[#FFFDF8]/95 shadow-2xs border border-[#0B3D2E]/20 text-xs sm:text-[13px] md:text-sm font-bold text-[#0B3D2E] tracking-tight whitespace-nowrap font-heading">
           {canadaLabel}
         </span>
       </div>
@@ -250,7 +250,7 @@ export default function AmericasMap({ isRevealed, language }: AmericasMapProps) 
             : 'opacity 350ms ease-out 240ms, transform 350ms ease-out 240ms',
         }}
       >
-        <span className="inline-block px-2 sm:px-2.5 py-0.5 rounded-md bg-[#FAF7EF]/95 shadow-2xs border border-[#0B3D2E]/20 text-xs sm:text-[13px] md:text-sm font-bold text-[#0B3D2E] tracking-tight whitespace-nowrap font-heading">
+        <span className="inline-block px-2 sm:px-2.5 py-0.5 rounded-md bg-[#FFFDF8]/95 shadow-2xs border border-[#0B3D2E]/20 text-xs sm:text-[13px] md:text-sm font-bold text-[#0B3D2E] tracking-tight whitespace-nowrap font-heading">
           {brazilLabel}
         </span>
       </div>

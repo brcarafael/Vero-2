@@ -146,7 +146,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
             {/* Share Control */}
             <button
               onClick={handleShare}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-[#D8E0D2] bg-white text-xs font-medium text-[#4B5563] hover:text-[#111827] hover:border-[#0B3D2E] transition-colors cursor-pointer"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-[#E5DEC9] bg-white text-xs font-medium text-[#4B5563] hover:text-[#111827] hover:border-[#0B3D2E] transition-colors cursor-pointer"
               title={tLabels.shareLink}
             >
               <Share2 className="w-3.5 h-3.5" />
@@ -170,7 +170,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
                     className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
                       isActive
                         ? 'bg-[#0B3D2E] text-white shadow-2xs'
-                        : 'bg-white border border-[#D8E0D2] text-[#374151] hover:border-[#0B3D2E] hover:text-[#0B3D2E]'
+                        : 'bg-white border border-[#E5DEC9] text-[#374151] hover:border-[#0B3D2E] hover:text-[#0B3D2E]'
                     }`}
                   >
                     {shortName}
@@ -187,7 +187,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Product Image Column */}
           <div className="lg:col-span-5">
-            <div className="relative rounded-2xl overflow-hidden border border-[#D8E0D2] bg-[#F5EFE3] shadow-md group">
+            <div className="relative rounded-2xl overflow-hidden border border-[#E5DEC9] bg-[#FAF7EF] shadow-md group">
               <img
                 src={product.image}
                 alt={product.title[language] || product.title.en}
@@ -222,7 +222,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
                 {product.shortDesc[language] || product.shortDesc.en}
               </p>
 
-              <div className="p-4 sm:p-5 rounded-xl bg-[#F5EFE3] border border-[#EFE3CF] mb-6">
+              <div className="p-4 sm:p-5 rounded-xl bg-[#FAF7EF] border border-[#E5DEC9] mb-6">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-[#0B3D2E] mb-2">
                   Overview & Sourcing Context
                 </h3>
@@ -238,7 +238,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
                 <button
                   type="button"
                   onClick={() => removeProduct(product.id)}
-                  className="flex-1 inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-[#E2ECE3] text-[#0B3D2E] font-semibold text-sm hover:bg-[#D8E0D2] transition-colors border border-[#0B3D2E]/30 cursor-pointer"
+                  className="flex-1 inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl bg-[#E2ECE3] text-[#0B3D2E] font-semibold text-sm hover:bg-[#D9E5DC] transition-colors border border-[#0B3D2E]/30 cursor-pointer"
                 >
                   <Check className="w-4 h-4 stroke-[2.5]" />
                   <span>{tLabels.inInquiry}</span>
@@ -272,7 +272,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
         <div className="mt-12 sm:mt-16 pt-10 border-t border-[#E5DEC9]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Types & Commercial Varieties */}
-            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#D8E0D2] shadow-xs">
+            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#E5DEC9] shadow-xs">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-9 h-9 rounded-xl bg-[#E2ECE3] text-[#0B3D2E] flex items-center justify-center flex-shrink-0">
                   <Layers className="w-5 h-5" />
@@ -292,7 +292,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
             </div>
 
             {/* Packaging & Logistics */}
-            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#D8E0D2] shadow-xs">
+            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#E5DEC9] shadow-xs">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-9 h-9 rounded-xl bg-[#E2ECE3] text-[#0B3D2E] flex items-center justify-center flex-shrink-0">
                   <Package className="w-5 h-5" />
@@ -312,7 +312,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
             </div>
 
             {/* Origins & Shipping Ports */}
-            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#D8E0D2] shadow-xs">
+            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#E5DEC9] shadow-xs">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-9 h-9 rounded-xl bg-[#E2ECE3] text-[#0B3D2E] flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-5 h-5" />
@@ -325,7 +325,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
                 {(product.origins[language] || product.origins.en).map((region, idx) => (
                   <span
                     key={idx}
-                    className="px-3 py-1.5 rounded-lg bg-[#FAF7EF] border border-[#D8E0D2] text-xs font-medium text-[#111827]"
+                    className="px-3 py-1.5 rounded-lg bg-[#FAF7EF] border border-[#E5DEC9] text-xs font-medium text-[#111827]"
                   >
                     {region}
                   </span>
@@ -340,7 +340,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
             </div>
 
             {/* Quality & Inspection Protocols */}
-            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#D8E0D2] shadow-xs">
+            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-[#E5DEC9] shadow-xs">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-9 h-9 rounded-xl bg-[#E2ECE3] text-[#0B3D2E] flex items-center justify-center flex-shrink-0">
                   <ShieldCheck className="w-5 h-5" />
@@ -352,7 +352,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
               <p className="text-xs sm:text-sm text-[#374151] leading-relaxed mb-4">
                 {product.inspection[language] || product.inspection.en}
               </p>
-              <div className="p-3 rounded-lg bg-[#FAF7EF] border border-[#EFE3CF] text-xs text-[#0B3D2E]">
+              <div className="p-3 rounded-lg bg-[#FAF7EF] border border-[#E5DEC9] text-xs text-[#0B3D2E]">
                 <span className="font-semibold">Compliance Note:</span>{' '}
                 {product.complianceNotes[language] || product.complianceNotes.en}
               </div>
@@ -362,7 +362,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
 
         {/* Indicative Harvest & Applications Strip */}
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="p-5 rounded-xl bg-[#F5EFE3] border border-[#D8E0D2]">
+          <div className="p-5 rounded-xl bg-[#FAF7EF] border border-[#E5DEC9]">
             <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#0B3D2E] mb-1.5">
               <Calendar className="w-4 h-4" />
               <span>{tLabels.harvestHeading}</span>
@@ -372,7 +372,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
             </p>
           </div>
 
-          <div className="p-5 rounded-xl bg-[#F5EFE3] border border-[#D8E0D2]">
+          <div className="p-5 rounded-xl bg-[#FAF7EF] border border-[#E5DEC9]">
             <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#0B3D2E] mb-1.5">
               <Building className="w-4 h-4" />
               <span>{tLabels.applicationsHeading}</span>
@@ -393,7 +393,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
               <div
                 key={rel.id}
                 onClick={() => navigateToProduct(rel.id)}
-                className="group cursor-pointer bg-white rounded-xl overflow-hidden border border-[#D8E0D2] hover:border-[#0B3D2E] transition-all hover:shadow-md"
+                className="group cursor-pointer bg-white rounded-xl overflow-hidden border border-[#E5DEC9] hover:border-[#0B3D2E] transition-all hover:shadow-md"
               >
                 <div className="aspect-[16/10] overflow-hidden bg-gray-100">
                   <img

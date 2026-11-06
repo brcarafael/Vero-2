@@ -38,7 +38,7 @@ export default function OriginAndBrasensa() {
   return (
     <section
       id="about-vero"
-      className="py-16 sm:py-24 bg-[#FAF7EF] border-b border-[#E5DEC9] scroll-mt-20"
+      className="py-16 sm:py-24 bg-[#FFFDF8] border-b border-[#E5DEC9] scroll-mt-20"
     >
       <div
         ref={sectionRef}
@@ -108,14 +108,14 @@ export default function OriginAndBrasensa() {
           <button
             type="button"
             onClick={() => setApproachOpen(!approachOpen)}
-            className="flex items-center justify-between w-full text-left py-3 px-3.5 -mx-3.5 rounded-xl hover:bg-[#F5EFE3]/70 transition-colors group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B3D2E]"
+            className="flex items-center justify-between w-full text-left py-3 px-3.5 -mx-3.5 rounded-xl hover:bg-[#FAF7EF] transition-colors group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B3D2E]"
             aria-expanded={approachOpen}
             aria-controls="approach-disclosure-content"
           >
             <span className="text-sm font-semibold text-[#0B3D2E] group-hover:text-[#064E3B] transition-colors">
               {t.partnership.disclosureTitle}
             </span>
-            <span className="p-1.5 rounded-md bg-[#E2ECE3] text-[#0B3D2E] group-hover:bg-[#D8E0D2] transition-colors ml-2">
+            <span className="p-1.5 rounded-md bg-[#E2ECE3] text-[#0B3D2E] group-hover:bg-[#D9E5DC] transition-colors ml-2">
               {approachOpen ? (
                 <ChevronUp className="w-4 h-4" />
               ) : (
@@ -135,7 +135,7 @@ export default function OriginAndBrasensa() {
             aria-hidden={!approachOpen}
           >
             <div className="min-h-0">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 rounded-2xl bg-white border border-[#D8E0D2] shadow-2xs">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 rounded-2xl bg-white border border-[#E5DEC9] shadow-2xs">
                 {t.partnership.approachSteps.map((step, idx) => (
                   <div key={idx} className="space-y-2">
                     <h4 className="text-xs font-bold text-[#111827] uppercase tracking-wider">
