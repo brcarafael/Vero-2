@@ -208,7 +208,7 @@ export const translations: Record<Language, CopyTranslations> = {
     },
     partnership: {
       tag: 'Commercial Roles',
-      headline: 'Your contact in Canada. Connected to Brazilian origin.',
+      headline: 'Brazilian products. Your commercial contact in Canada.',
       intro:
         'VERO is your point of contact for exploring Brazilian product opportunities. We coordinate your requirements with Brasensa in Brazil and help clarify the next commercial steps.',
       veroTitle: 'VERO — Canada',
@@ -366,7 +366,7 @@ export const translations: Record<Language, CopyTranslations> = {
     },
     partnership: {
       tag: 'Papéis Comerciais',
-      headline: 'Seu contato no Canadá. Conectado à origem brasileira.',
+      headline: 'Produtos brasileiros. Seu contato comercial no Canadá.',
       intro:
         'A VERO é o seu ponto de contato para explorar oportunidades de produtos brasileiros. Coordenamos seus requisitos com a Brasensa no Brasil e ajudamos a esclarecer os próximos passos comerciais.',
       veroTitle: 'VERO — Canadá',
@@ -524,7 +524,7 @@ export const translations: Record<Language, CopyTranslations> = {
     },
     partnership: {
       tag: 'Roles Comerciales',
-      headline: 'Su contacto en Canadá. Conectado al origen brasileño.',
+      headline: 'Productos brasileños. Su contacto comercial en Canadá.',
       intro:
         'VERO es su punto de contacto para explorar oportunidades de productos brasileños. Coordinamos sus requisitos con Brasensa en Brasil y ayudamos a clarificar los próximos pasos comerciales.',
       veroTitle: 'VERO — Canadá',

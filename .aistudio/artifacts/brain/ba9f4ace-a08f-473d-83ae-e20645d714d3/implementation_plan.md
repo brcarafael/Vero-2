@@ -218,3 +218,105 @@ The Vero Trading Co. website has been completely redesigned and rebuilt into a d
 - **Product Detail Navigation**: Verified single-click navigation from `/products/green-coffee` to each target section on home.
 - **Browser Back & Inquiry Basket**: Confirmed browser Back button restores previous page state, and inquiry selections remain intact across all navigations.
 
+---
+
+## 9. Visual Redesign of "About VERO" Section (`#about-vero`)
+
+### A. Architectural & Compositional Enhancements
+1. **Desktop Two-Column Opening & Alignment**:
+   - Aligned outer bounds with Hero and Product Grid (`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`).
+   - Clean 50/50 two-column opening (`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center`):
+     - **Left column (6 cols)**: Eyebrow label (`t.partnership.tag`), editorial headline (`t.partnership.headline`) with `text-balance`, and introduction (`t.partnership.intro`).
+     - **Right column (6 cols)**: Custom vector map of the Americas sitting directly on the native cream canvas (`#FAF7EF`) without any artificial card enclosure or box shadow.
+2. **Geographically Accurate Americas Map (`AmericasMap.tsx` & `americasMapPaths.ts`)**:
+   - Sourced from Natural Earth 110m vectors with Miller cylindrical projection.
+   - Continental landmasses rendered in warm, muted tones (`fill="#EDE4D0"`, `stroke="#DFD5BE"`).
+   - Canada and Brazil highlighted in signature deep forest green (`#0B3D2E` / `#064E3B`).
+   - Country-level markers placed at verified geographic centroids (Canada: `297.7, 165.6` in southeastern Ontario/Quebec corridor; Brazil: `454.7, 441.2` in central Goiás/Brasília corridor).
+   - Joined with a fine curved coordination line (`M 297.7,165.6 C 395,245 450,340 454.7,441.2`) free of shipping arrows, ports, or pins.
+   - Text labels (`VERO · Canada` / `VERO · Canadá` and `Brasensa · Brazil` / `Brasensa · Brasil`) with halo stroke (`paintOrder="stroke" stroke="#FAF7EF" strokeWidth="4"`) ensuring 100% legibility against the cream background and any intersecting contours.
+3. **One-Time Motion Storytelling**:
+   - Scroll-triggered reveal powered by `useScrollReveal`: when `#about-vero` enters view, the markers fade/scale in and the coordinating arc draws over 700ms (`cubic-bezier(0.16, 1, 0.3, 1)`).
+   - Once completed, the illustration remains stably visible; scrolling slightly up or down does not re-trigger or flicker.
+   - Strictly respects `prefers-reduced-motion`: markers and the full line are immediately visible on initial render with transitions disabled.
+4. **Compact Role Descriptions Band**:
+   - Positioned directly beneath the two-column opening with `border-t border-[#E5DEC9]`.
+   - Replaced separate floating cards with a unified 2-column horizontal band featuring a subtle hairline vertical divider (`md:divide-x md:divide-[#E5DEC9]`) and generous horizontal padding (`md:pr-10 lg:pr-14` / `md:pl-10 lg:pl-14`).
+   - Vertically aligned country/role labels, company names, and descriptive prose.
+5. **Full-Row Accessible Disclosure**:
+   - Moved closer to the role descriptions band (`mt-8 pt-6 border-t border-[#E5DEC9]`).
+   - Expanded the interactive click area to the full row with `-mx-3.5 px-3.5 py-3 rounded-xl hover:bg-[#F5EFE3]/70` and visible keyboard focus rings (`focus-visible:ring-2 focus-visible:ring-[#0B3D2E]`).
+   - Smooth animated expansion/collapse of the 3 approach steps without layout shifts.
+6. **Mobile-Optimized Stacking & Responsive ViewBox**:
+   - Natural vertical reading order on mobile: (1) Heading & Intro → (2) Americas Map → (3) Role Descriptions → (4) Approach Disclosure.
+   - Mobile SVG switches to tight Americas crop (`viewBox="100 65 440 475"`), scaling Canada, Brazil, and both labels up by ~25% while maintaining a compact height (~340px) so the buyer flows seamlessly into the role descriptions.
+
+### B. Verification Checks Completed
+- **English Preview (`en`)**:
+  - Desktop (1440px / 1280px): Verified two-column balance, map alignment, and non-overlapping labels.
+  - Mobile (375px / 414px): Verified stacked order, compact map crop, and readable text labels.
+- **Portuguese Preview (`pt`)**:
+  - Verified `VERO · Canadá` and `Brasensa · Brasil` map labels.
+  - Verified Portuguese headline (`Seu contato no Canadá. Conectado à origem brasileira.`) wraps cleanly into 2 lines.
+  - Verified role descriptions and approach steps display with 0 overflow.
+- **Spanish Preview (`es`)**:
+  - Verified `VERO · Canadá` and `Brasensa · Brasil` map labels.
+  - Verified Spanish headline (`Su contacto en Canadá. Conectado al origen brasileño.`) wraps cleanly.
+- **Reduced Motion**: Verified that enabling `prefers-reduced-motion` renders the complete map and line immediately without animation.
+- **Navigation & Sticky Offset**: Verified that single-click navigation to `/#about-vero` from header, footer, and product pages correctly offsets by `scroll-mt-20` (80px), keeping the section heading completely visible below the fixed header.
+- **Build & Quality Check**: `npm run build` and `tsc --noEmit` passed with 0 errors.
+
+---
+
+## 10. Three Targeted Fixes: Header Menu, Responsive Map, and Section Heading
+
+### A. Fix 1: Header Menu After Scrolling (`Header.tsx`)
+1. **Root Cause Analysis**:
+   - When the user scrolled past 15px, `isScrolled` applied `backdrop-blur-md` directly to `<header>`.
+   - By W3C CSS specification, `backdrop-filter` creates a new containing block for all `position: fixed` descendants.
+   - Consequently, the mobile navigation drawer (`fixed inset-0`) was constrained to `<header>`'s 60px height and overflow-clipped.
+   - On desktop, the backdrop-filter stacking context combined with animated sibling transforms caused dropdown interaction and clipping issues after scrolling.
+2. **Applied Solutions**:
+   - **Background Layer Isolation**: Removed `backdrop-blur-md` from the `<header>` element itself and moved it to an absolute inset child `<div>` (`absolute inset-0 -z-10 pointer-events-none`). This eliminates containing block entrapment.
+   - **Portal Rendering**: Rendered the mobile navigation drawer using React Portal (`createPortal(drawer, document.body)`), ensuring it sits directly on `document.body` with `fixed inset-0 z-[100] h-dvh max-h-screen overflow-y-auto`.
+   - **Scroll Position Lock**: Implemented body overflow locking (`document.body.style.overflow = 'hidden'`) on mobile menu open that preserves the exact `window.scrollY` position upon closing.
+   - **Dismissal & Keyboard Handlers**:
+     - Added global `Escape` key listener closing both desktop dropdown and mobile drawer.
+     - Added outside click listener for desktop dropdown and close button/backdrop for mobile drawer.
+     - Added single-click link activation that closes menus and scrolls immediately to target sections.
+   - **Accessibility & ARIA**: Synced `aria-expanded`, `aria-controls`, `aria-haspopup`, and `role="dialog"` attributes.
+
+### B. Fix 2: Responsive Americas Map & HTML Labels (`AmericasMap.tsx` & `americasMapPaths.ts`)
+1. **Root Cause Analysis**:
+   - Northern Canada geometry reaches $y = -29.3$. Previous viewBox starting at $y = 0$ (and mobile crop at $y = 65$) chopped off northern Canada islands.
+   - SVG `<text>` elements scaled down proportionally with viewport width, reducing to ~6–7 CSS pixels on mobile screens.
+   - ViewBox differences between desktop and mobile caused layout shifts on resize or orientation change.
+2. **Applied Solutions**:
+   - **Unified Geometrically Complete ViewBox**: Set `AMERICAS_VIEWBOX = '-10 -45 540 680'` in `americasMapPaths.ts` covering all continental and island geometry ($Y$ from $-45$ to $635$, $X$ from $-10$ to $530$) with zero cropping.
+   - **Contain-Style Scaling**: Placed SVG in an `aspect-[540/680]` container with `preserveAspectRatio="xMidYMid meet"`, maintaining identical proportions across all screens without layout shift.
+   - **Responsive HTML Overlay Labels**:
+     - Positioned labels as responsive HTML elements relative to container dimensions: Canada at `left: 56.98%, top: 30.97%` and Brazil at `left: 86.06%, top: 71.50%`.
+     - Scaled between 12px and 14px (`text-xs sm:text-[13px] md:text-sm font-bold text-[#0B3D2E]`) with high-contrast cream background badge (`bg-[#FAF7EF]/95 shadow-2xs border border-[#0B3D2E]/20`), guaranteeing crisp legibility on 320px–1920px viewports.
+   - **Persistent Reveal Without Flicker**: Added `hasAnimated` flag so once revealed, the map and connecting line remain permanently visible without scroll flicker.
+   - **Smooth 700ms Animation & Reduced Motion**: Preserved smooth 700ms coordination line drawing and 350ms marker scaling, immediately settling when `prefers-reduced-motion` is enabled.
+
+### C. Fix 3: Clarified Section Heading (`copy.ts`)
+1. **Replaced Previous Heading**: Updated the About VERO section headline across all three languages:
+   - **English (EN)**: `"Brazilian products. Your commercial contact in Canada."`
+   - **Portuguese (PT)**: `"Produtos brasileiros. Seu contato comercial no Canadá."`
+   - **Spanish (ES)**: `"Productos brasileños. Su contacto comercial en Canadá."`
+2. **Maintained Content Continuity**: All introduction paragraphs, company descriptions (VERO Canada, Brasensa Brazil), approach disclosures, and inquiry paths preserved exactly as approved.
+
+### D. Comprehensive Verification
+- **Compilation & Linting**: `compile_applet` passed and `lint_applet` (`tsc --noEmit`) completed with 0 errors.
+- **Header Navigation at All Scroll Positions**:
+  - Tested menu trigger at top of page ($Y = 0$), mid-page ($Y = 1200$), and bottom of page ($Y = 2800$). Menu opens on first click at all scroll positions.
+  - Desktop products dropdown opens cleanly above page content without clipping or containing block bugs.
+  - Mobile drawer scrolls full viewport height smoothly; escape key closes menu; closing preserves visitor's exact scroll position.
+  - Single-click on "How it works", "About VERO", and "Contact" jumps directly to section with heading visible below sticky header (`scroll-mt-20`).
+- **Map Responsiveness Across Viewports**:
+  - 360px & 390px (Mobile): Northern Canada islands fully visible (no top crop); company labels clear and legible at 12 CSS px.
+  - 768px (Tablet) & 1440px (Desktop): Seamless two-column alignment, intact geometry, and connecting line drawing smoothly into Brazil.
+- **Trilingual Rendering**: Verified English, Portuguese, and Spanish text wrapping, character encodings, and layout stability.
+
+
